@@ -1,0 +1,185 @@
+header {
+    height: 871px;
+}
+nav {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 780px;
+    background: #fff;
+    display: block;
+    width: 100%;
+    padding: 14px 0 14px 0;
+    z-index: 100;
+	-webkit-box-shadow:0 1px 4px rgba(0,0,0,.1);
+	box-shadow:0 1px 4px rgba(0,0,0,.1);
+	-moz-box-shadow:0 1px 4px rgba(0,0,0,.1);
+}
+
+nav ul {
+	float: right;
+	background: #fff;
+	padding: 0px;
+	margin: 0px 10px 0px 0px;
+}
+nav li {
+	float: left;
+	padding: 0px;
+	margin: 0px;
+}
+nav li a {
+    font-family: 'Oswald', sans-serif;
+    color: #181818;
+	font-size: 16px;
+	text-transform: uppercase;
+	letter-spacing: 0.5px;
+    padding: 20px 18px 20px 18px;
+    display: block;
+    text-decoration: none;
+    margin-left: 5px;
+}
+
+nav li a:hover,
+nav li a.active {
+    color: #e74c3c;
+}
+
+.fixed {
+    position: fixed;
+    top: 0
+}
+
+
+nav li a.social {
+	width: 25px;
+	height: 25px;
+	border: 1px solid #999;
+	border-radius: 100%;
+    color: #999;
+	font-size: 12px;
+	text-align: center;
+	vertical-align: middle;
+	line-height: 23px;
+	padding: 0px;
+    margin-left: 0px;
+	margin-right: 10px;
+	margin-top: 16px;
+	transition: all 0.3s ease;
+}
+nav li a.social:hover {
+	border: 1px solid #454545;
+    color: #454545;
+}
+
+
+
+@media only screen and (min-width: 1000px) and (max-width: 1169px){
+header {
+    height: 661px;
+}
+nav {
+    top: 570px;
+}
+
+
+}
+
+@media only screen and (min-width: 768px) and (max-width: 999px){
+header {
+    height: 521px;
+}
+nav {
+    top: 430px;
+}
+nav li a {
+	padding: 10px 5px 10px 5px;
+    margin-left: 5px;
+}
+nav li a.social {
+	margin-right: 3px;
+}
+
+}
+
+
+@media only screen and (min-width: 640px) and (max-width: 767px){
+header {
+    height: 451px;
+}
+nav {
+    top: 340px;
+	padding: 0px 0 0px 0;
+}
+nav li a {
+	padding-left: 10px;
+	padding-right: 10px;
+    margin-left: 5px;
+}
+nav li a.social {
+	margin-right: 5px;
+}
+
+nav ul {
+	float: left;
+	margin: 0px 0px 0px 0px;
+}
+
+
+}
+
+@media only screen and (min-width: 480px) and (max-width: 639px){
+header {
+    height: 370px;
+}
+nav {
+    top: 270px;
+	padding: 0px 0 0px 0;
+}
+nav li a {
+	font-size: 14px;
+	padding-left: 5px;
+	padding-right: 5px;
+    margin-left: 5px;
+}
+nav li a.social {
+	margin-right: 3px;
+}
+
+nav ul {
+	float: left;
+	margin: 0px 0px 0px 0px;
+}
+
+}
+
+
+@media only screen and (max-width: 479px){
+header {
+    height: 250px;
+}
+nav {
+    top: 180px;
+	padding: 0px 0 0px 0;
+}
+nav li a {
+	font-size: 11px;
+	padding-left: 2px;
+	padding-right: 2px;
+    margin-left: 2px;
+}
+nav li a.social {
+	width: 16px;
+	height: 16px;
+	font-size: 9px;
+	line-height: 14px;
+	margin-right: 2px;
+	margin-top: 22px;
+}
+
+nav ul {
+	float: left;
+	margin: 0px 0px 0px 0px;
+}
+
+	
+}

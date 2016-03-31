@@ -1,0 +1,129 @@
+.tabs5 {
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+}
+.tabs5 li {
+	margin: 0;
+	text-align: left;
+}
+.tabs5 li a {
+	float: left;
+	color: #272727;
+	padding: 5px 70px;
+	text-decoration: none;
+	line-height: 40px;
+	font-size: 18px;
+	text-transform: uppercase;
+	font-weight: 700;
+	background: rgba(255, 255, 255, 0.75);
+	margin-right: 2px;
+}
+.tabs5 li.active a {
+	color: #272727;
+	background: #fff;
+}
+/*.tabs-content5 {
+	float: left;
+	width: 89%;
+	padding: 5% 5% 6% 5%;
+	text-align: left;
+	margin-bottom: 40px;
+	background: #fff;
+}*/
+.tabs-content5 img.img_left2 {
+	width: auto;
+	margin-right: 25px;
+}
+.tabs-content5 .tabs-panel {
+	padding: 20px;
+}
+.tabs-content5 .tabs-panel5 .tab-title2 {
+	display: none;
+}
+
+.tabs-content5 .tabs-panel5.two{
+	padding: 20px 20px 14px 20px;
+}
+
+.tabs-content5.fullw {
+	float: left;
+	width: 100%;
+	padding: 3% 3% 3% 3%;
+	text-align: left;
+	margin-bottom: 0px;
+	background: #fff;
+}
+
+/*	#Themes
+//	================================================== */
+
+#example-2 .tabs5 li {
+width: 100px;
+border: 1px solid #DDD;
+border-right: 0;
+background: #EEE;
+cursor: pointer;
+position: relative;
+z-index: 999;
+}
+#example-2 .tabs5 li:last-child {
+border-right: 1px solid #DDD;
+}
+#example-2 .tabs5 li.active {
+border-bottom: 1px solid #FFF;
+background: #FFF;
+}
+#example-2 .tabs-content5 {
+border: 1px solid #DDD;
+background: #FFF;
+position: relative;
+top: -1px;
+z-index: 99;
+}
+#example-2 .tabs-content5 .tab-title {
+color: #0b8593;
+}
+
+
+@media only screen and (min-width: 1000px) and (max-width: 1169px){
+
+.tabs5 li a {
+	padding: 0px 20px;
+}
+	
+}
+
+@media only screen and (min-width: 768px) and (max-width: 999px){
+
+.tabs5 li a {
+	padding: 0px 9px;
+}
+
+}
+
+
+@media only screen and (min-width: 480px) and (max-width: 767px){
+.tabs5 li a {
+	padding: 0px 18px;
+}
+
+.tabs-content5.fullw {
+	padding: 5% 3% 6% 3%;
+}
+
+}
+
+
+@media only screen and (max-width: 479px){
+.tabs5 li a {
+	padding: 0px 10px;
+}
+
+.tabs-content5.fullw {
+	padding: 7% 7% 8% 7%;
+}
+
+	
+}
+
