@@ -1,0 +1,566 @@
+/* Responsive CSS Styles Table of Contents */
+
+@media only screen and (min-width: 1000px) and (max-width: 1169px){
+
+.logregform {
+	width: 40%;
+	margin-left: 32%;
+}
+.logregform.two {
+	width: 55%;
+	margin-left: 23%;
+}
+.container {
+	width: 1000px;
+	margin: auto;
+}
+
+.slider select {
+	margin-left: 5px;
+}
+.slider .but1 {
+	margin-left: 10px;
+}
+.slider .but2 {
+	margin-left: 5px;
+}
+
+.feature_section1 .box.list .title {
+	padding-left: 14px;
+}
+.feature_section1 .box.list p {
+	margin-left: 14px;
+}
+
+.feature_section4 .onecol_forty  {
+	padding-left:0px;
+	width: 40%;
+	margin: 0;
+}
+.feature_section4 .onecol_sixty  {
+	padding-left:0px;
+	width: 60%;
+	margin: 0;
+}
+
+.newsletter .enter_email_input {
+	width: 70%;
+}
+
+
+}
+
+
+@media only screen and (min-width: 768px) and (max-width: 999px){
+.logregform {
+	width: 45%;
+	margin-left: 28%;
+}
+.logregform.two {
+	width: 70%;
+	margin-left: 16%;
+}
+
+.container {
+	width: 747px;
+	margin: auto;
+}
+
+.logo {
+	width: 50%;
+}
+.menu_main {
+	width: 97%;
+	position: absolute;
+}
+
+.slider .fadein {
+	height: 670px;
+}
+.slider .fadein img {
+	height: 670px;
+}
+.slider .prosearch {
+	margin-top: -500px;
+}
+.slider .prosearch h1 {
+	font-size: 45px;
+}
+.slider .prosearch h2 {
+	font-size: 27px;
+}
+.slider select {
+	margin-left: 5px;
+}
+.slider .but1 {
+	margin-left: 10px;
+	font-size: 14px;
+	padding: 15px 10px 14px 10px;
+}
+.slider .but2 {
+	margin-left: 5px;
+	font-size: 14px;
+	padding: 15px 10px 14px 10px;
+}
+
+.feature_section4 .onecol_forty  {
+	padding-left:0px;
+	width: 50%;
+	margin: 0;
+}
+.feature_section4 .onecol_sixty  {
+	padding-left:0px;
+	width: 50%;
+	margin: 0;
+}
+
+.feature_section5 .left {
+	margin-left: 50px;
+}
+
+}
+
+
+
+@media only screen and (min-width: 640px) and (max-width: 767px){
+.logregform {
+	width: 57%;
+	margin-left: 22%;
+}
+.logregform.two {
+	width: 80%;
+	margin-left: 10%;
+}
+
+/* columns */
+.one_half, .one_third, .one_fourth, .two_third, .three_fourth, .one_fifth, .onecol_forty, .onecol_sixty, .onecol_thirtyfive,
+.one_half_less, .one_third_less, .one_fourth_less, .two_third_less, .three_fourth_less, .one_fifth_less, .onecol_forty_less, .onecol_sixty_less, .onecol_thirtyfive_less {
+	position: relative;
+	margin-right: 0%;
+	float: left;
+}
+.one_full,
+.one_half,
+.one_third,
+.one_fourth,
+.one_fifth,
+.two_third,
+.three_fourth,
+.onecol_forty,
+.onecol_sixty,
+.onecol_thirtyfive,
+.one_full_less,
+.one_half_less,
+.one_third_less,
+.one_fourth_less,
+.one_fifth_less,
+.two_third_less,
+.three_fourth_less,
+.onecol_forty_less,
+.onecol_sixty_less,
+.onecol_thirtyfive_less {
+	width: 100%;
+	margin-bottom: 50px;
+}
+.last {
+	margin-right: 0 !important;
+	margin-bottom: 0 !important;
+}
+
+
+.container {
+	width: 590px;
+	margin: auto;
+}
+
+.logo {
+	width: 50%;
+}
+.menu_main {
+	width: 97%;
+	position: absolute;
+}
+
+.slider .fadein {
+	height: 590px;
+}
+.slider .fadein img {
+	height: 590px;
+}
+.slider .prosearch {
+	margin-top: -460px;
+}
+.slider .prosearch .margin_bottom4 {
+	margin-bottom: 10px;
+}
+.slider .prosearch h1 {
+	font-size: 45px;
+}
+.slider .prosearch h2 {
+	font-size: 27px;
+}
+.slider .enter_email_input {
+	padding: 3px 0px 4px 10px;
+	width: 100%;
+	font-size: 14px;
+	margin-bottom: 10px;
+}
+.slider select {
+	padding: 3px 0px 4px 16px;
+	width: 21%;
+	margin-left: 0px;
+	margin-right: 10px;
+	font-size: 14px;
+}
+
+.feature_section4 .onecol_forty  {
+	padding-left:0px;
+	margin: 0;
+}
+.feature_section4 .onecol_sixty  {
+	padding-left:0px;
+	margin: 0;
+}
+
+.feature_section5 .left {
+	margin-left: 50px;
+}
+.feature_section5 .right {
+	width: 75%;
+	float: right;
+}
+
+.feature_section6 li {
+	width: 33%;
+	border-right: none;
+}
+
+.newsletter .one_half {
+	margin: 0;
+}
+
+.copyright_info .one_half {
+	text-align: left;
+	margin: 0;
+}
+ul.footer_social_links {
+	float: left;
+	margin: 10px 0px 0px 0px;
+}
+.footer_social_links li {
+	margin: 0px 5px 0px 0px;
+}
+
+
+.feature_section4 h1 {
+	font-size: 35px;
+	line-height: 45px;
+}
+
+}
+
+
+@media only screen and (min-width: 480px) and (max-width: 639px){
+.logregform {
+	width: 75%;
+	margin-left: 14%;
+}
+.logregform.two {
+	width: 90%;
+	margin-left: 5%;
+}
+/* columns */
+.one_half, .one_third, .one_fourth, .two_third, .three_fourth, .one_fifth, .onecol_forty, .onecol_sixty, .onecol_thirtyfive,
+.one_half_less, .one_third_less, .one_fourth_less, .two_third_less, .three_fourth_less, .one_fifth_less, .onecol_forty_less, .onecol_sixty_less, .onecol_thirtyfive_less {
+	position: relative;
+	margin-right: 0%;
+	float: left;
+}
+.one_full,
+.one_half,
+.one_third,
+.one_fourth,
+.one_fifth,
+.two_third,
+.three_fourth,
+.onecol_forty,
+.onecol_sixty,
+.onecol_thirtyfive,
+.one_full_less,
+.one_half_less,
+.one_third_less,
+.one_fourth_less,
+.one_fifth_less,
+.two_third_less,
+.three_fourth_less,
+.onecol_forty_less,
+.onecol_sixty_less,
+.onecol_thirtyfive_less {
+	width: 100%;
+	margin-bottom: 50px;
+}
+.last {
+	margin-right: 0 !important;
+	margin-bottom: 0 !important;
+}
+
+.container {
+	width: 440px;
+	margin: auto;
+}
+
+.logo {
+	width: 100%;
+}
+.menu_main {
+	width: 97%;
+	position: absolute;
+}
+
+.slider .fadein {
+	height: 630px;
+}
+.slider .fadein img {
+	height: 630px;
+}
+.slider .prosearch {
+	margin-top: -500px;
+}
+.slider .prosearch .margin_bottom4 {
+	margin-bottom: 0px;
+}
+.slider .prosearch h1 {
+	font-size: 35px;
+	line-height: 35px;
+}
+.slider .prosearch h2 {
+	font-size: 18px;
+}
+.slider .enter_email_input {
+	padding: 3px 0px 4px 10px;
+	width: 100%;
+	font-size: 14px;
+	margin-bottom: 10px;
+}
+.slider select {
+	padding: 3px 0px 4px 16px;
+	width: 40%;
+	margin-left: 0px;
+	margin-right: 10px;
+	margin-bottom: 10px;
+	font-size: 14px;
+}
+.slider .but1 {
+	margin-left: 0px;
+	font-size: 14px;
+	padding: 15px 20px 14px 20px;
+}
+.slider .but2 {
+	margin-left: 5px;
+	font-size: 14px;
+	padding: 15px 20px 14px 20px;
+}
+
+.feature_section4 .onecol_forty  {
+	padding-left:0px;
+	margin: 0;
+}
+.feature_section4 .onecol_sixty  {
+	padding-left:0px;
+	margin: 0;
+}
+
+.feature_section5 .left {
+	margin-left: 50px;
+}
+.feature_section5 .right {
+	width: 70%;
+	float: right;
+}
+
+.feature_section6 li {
+	width: 33%;
+	border-right: none;
+}
+
+.newsletter .one_half {
+	margin: 0;
+}
+
+.copyright_info .one_half {
+	text-align: left;
+	margin: 0;
+}
+ul.footer_social_links {
+	float: left;
+	margin: 10px 0px 0px 0px;
+}
+.footer_social_links li {
+	margin: 0px 5px 0px 0px;
+}
+
+
+.feature_section4 h1 {
+	font-size: 27px;
+	line-height: 35px;
+}
+
+
+}
+
+
+
+
+
+@media only screen and (max-width: 479px){
+.logregform {
+	width: 94%;
+	margin-left: 3%;
+}
+.logregform.two {
+	width: 94%;
+	margin-left: 3%;
+}
+
+/* columns */
+.one_half, .one_third, .one_fourth, .two_third, .three_fourth, .one_fifth, .onecol_forty, .onecol_sixty, .onecol_thirtyfive,
+.one_half_less, .one_third_less, .one_fourth_less, .two_third_less, .three_fourth_less, .one_fifth_less, .onecol_forty_less, .onecol_sixty_less, .onecol_thirtyfive_less {
+	position: relative;
+	margin-right: 0%;
+	float: left;
+}
+.one_full,
+.one_half,
+.one_third,
+.one_fourth,
+.one_fifth,
+.two_third,
+.three_fourth,
+.onecol_forty,
+.onecol_sixty,
+.onecol_thirtyfive,
+.one_full_less,
+.one_half_less,
+.one_third_less,
+.one_fourth_less,
+.one_fifth_less,
+.two_third_less,
+.three_fourth_less,
+.onecol_forty_less,
+.onecol_sixty_less,
+.onecol_thirtyfive_less {
+	width: 100%;
+	margin-bottom: 50px;
+}
+.last {
+	margin-right: 0 !important;
+	margin-bottom: 0 !important;
+}
+
+.container {
+	width: 300px;
+	margin: auto;
+}
+
+.logo {
+	width: 100%;
+}
+.menu_main {
+	width: 97%;
+	position: absolute;
+}
+
+.slider .fadein {
+	height: 630px;
+}
+.slider .fadein img {
+	height: 630px;
+}
+.slider .prosearch {
+	margin-top: -520px;
+}
+.slider .prosearch .margin_bottom4 {
+	margin-bottom: -10px;
+}
+.slider .prosearch h1 {
+	font-size: 35px;
+	line-height: 35px;
+}
+.slider .prosearch h2 {
+	font-size: 18px;
+}
+.slider .enter_email_input {
+	padding: 3px 0px 4px 10px;
+	width: 100%;
+	font-size: 14px;
+	margin-bottom: 10px;
+}
+.slider select {
+	padding: 3px 0px 4px 16px;
+	width: 46%;
+	margin-left: 0px;
+	margin-right: 10px;
+	margin-bottom: 10px;
+	font-size: 14px;
+}
+.slider .but1 {
+	margin-left: 0px;
+	font-size: 14px;
+	padding: 15px 20px 14px 20px;
+}
+.slider .but2 {
+	margin-left: 5px;
+	font-size: 14px;
+	padding: 15px 20px 14px 20px;
+}
+
+.feature_section4 .onecol_forty  {
+	padding-left:0px;
+	margin: 0;
+}
+.feature_section4 .onecol_sixty  {
+	padding-left:0px;
+	margin: 0;
+}
+.feature_section4 .onecol_forty img.two {
+	margin-left: 0px;
+}
+
+.feature_section5 .left {
+	margin-left: 120px;
+	width: 100%;
+}
+.feature_section5 .right {
+	width: 100%;
+	float: left;
+}
+
+.feature_section6 li {
+	width: 50%;
+	border-right: none;
+}
+
+.newsletter .one_half {
+	margin: 0;
+}
+
+.copyright_info .one_half {
+	text-align: left;
+	margin: 0;
+}
+ul.footer_social_links {
+	float: left;
+	margin: 10px 0px 0px 0px;
+}
+.footer_social_links li {
+	margin: 0px 5px 0px 0px;
+}
+
+
+.feature_section4 h1 {
+	font-size: 27px;
+	line-height: 35px;
+}
+
+
+}

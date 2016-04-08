@@ -1,0 +1,155 @@
+.tabs6 {
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+}
+.tabs6 li {
+	margin: 0;
+	text-align: center;
+}
+.tabs6 li a {
+	float: left;
+	color: #999;
+	padding: 18px 45.2px;
+	text-decoration: none;
+	line-height: 18px;
+	font-size: 15px;
+	font-weight: 500;
+	background: #fff;
+	border-right: 1px solid #e3e3e3;
+}
+.tabs6 li.active a {
+	border-top: 2px solid #272727;
+	color: #272727;
+	background: #fff;
+}
+.tabs6 li a.last {
+	border-right: none;
+}
+
+.tabs-content6 img.img_left2 {
+	width: auto;
+	margin-right: 25px;
+}
+.tabs-content6 .tabs-panel {
+	padding: 20px;
+}
+.tabs-content6 .tabs-panel5 .tab-title2 {
+	display: none;
+}
+
+.tabs-content6 .tabs-panel5.two{
+	padding: 20px 20px 14px 20px;
+}
+
+.tabs-content6.fullw {
+	float: left;
+	width: 100%;
+	padding: 3% 3% 4% 3%;
+	text-align: left;
+	margin-bottom: 0px;
+	background: #fff;
+}
+
+/*	#Themes
+//	================================================== */
+
+#example-2 .tabs6 li {
+width: 100px;
+border: 1px solid #DDD;
+border-right: 0;
+background: #EEE;
+cursor: pointer;
+position: relative;
+z-index: 999;
+}
+#example-2 .tabs6 li:last-child {
+border-right: 1px solid #DDD;
+}
+#example-2 .tabs6 li.active {
+border-bottom: 1px solid #FFF;
+background: #FFF;
+}
+#example-2 .tabs-content6 {
+border: 1px solid #DDD;
+background: #FFF;
+position: relative;
+top: -1px;
+z-index: 99;
+}
+#example-2 .tabs-content6 .tab-title {
+color: #0b8593;
+}
+
+
+@media only screen and (min-width: 1000px) and (max-width: 1169px){
+
+.tabs6 li a {
+	padding-left: 31px;
+	padding-right: 30px;
+}
+	
+}
+
+@media only screen and (min-width: 768px) and (max-width: 999px){
+
+.tabs6 li a {
+	padding-left: 15px;
+	padding-right: 14px;
+}
+
+}
+
+@media only screen and (min-width: 640px) and (max-width: 767px){
+.tabs6 li a {
+	font-size: 13px;
+	line-height: 16px;
+	padding-left: 9px;
+	padding-right: 8px;
+}
+.tabs-content6.fullw {
+	padding: 5% 3% 6% 3%;
+}
+.tabs-content6.fullw img {
+	width: 100%;
+	margin-bottom: 20px;
+}
+}
+
+
+@media only screen and (min-width: 480px) and (max-width: 639px){
+.tabs6 li a {
+	font-size: 13px;
+	line-height: 16px;
+	padding-left: 14px;
+	padding-right: 14px;
+}
+.tabs-content6.fullw {
+	padding: 5% 3% 6% 3%;
+}
+.tabs-content6.fullw img {
+	width: 100%;
+	margin-bottom: 20px;
+}
+
+
+}
+
+
+@media only screen and (max-width: 479px){
+.tabs6 li a {
+	font-size: 11px;
+	line-height: 16px;
+	padding-left: 5px;
+	padding-right: 5px;
+}
+.tabs-content6.fullw {
+	padding: 5% 3% 6% 3%;
+}
+.tabs-content6.fullw img {
+	width: 100%;
+	margin-bottom: 20px;
+}
+	
+}
+

@@ -50,6 +50,12 @@ class Registro extends CI_Controller {
 
 	function registrar() {	
 			
+		var_dump($_POST); 
+	}
+
+	function registrar_() {	
+			
+		var_dump($_POST); 
 		$emailUsuario = $this->input->get('correo');
 		$tipoUsuario = $this->input->get('radiog_dark');
 		if($tipoUsuario == 1){ $nivel=1; } elseif ($tipoUsuario == 2) {

@@ -1,0 +1,126 @@
+.tabs7 {
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+}
+.tabs7 li {
+	margin: 0;
+	text-align: left;
+}
+.tabs7 li a {
+	float: left;
+	color: #272727;
+	padding: 5px 45px;
+	text-decoration: none;
+	line-height: 40px;
+	font-size: 16px;
+	font-weight: 600;
+	background: rgba(255, 255, 255, 0.9);
+	margin-right: 2px;
+}
+.tabs7 li.active a {
+	color: #fff;
+	background: #f39c12;
+}
+.tabs-content7 img.img_left2 {
+	width: auto;
+	margin-right: 25px;
+}
+.tabs-content7 .tabs-panel {
+	padding: 20px;
+}
+.tabs-content7 .tabs-panel7 .tab-title2 {
+	display: none;
+}
+
+.tabs-content7 .tabs-panel7.two{
+	padding: 20px 20px 14px 20px;
+}
+
+.tabs-content7.fullw {
+	float: left;
+	width: 100%;
+	padding: 3.5% 4% 5% 4%;
+	text-align: left;
+	margin-bottom: 0px;
+	background: rgba(255, 255, 255, 0.9);
+	border-top: 5px solid #f39c12;
+}
+
+/*	#Themes
+//	================================================== */
+
+#example-2 .tabs7 li {
+width: 100px;
+border: 1px solid #DDD;
+border-right: 0;
+background: #EEE;
+cursor: pointer;
+position: relative;
+z-index: 999;
+}
+#example-2 .tabs7 li:last-child {
+border-right: 1px solid #DDD;
+}
+#example-2 .tabs7 li.active {
+border-bottom: 1px solid #FFF;
+background: #FFF;
+}
+#example-2 .tabs-content7 {
+border: 1px solid #DDD;
+background: #FFF;
+position: relative;
+top: -1px;
+z-index: 99;
+}
+#example-2 .tabs-content7 .tab-title {
+color: #0b8593;
+}
+
+
+@media only screen and (min-width: 1000px) and (max-width: 1169px){
+
+.tabs7 li a {
+	padding-left: 35px;
+	padding-right: 35px;
+}
+	
+}
+
+@media only screen and (min-width: 768px) and (max-width: 999px){
+
+.tabs7 li a {
+	padding-left: 25px;
+	padding-right: 25px;
+}
+
+}
+
+
+@media only screen and (min-width: 480px) and (max-width: 767px){
+.tabs7 li a {
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+.tabs-content7.fullw {
+	padding: 5% 5% 6% 5%;
+}
+
+}
+
+
+@media only screen and (max-width: 479px){
+.tabs7 li a {
+	font-size: 12px;
+	padding-left: 5px;
+	padding-right: 5px;
+}
+
+.tabs-content7.fullw {
+	padding: 7% 7% 8% 7%;
+}
+
+	
+}
+
