@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 08-04-2016 a las 03:09:47
+-- Tiempo de generación: 08-04-2016 a las 04:31:45
 -- Versión del servidor: 5.6.17
 -- Versión de PHP: 5.5.12
 
@@ -489,12 +489,12 @@ INSERT INTO `roltienepermiso` (`idRol`, `idPermiso`) VALUES
 CREATE TABLE IF NOT EXISTS `usuario` (
   `usuarioID` int(11) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(39) NOT NULL,
-  `apellido` varchar(65) NOT NULL,
+  `apellidoPaterno` varchar(65) NOT NULL,
+  `apellidoMaterno` varchar(25) NOT NULL,
   `sexo` tinyint(1) NOT NULL DEFAULT '0' COMMENT '0 - hombre',
   `telefono` varchar(30) NOT NULL,
   `correo` varchar(45) NOT NULL,
   `contrasena` varchar(100) NOT NULL,
-  `recepcionCorreo` int(1) NOT NULL DEFAULT '1' COMMENT '1 - recepci?n de correo activa\n 0 - recepci?n de correo inactiva',
   `tipoUsuario` int(1) NOT NULL DEFAULT '1' COMMENT '0 - Administrador\n1 - usuario normal\n2 - negocio\n3 - AC',
   `status` int(1) NOT NULL DEFAULT '0' COMMENT '0 - no activado\n1 - activo',
   `nivel` int(11) DEFAULT NULL COMMENT 'establecimiento de jerarqu?a en usuarios',
@@ -511,8 +511,8 @@ CREATE TABLE IF NOT EXISTS `usuario` (
 -- Volcado de datos para la tabla `usuario`
 --
 
-INSERT INTO `usuario` (`usuarioID`, `nombre`, `apellido`, `sexo`, `telefono`, `correo`, `contrasena`, `recepcionCorreo`, `tipoUsuario`, `status`, `nivel`, `codigoConfirmacion`, `fechaRegistro`, `useragent`, `last_ip_access`, `authKey`) VALUES
-(2, 'admin', 'istrador', 0, '4422334455', 'admin@gmail.com', '2e0e4da5c11c0f8a73a01a5ddd672211af58c5b1e5179d7412', 0, 3, 1, 0, 'A7995E2C507D113EF045E8BE6', '2014-07-14 21:23:15', 'NULL', 'NULL', '99A9106E8B6139C3DA93');
+INSERT INTO `usuario` (`usuarioID`, `nombre`, `apellidoPaterno`, `apellidoMaterno`, `sexo`, `telefono`, `correo`, `contrasena`, `tipoUsuario`, `status`, `nivel`, `codigoConfirmacion`, `fechaRegistro`, `useragent`, `last_ip_access`, `authKey`) VALUES
+(2, 'admin', 'istrador', '', 0, '4422334455', 'admin@gmail.com', '2e0e4da5c11c0f8a73a01a5ddd672211af58c5b1e5179d7412', 3, 1, 0, 'A7995E2C507D113EF045E8BE6', '2014-07-14 21:23:15', 'NULL', 'NULL', '99A9106E8B6139C3DA93');
 
 -- --------------------------------------------------------
 
@@ -523,14 +523,11 @@ INSERT INTO `usuario` (`usuarioID`, `nombre`, `apellido`, `sexo`, `telefono`, `c
 CREATE TABLE IF NOT EXISTS `usuariodato` (
   `idUsuarioDato` int(11) NOT NULL AUTO_INCREMENT,
   `usuarioID` int(11) NOT NULL,
-  `calle` varchar(45) DEFAULT NULL,
-  `noInterior` varchar(11) DEFAULT NULL,
-  `noExterior` varchar(11) DEFAULT NULL,
   `cp` int(7) DEFAULT NULL,
   `municipio` varchar(45) DEFAULT NULL,
   `estadoID` int(11) NOT NULL,
   `idPais` int(11) DEFAULT '147' COMMENT '147 = México',
-  `expertis` varchar(140) DEFAULT NULL,
+  `direccion` varchar(80) NOT NULL,
   PRIMARY KEY (`idUsuarioDato`) USING BTREE,
   KEY `adicional` (`usuarioID`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AVG_ROW_LENGTH=2730 AUTO_INCREMENT=1 ;
