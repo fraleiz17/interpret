@@ -225,7 +225,7 @@ $config['cache_path'] = '';
 | MUST set an encryption key.  See the user guide for info.
 |
 */
-$config['encryption_key'] = 'QUIERO-UN-PERRO';
+$config['encryption_key'] = 'LSM';
 
 /*
 |--------------------------------------------------------------------------
@@ -367,7 +367,7 @@ $config['proxy_ips'] = '';
  * TODO ELEMENTOS DE CONFIGURACION GLOBAL DE QUP
  */
 
-$config['mail_system'] = 'contacto@quierounperro.com';
+$config['mail_system'] = 'contacto@lsm.com';
 
 
 /* End of file config.php */
