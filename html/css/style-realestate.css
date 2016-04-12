@@ -1642,3 +1642,46 @@ ul.footer_social_links {
 	padding:7px 35px;
 	letter-spacing:0.5px;
 }
+
+
+
+/* features_section 81 */
+.feature_section81 {
+	float: left;
+	width: 100%;
+	text-align: center;
+	padding: 80px 0px 80px 0px;
+	background: #f3f3f3;
+}
+.feature_section81 .one_third_less {
+	background:#fff;
+	padding-bottom:39px;
+	float:left;
+	position:relative;
+	transition: all 0.3s ease;
+}
+.feature_section81 .one_third_less:hover {
+	-webkit-box-shadow: 0px 0px 4px 0px rgba(0,0,0,0.2);
+	-moz-box-shadow: 0px 0px 4px 0px rgba(0,0,0,0.2);
+	box-shadow: 0px 0px 4px 0px rgba(0,0,0,0.2);
+}
+.feature_section81 .circle i {
+	width:64px;
+	height:64px;
+	text-align:center;
+	color:#fff;
+	background:#2ecc71;
+	border-radius:100%;
+	line-height:53px;
+	font-size:25px;
+	display:block;
+	margin:-40px auto 14px auto;
+	position:relative;
+	border: 5px solid #fff;
+}
+.feature_section81 h3 {
+	margin:0;
+}
+.feature_section81 p {
+	padding:6px 0px 21px 0px;
+}
