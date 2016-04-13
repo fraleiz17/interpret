@@ -16,7 +16,7 @@ class Login extends CI_Controller {
 		$data['SYS_metaTitle'] 			= '';
 		$data['SYS_metaKeyWords'] 		= '';
 		$data['SYS_metaDescription'] 	= '';
-		$this -> load -> view('registro_view', $data);
+		$this -> load -> view('login_view', $data);
 
 	}	
 

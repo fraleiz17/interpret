@@ -1,6 +1,3 @@
-<?php
-defined('BASEPATH') OR exit('No direct script access allowed');
-?><!DOCTYPE html>
 <!doctype html>
 <!--[if IE 7 ]>    <html lang="en-gb" class="isie ie7 oldie no-js"> <![endif]-->
 <!--[if IE 8 ]>    <html lang="en-gb" class="isie ie8 oldie no-js"> <![endif]-->
@@ -73,18 +70,27 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 </head>
 
+<style>
+
+
+.copyright_info {
+  position: absolute ;
+  bottom: 0;
+    /* Set the fixed height of the footer here */
+}
+.feature_section2
+{padding:80px 0px 285px 0px;}
+</style>
 <body>
-
 <div class="site_wrapper">
-
 <header class="header">
 
-	<div class="container_full_menu">
+  <div class="container_full_menu">
 
     <!-- Logo -->
     <div class="logo"><a href="index.html" id="logo"></a></div>
 
-	<!-- Navigation Menu -->
+  <!-- Navigation Menu -->
     <div class="menu_main">
 
       <div class="navbar yamm navbar-default">
@@ -101,13 +107,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
               <ul class="nav navbar-nav">
 
-                <li class="dropdown yamm-fw"> <a href="index.html" class="dropdown-toggle active">Inicio</a>
+                <li class="dropdown yamm-fw"> <a href="index.html" class="dropdown-toggle">Inicio</a>
                 </li>
 
                 <li class="dropdown"><a href="nuestros.html" class="dropdown-toggle">Nuestros Interpretes</a>
                 </li>
 
-                <li class="dropdown"><a href="<?=base_url()?>registro" class="dropdown-toggle">Inicia sesión</a>
+                <li class="dropdown"><a href="login.html" class="dropdown-toggle active">Inicia sesión</a>
                 </li>
 
                 <li class="dropdown yamm-fw"> <a href="nosotros.html" class="dropdown-toggle">Sobre nosotros</a>
@@ -124,107 +130,65 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       </div>
     </div>
 
-	</div>
+  </div>
 
 </header><!-- end Navigation Menu -->
 
 
 <div class="clearfix"></div>
-
-<!-- slider -->
-<div class="slider">
-
-    <div class="fadein">
-        <img src="http://www.naveedkashif.com/wp-content/uploads/2015/08/Guide-To-Business-Setup-in-Dubai-Mainland-1920x770.jpg" alt="" />
-        <img src="https://img.grouponcdn.com/seocmsimages/beyS9FSjuXqcKDWuM7ee/VX-1920x770" alt="" />
-        <img src="http://insightfultax.com/wp-content/uploads/2015/03/paris.jpg" alt="" />
-    </div>
-
-    <div class="prosearch">
-    <div class="container">
-
-        <h1>¡Encuentra a tu interprete!</h1>
-		<h2>Fácil y rápido</h2>
-
-        <div class="clearfix margin_bottom4"></div>
-
-
-
-        <div class="tabs-content5 fullw">
-
-            <div id="example-5-tab-1" class="tabs-panel5">
-            <form method="get" action="index.html">
-
-                <input class="enter_email_input" name="samplees" id="thisid" value="Ciudad" onFocus="if(this.value == 'Ciudad') {this.value = '';}" onBlur="if (this.value == '') {this.value = 'Ciudad';}" type="text" />
-
-            <select>
-                <option value="">Interes</option>
-                <option value="1">Médico</option>
-                <option value="2">Tecnologías de Información</option>
-            </select>
-
-            <a href="#" class="but1"><i class="fa fa-search"></i> Buscar </a>
-
-            <div class="clearfix margin_bottom2"></div>
-
-            <a href="#" class="but3"><i class="fa fa-caret-right"></i>Busqueda Avanzada</a>
-
-            </form>
-
-
-            </div><!-- end tab 1 -->
-
-        </div>
-
-
-    </div>
-    </div>
-
-
-</div><!-- end slider -->
+<div class="slider"><br><br><br><br></div>
 <div class="feature_section2">
 <div class="container">
 
-    <h2 class="caps medium"><strong>¿Que ofrecemos?</strong></h2>
+  <div class="logregform">
+    
+        <div class="title">
+        
+      <h3>Inicia Sesión</h3>
+            
+      <p>¿Aún no eres miembro? &nbsp;<a href="<?=base_url()?>registro">Registrate.</a></p>
+            
+        </div>
+        
+        <div class="feildcont">
+        
+            <form role="form">
+            
+                <label><i class="fa fa-user"></i> Email</label>
+                <input type="text">
+                
+                <label><i class="fa fa-lock"></i> Contraseña</label>
+                <input type="password">
+                
+                
+                    <label><a href="#"><strong>Forgot Password?</strong></a></label>
+                
+                
+                <button type="button" class="fbut">Entrar</button>
 
-  <div class="one_third">
-    <div class="box"> <i class="fa fa-thumbs-o-up"></i>
-      <h4 class="caps">Comodidad</h4>
-      <p>Encuentra a tu interprete con solo unos cuantos clicks.</p>
-    </div>
-  </div>
-  <!-- end -->
+                    
+            </form>
+        
+        </div>
+        
 
-  <div class="one_third">
-    <div class="box"> <i class="fa fa-star-o"></i>
-      <h4 class="caps"><col>Confianza</col></h4>
-      <p>Selecciona al interprete en base a su rating.<br><br></p>
-    </div>
   </div>
 
-  <div class="one_third last">
-    <div class="box"> <i class="fa fa-home"></i>
-      <h4 class="caps">Facilmente</h4>
-      <p>Desde tu hogar.<br><br></p>
-    </div>
-  </div>
-
-<!--
-  <div class="one_fourth last">
-    <div class="box"> <i class="fa fa-paper-plane-o"></i>
-      <h4 class="caps">Expert Guidance</h4>
-      <p>Many as desktop packages ands webpage editor now use search many web sites</p>
-    </div>
-  </div>
-  <!-- end -->
 
 </div>
-</div>
+</div><!-- end content area -->
+
+
+
+<div class="clearfix"></div>
+
+
+
 <div class="clearfix"></div>
 
 <div class="copyright_info">
 <div class="container">
-	<div class="clearfix"></div>
+  <div class="clearfix"></div>
     <div class="one_half">
 
         Copyright © 2016 TuInterprete.com. All rights reserved.  <a href="#">Terminos de uso</a> | <a href="#">Politica de privacidad</a>
@@ -250,63 +214,32 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </div>
 </div><!-- end copyright info -->
 
-
-
-
+<a href="#" class="scrollup">Scroll</a><!-- end scroll to top of the page-->
+    
 </div>
 
-<!-- ######### JS FILES ######### -->
-<!-- get jQuery used for the theme -->
+
+<!-- ######### JS FILES ######### --> 
+<!-- get jQuery used for the theme --> 
 <script type="text/javascript" src="js/universal/jquery.js"></script>
 <script src="js/style-switcher/styleselector.js"></script>
 <script src="js/animations/js/animations.min.js" type="text/javascript"></script>
-<script src="js/mainmenu/bootstrap.min.js"></script>
-<script src="js/mainmenu/customeUI.js"></script>
+<script src="js/mainmenu/bootstrap.min.js"></script> 
+<script src="js/mainmenu/customeUI.js"></script> 
 <script type="text/javascript" src="js/mainmenu/sticky.js"></script>
 <script type="text/javascript" src="js/mainmenu/modernizr.custom.75180.js"></script>
-
 <script src="js/masterslider/jquery.easing.min.js"></script>
-<script src="js/masterslider/masterslider.min.js"></script>
-<script type="text/javascript">
-(function($) {
- "use strict";
 
-    var slider = new MasterSlider();
-
-    slider.control('arrows');
-    slider.control('thumblist' , {autohide:false ,dir:'h',arrows:false, align:'bottom', width:160, height:100, margin:2, space:2});
-
-    slider.setup('masterslider' , {
-        width:1170,
-        height:500,
-        space:5,
-        view:'slide'
-    });
-
-})(jQuery);
+<!-- search box --> 
+<script src="js/searchbox/overlay.js"></script>
+<script>
+  $(document).ready(function() {
+  $('.overlay').overlay();
+  });
 </script>
 
-<script type="text/javascript">
-(function($) {
- "use strict";
-
-$('.fadein img:gt(0)').hide();
-
-setInterval(function () {
-    $('.fadein :first-child').fadeOut()
-                             .next('img')
-                             .fadeIn()
-                             .end()
-                             .appendTo('.fadein');
-}, 3000); // 4 seconds
-
-})(jQuery);
-</script>
-
-<!-- carousel -->
-<script src="js/carouselowl/owl.carousel.js"></script>
-<script type="text/javascript" src="js/universal/custom.js"></script>
 <script src="js/tabs/assets/js/responsive-tabs.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="js/universal/custom.js"></script>
 
 </body>
 </html>

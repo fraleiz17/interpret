@@ -49,29 +49,20 @@ class Registro extends CI_Controller {
 	}
 
 	function registrar() {	
-			
-		var_dump($_POST); 
-	}
-
-	function registrar_() {	
-			
-		var_dump($_POST); 
-		$emailUsuario = $this->input->get('correo');
-		$tipoUsuario = $this->input->get('radiog_dark');
-		if($tipoUsuario == 1){ $nivel=1; } elseif ($tipoUsuario == 2) {
-			$nivel=2; } else {$nivel = 3;}
+		$emailUsuario = $this->input->post('correo');
+		$tipoUsuario = $this->input->post('tipoUsuario');
+		if($tipoUsuario == 1){ $nivel= 1; } elseif ($tipoUsuario == 2) {
+			$nivel=2; } else { $nivel = 1;}
 
 		$confirmationCode = $this->usuario_model->getNewConfirmationCode($emailUsuario);
-		$recepcionCorreo = $this->input->get('recibirCorreo');
-		if($recepcionCorreo != 1){$recepcionCorreo = 0;}
+		
 		$dataRegister = array(
-  				'nombre' => $this->input->get('nombre'),
-  				'apellido' => $this->input->get('apellido'),
-  				'telefono' => $this->input->get('telefono'),
-  				'correo' => $this->input->get('correo'),
-  				'contrasena' => $this->input->get('contrasena'),
-  				'recepcionCorreo' => $this->input->get('recibirCorreo'), //1 - recepción de correo activa\n 0 - recepción de correo inactiva',
-  				'tipoUsuario' => $this->input->get('radiog_dark'), // '0 - Administrador\n1 - usuario normal\n2 - negocio\n3 - AC',
+  				'nombre' => $this->input->post('nombre'),
+  				'apellidoPaterno' => $this->input->post('apellido'),
+  				'apellidoMaterno' => $this->input->post('apellidoMaterno'),
+  				'correo' => $this->input->post('correo'),
+  				'contrasena' => $this->input->post('contrasena'),
+  				'tipoUsuario' => $this->input->post('tipoUsuario'), // '0 - Administrador\n1 - usuario normal\n2 - interprete',
   				'status'  => 0, //'0 - no activado\n1 - activo',
   				'nivel' => $nivel,
 				'fechaRegistro' => date('Y-m-d H:i:s', time()),
@@ -81,68 +72,63 @@ class Registro extends CI_Controller {
 		$idUsuario = $this->usuario_model->registrarUsuario($dataRegister);
 
 		$mensajePlano = 'Hola '.$this->input->get('nombre').'<br><br>
-					Gracias por registrarte en QUP.<br><br>
+					Gracias por registrarte en Interpretes.<br><br>
 					Activa tu cuenta con el siguiente link:<br><br><br><br>			
-					<a href="'.base_url().'registro/activar/'.$confirmationCode.'">Activar cuenta QUP</a>';
+					<a href="'.base_url().'registro/activar/'.$confirmationCode.'">Activar cuenta Interpretes</a>';
 
 
-		$mensaje = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Notificacion-QuieroUnPerro.com</title>
+		
 
-</head>
+		if($this->email_model->send_email('', $emailUsuario, 'Gracias por registrarte en Interpretes', $mensajePlano)){
+			$data['response'] = true;
+			$data['message'] = "Su registro se ha guardado con éxito, favor de revisar su correo para activar su usuario";
+		}
+		else{
+			$data['response'] = false;
+			$data['message'] = "Ocurrió un error intentelo nuevamente";
+		}
 
-<body>
-<table width="647" align="center">
-<tr>
-<td width="231" height="129" colspan="2" valign="top">
-<img src="http://quierounperro.com/psk/images/logo_mail.jpg"/>
-</td>
-</tr>
-<tr>
-<td align="center"><h4 style=" font-family:Verdana, Geneva, sans-serif; font-size:14px; padding-left:15px;">¡Bienvenido a QuieroUnPerro.com!</h4></td>
-</tr> 
-<tr>
-<td style="padding-left:15px;"> 
-<font style=" font-family:Verdana, Geneva, sans-serif; margin-top:100px; font-size:13px; font-weight:bold; color:#6A2C91; " >Hola '.$this->input->get('nombre').': </font>
-<br/>
-<br/>
+		$data['url'] = base_url();
+		$data['registro'] = true;
+		$data['cambioContrasena'] = false;
+		echo json_encode($data);
+	}
 
-<font style="font-family:Verdana, Geneva, sans-serif; font-size:13px;">
-Gracias por registrate en QuieroUnPerro.com<br/>
-Tu usuario ha sido creado correctamente. Te recordamos tus datos de inicio de sesi&oacute;n:<br/><br/>
-Correo: '.$this->input->get('correo').' <br/>
-Contrase&ntilde;a: * Por seguridad no se muestra. En caso de olvidarla sol&iacute;citala en el portal.<br/><br/>
-Para poder comenzar a disfrutar de todas las herramientas del portal, valida tu cuenta haciendo clic <a href="'.base_url().'registro/activar/'.$confirmationCode.'">aqu&iacute;</a> o copia esta direcci&oacute;n en el explorador:<br/><br/>
+	function registrar_() {	
+			
+		
+		$emailUsuario = $this->input->post('correo');
+		$tipoUsuario = $this->input->post('tipoUsuario');
+		if($tipoUsuario == 1){ $nivel= 1; } elseif ($tipoUsuario == 2) {
+			$nivel=2; } else { $nivel = 1;}
 
-'.base_url().'registro/activar/'.$confirmationCode.'
-<br/><br/>
+		$confirmationCode = $this->usuario_model->getNewConfirmationCode($emailUsuario);
+		
+		$dataRegister = array(
+  				'nombre' => $this->input->post('nombre'),
+  				'apellido' => $this->input->post('apellido'),
+  				'apellidoMaterno' => $this->input->post('apellido'),
+  				'telefono' => $this->input->post('telefono'),
+  				'correo' => $this->input->post('correo'),
+  				'contrasena' => $this->input->post('contrasena'),
+  				'tipoUsuario' => $this->input->post('tipoUsuario'), // '0 - Administrador\n1 - usuario normal\n2 - interprete',
+  				'status'  => 0, //'0 - no activado\n1 - activo',
+  				'nivel' => $nivel,
+				'fechaRegistro' => date('Y-m-d H:i:s', time()),
+				'codigoConfirmacion' => $confirmationCode);
 
-</font>
-<p> </p>
-</td>
-</tr>
+		
+		$idUsuario = $this->usuario_model->registrarUsuario($dataRegister);
 
-<tr>
-<td colspan="7" >
-<font style=" font-family:Verdana, Geneva, sans-serif; font-size:14px; padding-left:15px;"> ¡Muchas Gracias! </font>
-<br/>
-<font style=" font-family:Verdana, Geneva, sans-serif; font-size:12px; padding-left:15px;"> El Equipo de QuieroUnPerro.com </font>
-<br/>
-<font style=" font-family:Verdana, Geneva, sans-serif; font-size:10px; padding-left:15px;"> Todos los derechos reservados '.date('Y').' </font>
-</td>
-</tr>
-</table>
+		$mensajePlano = 'Hola '.$this->input->get('nombre').'<br><br>
+					Gracias por registrarte en Interpretes.<br><br>
+					Activa tu cuenta con el siguiente link:<br><br><br><br>			
+					<a href="'.base_url().'registro/activar/'.$confirmationCode.'">Activar cuenta Interpretes</a>';
 
 
+		
 
-</body>
-</html>
-';
-
-		if($this->email_model->send_email('', $emailUsuario, 'Gracias por registrarte en QUP', $mensaje)){
+		if($this->email_model->send_email('', $emailUsuario, 'Gracias por registrarte en Interpretes', $mensajePlano)){
 			$data['response'] = true;
 			$data['message'] = "Su registro se ha guardado con éxito, favor de revisar su correo para activar su usuario";
 		}
@@ -440,10 +426,7 @@ Para poder comenzar a disfrutar de todas las herramientas del portal, valida tu 
 	}
 
 	function meh(){
-		$e = $this->usuario_model->myID(27);
-		$e->idUsuario;
-		$f = $this->usuario_model->myInfo(27);
-		$ddd = $this->usuario_model->miUbicacion(34);
+		var_dump($this->email_model->send_email('', 'prueba@talentoindustrial.com', 'Gracias por registrarte en Interpretes', 'Mensaje'));
 
 	}
 

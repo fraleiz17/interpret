@@ -173,23 +173,31 @@
                 
                 <div class="one_half">
                     <label>Contraseña <em>*</em></label>
-                    <input type="password" name="contrasena" minlength="4" maxlength="8">
+                    <input type="password" name="contrasena" id="contrasena" minlength="4" maxlength="8" class="contrasena_">
                 </div>
                 
                 <div class="one_half last">
                     <label>Confirma Contraseña <em>*</em></label>
-                    <input type="password" name="contrasenaConfirm" minlength="4" maxlength="8">
+                    <input type="password" name="contrasenaConfirm" id="contrasenaConfirm" minlength="4" maxlength="8" class="contrasena_">
                 </div>
-                
-                <div class="one_third radiobut">
+                <label id="error_c" style="display: none; color: red;">Las contraseñas no coinciden</label>
+                 <div class="one_half radiobut">
                     <label>Sexo</label>
                     <input class="one" type="radio" name="sexo" value="1" checked>
                     <span class="onelb">M</span>
                     <input class="two" type="radio" name="sexo" value="0">
                     <span class="onelb">F</span>
                 </div>
+
+                <div class="one_half radiobut">
+                    <label>Soy</label>
+                    <input class="one" type="radio" name="tipoUsuario" value="1" checked>
+                    <span class="onelb">Usuario</span>
+                    <input class="two" type="radio" name="tipoUsuario" value="2">
+                    <span class="onelb">Int&eacute;prete</span>
+                </div>
                 
-                <div class="two_third last">
+                <!-- <div class="two_third last">
                 	<label>Fecha de nacimiento</label>
                     
                 	<div class="one_third">
@@ -308,8 +316,8 @@
                     <label>
                         <input type="checkbox">
                     </label>
-                    <label>I agree the User Agreement and<a href="#">Terms &amp; Condition.</a></label>
-                </div>
+                    <label>Estoy de acuerdo con los <a href="#">Terminos y condiciones.</a></label>
+                </div> -->
                 
                 <button type="submit" class="fbut">Create Account</button>
 
@@ -380,16 +388,22 @@
 <script type="text/javascript" src="js/universal/custom.js"></script>
 
 <script type="text/javascript">
-function checkForm(form)
-  {
-	 if(form.contrasena.value != "" && form.contrasena.value == form.contrasenaConfirm.value) {
-      return true;
-    } else {
-      alert("Error: Las contraseñas no coinciden!");
-      form.contrasena.focus();
-      return false;
+$(".contrasena_").blur(
+    function(){
+        console.log('miau');
+        var contrasena = $("#contrasena").val();
+        var contrasena2 = $("#contrasenaConfirm").val();      
+
+        if(contrasena != "" && contrasena == contrasena2) {
+          $("#error_c").fadeOut();
+          return true;
+        } else {
+          $("#error_c").fadeIn();
+          return false;
+        }                          
     }
-  }
+);        
+ 
 </script>
 
 </body>

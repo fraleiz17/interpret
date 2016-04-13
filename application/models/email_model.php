@@ -12,11 +12,11 @@ class Email_model extends CI_Model{
 	function send_email($from = null, $to, $asunto, $mensaje,$file = null){
 		// sleep(1);
 		$config = array(
-			// 'protocol'  => 'smtp',
-			// 'smtp_host' => '127.0.0.1',
-			// 'smtp_port' => 25,
-			// 'smtp_user' => 'postmaster@127.0.0.1',
-			// 'smtp_pass' => '123456',
+			 'protocol' => 'smtp',
+  			 'smtp_host' => 'ssl://gator1732.hostgator.com',
+  			'smtp_port' => 465,
+  			'smtp_user' => 'prueba@talentoindustrial.com', // change it to yours
+  			'smtp_pass' => 'Prueba21!', // change it to yours
 			'mailtype'  => 'html',
 			'crlf'		=> "\r\n",
 			'newline'    => "\r\n" 
@@ -26,7 +26,7 @@ class Email_model extends CI_Model{
 			$this->email->from($from);
 		}
 		else{
-			$this->email->from("noresponder@quierounperro.com.mx", "Quiero un perro");
+			$this->email->from("prueba@talentoindustrial.com", "interpretes");
 		}
 
 		
