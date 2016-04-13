@@ -9,18 +9,18 @@ class Cuenta extends CI_Controller {
 
         public function __construct(){
         parent::__construct();
-        if(!is_logged()&&$this->session->userdata('tipoUsuario')!=1){
+        if(!is_logged()&&$this->session->userdata('tipoUsuario')!=2){
             $query = $_SERVER['QUERY_STRING'] ? '?'.$_SERVER['QUERY_STRING'] : '';
             $redir = str_replace('/', '-', uri_string().$query);
             redirect('principal');
         } // checamos si existe una sesión activa           
        
         $this->load->model('defaultdata_model');
-		$this->load->model('usuario_model');
+        $this->load->model('usuario_model');
         $this->load->model('email_model');
         $this->load->helper(array('form', 'url'));
 
-        if (!is_authorized(array(1), 1, $this->session->userdata('nivel'), $this->session->userdata('rol'))) {
+        if (!is_authorized(array(2), 2, $this->session->userdata('nivel'), $this->session->userdata('rol'))) {
                 $this->session->set_flashdata('error', 'userNotAutorized');
                 redirect('principal');
         }
@@ -37,7 +37,7 @@ class Cuenta extends CI_Controller {
         $data['SYS_metaDescription']    = '';  
         
 
-        $this->load->view('usuario/index_view', $data);
+        $this->load->view('interprete/index_view', $data);
     }
 
 

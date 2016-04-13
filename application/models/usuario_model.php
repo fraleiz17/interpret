@@ -24,7 +24,7 @@ class Usuario_model extends CI_Model
 
     function insertNewConfirmationCode($identificador, $code)
     {
-        $this->db->where('idUsuario', $identificador);
+        $this->db->where('usuarioID', $identificador);
         $this->db->or_where('correo', $identificador);
         $this->db->update($this->tablas['usuario'], array('codigoConfirmacion' => $code));
         return true;
@@ -48,11 +48,13 @@ class Usuario_model extends CI_Model
 
     function is_there_activation_code($activationCode)
     {
-        $this->db->where('codigoConfirmacion', $activationCode);
+        $this->db->select('*');
+        $this->db->where('codigoConfirmacion',$activationCode);
         $query = $this->db->get($this->tablas['usuario']);
-        if ($query->num_rows == 1)
-            return $query;
+        if ($query->num_rows() == 1)
+            return $query->row();
         return null;
+        
     }
 
     function activar($activationCode)
@@ -61,13 +63,13 @@ class Usuario_model extends CI_Model
         //si el usuario ya esta activo y se intenta activar nuevamente, cambia el confirmation code nuevamente
         $activacion = $this->is_there_activation_code($activationCode);
         if ($activacion != null) {
-            $row = $activacion->row();
+            $row = $activacion;
             if ($row->status == '1') {
                 return 0;
             } else {
-                $this->db->where('idUsuario', $row->idUsuario);
+                $this->db->where('usuarioID', $row->usuarioID);
                 $this->db->update($this->tablas['usuario'], array('status' => 1,
-                    'codigoConfirmacion' => $this->getNewConfirmationCode($row->correo)));;
+                    'codigoConfirmacion' => $this->getNewConfirmationCode($row->correo)));
                 $this->load->model('auth_model');
                 $this->auth_model->iniciarsesion($row, null);
                 return 1;
@@ -85,7 +87,7 @@ class Usuario_model extends CI_Model
         if ($activacion != null) {
             $row = $activacion->row();
 
-            $this->db->where('idUsuario', $row->idUsuario);
+            $this->db->where('usuarioID', $row->usuarioID);
             $this->db->update($this->tablas['usuario'], array('status' => 1, 'codigoConfirmacion' => $this->getNewConfirmationCode($row->correo)));;
             $this->load->model('auth_model');
             $this->auth_model->iniciarsesion($row, null);
@@ -99,10 +101,10 @@ class Usuario_model extends CI_Model
      * Información de la cuenta
      * */
 
-    function getMyInfo($idUsuario)
+    function getMyInfo($usuarioID)
     {
         $this->db->select('*');
-        $this->db->where('idUsuario', $idUsuario);
+        $this->db->where('usuarioID', $usuarioID);
         $query = $this->db->get($this->tablas['usuario']);
         if ($query->num_rows() == 1)
             return $query->row();
@@ -111,7 +113,7 @@ class Usuario_model extends CI_Model
 
     function getMyConfirmationCode($usuario)
     {
-        $this->db->select('idUsuario, correo, nombre, codigoConfirmacion');
+        $this->db->select('usuarioID, correo, nombre, codigoConfirmacion');
         $this->db->where('correo', $usuario);
         $query = $this->db->get($this->tablas['usuario']);
         if ($query->num_rows() == 1)
@@ -123,27 +125,27 @@ class Usuario_model extends CI_Model
      * Modificar información de la cuenta
      * */
 
-    function passRecover($password, $idUsuario)
+    function passRecover($password, $usuarioID)
     {
         $password = $this->auth_model->hashPassword($password, null);
-        $this->db->where('idUsuario', $idUsuario);
+        $this->db->where('usuarioID', $usuarioID);
         $this->db->update($this->tablas['usuario'], array('contrasena' => $password));
         return true;
     }
 
-    function cambiarContrasena($contrasenaActual, $contrasenaUsuario, $idUsuario, $admin)
+    function cambiarContrasena($contrasenaActual, $contrasenaUsuario, $usuarioID, $admin)
     {
         /* CHECAMOS EL NIVEL DE USUARIO / ROL */
         if ($admin) {
             $this->load->model('auth_model');
             $this->db->select('contrasena');
-            $this->db->where('idUsuario', $idUsuario);
+            $this->db->where('usuarioID', $usuarioID);
             $query = $this->db->get($this->tablas['usuario']);
             if ($query->num_rows() == 1) {
                 $row = $query->row();
                 if ($this->auth_model->hashPassword($contrasenaActual, substr($row->contrasena, 0, 10)) == $row->contrasena) {
                     $arrNewPass = array('contrasena' => $this->auth_model->hashPassword($contrasenaUsuario));
-                    $this->db->where('idUsuario', $idUsuario);
+                    $this->db->where('usuarioID', $usuarioID);
                     $this->db->update($this->tablas['usuario'], $arrNewPass);
                     return true;
                     // die('cambio');
@@ -159,12 +161,12 @@ class Usuario_model extends CI_Model
             /* SI NO ES ADMINISTRADOR ENTONCES... */
             $this->load->model('auth_model');
             $this->db->select('contrasena');
-            $this->db->where('idUsuario', $idUsuario);
+            $this->db->where('usuarioID', $usuarioID);
             $query = $this->db->get($this->tablas['usuario']);
             if ($query->num_rows() == 1) {
                 $row = $query->row();
                 $arrNewPass = array('contrasena' => $this->auth_model->hashPassword($contrasenaUsuario));
-                $this->db->where('idUsuario', $idUsuario);
+                $this->db->where('usuarioID', $usuarioID);
                 $this->db->update($this->tablas['usuario'], $arrNewPass);
                 return true;
                 // die('cambio');
@@ -175,16 +177,16 @@ class Usuario_model extends CI_Model
         }
     }
 
-    function updateData($idUsuario, $arrUpdate)
+    function updateData($usuarioID, $arrUpdate)
     {
-        $this->db->where('idUsuario', $idUsuario);
+        $this->db->where('usuarioID', $usuarioID);
         return $this->db->update($this->tablas['usuario'], $arrUpdate);
     }
 
-    function cambiar_email($idUsuario, $emailUsuario)
+    function cambiar_email($usuarioID, $emailUsuario)
     {
         if (!$this->is_there_emailUsuario($emailUsuario['correo'])) {
-            $this->db->where('idUsuario', $idUsuario);
+            $this->db->where('usuarioID', $usuarioID);
             $this->db->update($this->tablas['usuario'], $emailUsuario);
             return true;
         } else {
@@ -192,28 +194,28 @@ class Usuario_model extends CI_Model
         }
     }
 
-    function pendingActivation($idUsuario)
+    function pendingActivation($usuarioID)
     {
-        $this->db->where('idUsuario = ' . $idUsuario . ' and tmp_email != ""');
+        $this->db->where('usuarioID = ' . $usuarioID . ' and tmp_email != ""');
         $query = $this->db->get($this->tablas['usuario']);
         if ($query->num_rows() != 0)
             return true;
         return false;
     }
 
-    function get_tmp_email($idUsuario)
+    function get_tmp_email($usuarioID)
     {
         /* OBTENEMOS EL EMAIL QUE SE ENCUENTRA EN TEMPORAL */
-        $query = $this->db->get_where($this->tablas['usuario'], array('idUsuario' => $idUsuario));
+        $query = $this->db->get_where($this->tablas['usuario'], array('usuarioID' => $usuarioID));
         if ($query->num_rows() > 0)
             return $query->row();
         return false;
     }
 
-    function cancel_tmp_email($idUsuario, $arrUpdate)
+    function cancel_tmp_email($usuarioID, $arrUpdate)
     {
         /* CANCELACION DE CAMBIO DE CORREO */
-        $this->db->where('idUsuario', $idUsuario);
+        $this->db->where('usuarioID', $usuarioID);
         $this->db->update($this->tablas['usuario'], $arrUpdate);
         return true;
     }
@@ -229,10 +231,10 @@ class Usuario_model extends CI_Model
         return true;
     }
 
-    function do_tmp_email($idUsuario, $arrUpdate)
+    function do_tmp_email($usuarioID, $arrUpdate)
     {
         /* GUARDAMOS EL NUEVO CORREO ELECTRONICO DE LA CUENTA COMO TEMPORAL HASTA QUE LO ACTIVE */
-        $this->db->where('idUsuario', $idUsuario);
+        $this->db->where('usuarioID', $usuarioID);
         $this->db->update($this->tablas['usuario'], $arrUpdate);
         return true;
     }
@@ -250,14 +252,14 @@ class Usuario_model extends CI_Model
         }
     }
 
-    function deleteUser($idUsuario)
+    function deleteUser($usuarioID)
     {
-        $this->db->where('idUsuario', $idUsuario);
+        $this->db->where('usuarioID', $usuarioID);
         $this->db->delete($this->tablas['usuario']);
         return true;
     }
 
-    function banearUser($idUsuario, $currentStatus)
+    function banearUser($usuarioID, $currentStatus)
     {
         /*
          * EXISTEN 3 'STATUS' DE USUARUIO:
@@ -266,7 +268,7 @@ class Usuario_model extends CI_Model
          * '2' -> USUARIO BANEADO       
          */
         $status = '';
-        $this->db->where('idUsuario', $idUsuario);
+        $this->db->where('usuarioID', $usuarioID);
         if ($currentStatus == 1) {
             $this->db->update($this->tablas['usuario'], array('status' => 2));
             $status = 'bannedOK';
@@ -277,12 +279,12 @@ class Usuario_model extends CI_Model
         return $status;
     }
 
-    function myID($idUsuario)
+    function myID($usuarioID)
     {
 
         $this->db->select($this->tablas['usuario'] . '.*,' . $this->tablas['usuariodato'] . '.*');
-        $this->db->join($this->tablas['usuariodato'], $this->tablas['usuariodato'] . '.idUsuario = ' . $this->tablas['usuario'] . '.idUsuario', 'left');
-        $this->db->where($this->tablas['usuario'] . '.idUsuario', $idUsuario);
+        $this->db->join($this->tablas['usuariodato'], $this->tablas['usuariodato'] . '.usuarioID = ' . $this->tablas['usuario'] . '.usuarioID', 'left');
+        $this->db->where($this->tablas['usuario'] . '.usuarioID', $usuarioID);
         $query = $this->db->get($this->tablas['usuario']);
         if ($query->num_rows() == 1) {
             return $query->row();
@@ -291,11 +293,11 @@ class Usuario_model extends CI_Model
         }
     }
 
-    function myInfo( $idUsuario = null)
+    function myInfo( $usuarioID = null)
     {
 
         
-        $query = $this->db->query('SELECT `usuariodato`.*, `usuariodetalle`.*, `usuario`.* from usuario LEFT JOIN `usuariodato` ON `usuariodato`.`idUsuario` = `usuario`.`idUsuario` LEFT JOIN `usuariodetalle` ON `usuariodetalle`.`idUsuario` = `usuario`.`idUsuario` WHERE `usuario`.`idUsuario` = '.$idUsuario.' limit 1');
+        $query = $this->db->query('SELECT `usuariodato`.*, `usuariodetalle`.*, `usuario`.* from usuario LEFT JOIN `usuariodato` ON `usuariodato`.`usuarioID` = `usuario`.`usuarioID` LEFT JOIN `usuariodetalle` ON `usuariodetalle`.`usuarioID` = `usuario`.`usuarioID` WHERE `usuario`.`usuarioID` = '.$usuarioID.' limit 1');
         if ($query->num_rows() == 1) {
             return $query->row();
         } else {
@@ -303,13 +305,13 @@ class Usuario_model extends CI_Model
         }
     }
 
-    function myInfoR($idUsuario)
+    function myInfoR($usuarioID)
     {
 
-        $this->db->select($this->tablas['usuario'] . '.*,' . $this->tablas['usuariodato'] . '.idUsuarioDato,' . $this->tablas['usuariodetalle'] . '.idUsuarioDetalle');
-        $this->db->join($this->tablas['usuariodato'], $this->tablas['usuariodato'] . '.idUsuario = ' . $this->tablas['usuario'] . '.idUsuario', 'left');
-        $this->db->join($this->tablas['usuariodetalle'], $this->tablas['usuariodetalle'] . '.idUsuario = ' . $this->tablas['usuario'] . '.idUsuario', 'left');
-        $this->db->where($this->tablas['usuario'] . '.idUsuario', $idUsuario);
+        $this->db->select($this->tablas['usuario'] . '.*,' . $this->tablas['usuariodato'] . '.usuarioIDDato,' . $this->tablas['usuariodetalle'] . '.usuarioIDDetalle');
+        $this->db->join($this->tablas['usuariodato'], $this->tablas['usuariodato'] . '.usuarioID = ' . $this->tablas['usuario'] . '.usuarioID', 'left');
+        $this->db->join($this->tablas['usuariodetalle'], $this->tablas['usuariodetalle'] . '.usuarioID = ' . $this->tablas['usuario'] . '.usuarioID', 'left');
+        $this->db->where($this->tablas['usuario'] . '.usuarioID', $usuarioID);
         $this->db->limit(1);
         $query = $this->db->get($this->tablas['usuario']);
         if ($query->num_rows() == 1) {
@@ -330,12 +332,12 @@ class Usuario_model extends CI_Model
         }
     }
 
-    function miUbicacion($idUsuarioDato)
+    function miUbicacion($usuarioIDDato)
     {
         $this->db->select($this->tablas['ubicacionusuario'] . '.*,' . $this->tablas['zonageograficaestado'] . '.zonageograficaID,' . $this->tablas['zonageograficaestado'] . '.nombre,' . $this->tablas['estado'] . '.nombreEstado');
         $this->db->join($this->tablas['zonageograficaestado'], $this->tablas['zonageograficaestado'] . '.estadoID = ' . $this->tablas['ubicacionusuario'] . '.estadoID');
         $this->db->join($this->tablas['estado'], $this->tablas['estado'] . '.estadoID = ' . $this->tablas['ubicacionusuario'] . '.estadoID');
-        $this->db->where('idUsuarioDato', $idUsuarioDato);
+        $this->db->where('usuarioIDDato', $usuarioIDDato);
         $query = $this->db->get($this->tablas['ubicacionusuario']);
         if ($query->num_rows() == 1) {
             return $query->row();
@@ -346,12 +348,12 @@ class Usuario_model extends CI_Model
 
     /* Obtiene los cupones que tiene el usuario filtrando el tipo de cupon o el cupon adquirido */
 
-    function getCuponesUsuario($idUsuario, $tipo_cupon = null, $id_cupon_adquirido = NULL)
+    function getCuponesUsuario($usuarioID, $tipo_cupon = null, $id_cupon_adquirido = NULL)
     {
         $this->db->from('serviciocontratado sc');
         $this->db->join('cuponadquirido ca', 'sc.servicioID=ca.servicioID AND sc.paqueteID=ca.paqueteID AND sc.detalleID=ca.detalleID');
         $this->db->join('cupondetalle cd', 'ca.cuponID=cd.cuponID AND ca.cuponDetalleID=cd.cuponDetalleID');
-        $this->db->where('sc.idUsuario', $idUsuario);
+        $this->db->where('sc.usuarioID', $usuarioID);
         $this->db->where('ca.vigente', 1);
         $this->db->where('ca.usado', 0);
 
@@ -367,19 +369,19 @@ class Usuario_model extends CI_Model
         return $this->db->get()->result();
     }
 
-    function getDireccionesEnvioUsuario($idUsuario)
+    function getDireccionesEnvioUsuario($usuarioID)
     {
         $this->db->from('usuariodetalle ud');
-        $this->db->join('usuario u', 'ud.idUsuario=u.idUsuario');
-        $this->db->where('u.idUsuario', $idUsuario);
+        $this->db->join('usuario u', 'ud.usuarioID=u.usuarioID');
+        $this->db->where('u.usuarioID', $usuarioID);
         return $this->db->get()->result();
     }
 
-    function getDireccionEnvio($idUsuario){
+    function getDireccionEnvio($usuarioID){
         $this->db->from('direccionenvio ud');
-        $this->db->join('usuario u', 'ud.idUsuario=u.idUsuario');
+        $this->db->join('usuario u', 'ud.usuarioID=u.usuarioID');
         $this->db->join('estado e', 'ud.estadoID=e.estadoID');
-        $this->db->where('u.idUsuario', $idUsuario);
+        $this->db->where('u.usuarioID', $usuarioID);
         $query = $this->db->get();
          if ($query->num_rows() == 1) {
             return $query->row();
@@ -400,10 +402,10 @@ class Usuario_model extends CI_Model
         return $compraID; 
     }
 
-    function deleteCarrito($idUsuario)
+    function deleteCarrito($usuarioID)
     {
-        $this->db->delete('carrito', array('usuarioID' => $idUsuario));
-        $this->db->delete('carritototal', array('usuarioID' => $idUsuario));
+        $this->db->delete('carrito', array('usuarioID' => $usuarioID));
+        $this->db->delete('carritototal', array('usuarioID' => $usuarioID));
     }
 
     /**
@@ -417,12 +419,12 @@ class Usuario_model extends CI_Model
 
     //PERFIL DEL USUARIO
 
-    function getInfoCompleta($idUsuario)
+    function getInfoCompleta($usuarioID)
     {
        
         $query = $this->db->query('SELECT * from  usuariodato 
-left JOIN `usuariodetalle` ON `usuariodetalle`.`idUsuario` = `usuariodato`.`idUsuario` 
-WHERE `usuariodato`.`idUsuario` = '.$idUsuario.'
+left JOIN `usuariodetalle` ON `usuariodetalle`.`usuarioID` = `usuariodato`.`usuarioID` 
+WHERE `usuariodato`.`usuarioID` = '.$usuarioID.'
 limit 1');
         if ($query->num_rows() == 1) {
             return $query->row();
@@ -431,9 +433,9 @@ limit 1');
         }
     }
 
-    function getGiro($idUsuarioDetalle)
+    function getGiro($usuarioIDDetalle)
     {
-        $this->db->where($this->tablas['giroempresa'] . '.idUsuarioDetalle', $idUsuarioDetalle);
+        $this->db->where($this->tablas['giroempresa'] . '.usuarioIDDetalle', $usuarioIDDetalle);
         $query = $this->db->get($this->tablas['giroempresa']);
         if ($query->num_rows() >= 1) {
             return $query->result();
@@ -442,12 +444,12 @@ limit 1');
         }
     }
 
-    function getGirosUsuario($idUsuario)
+    function getGirosUsuario($usuarioID)
     {
         $this->db->from('giroempresa ge');
         $this->db->join('giro g', 'ge.giroID=g.giroID');
 
-        $this->db->where('ge.idUsuarioDetalle', $idUsuario);
+        $this->db->where('ge.usuarioIDDetalle', $usuarioID);
         return $this->db->get()->result();
     }
 
@@ -467,11 +469,11 @@ limit 1');
          * Posible recomentacion para pasarlo a una vista
          $this->db->select('p.*, (select nombreGiro from `giroempresa`
 LEFT JOIN `giro` g ON `giroempresa`.`giroID`=`g`.`giroID` 
-LEFT JOIN `usuariodetalle` ON `usuariodetalle`.`idUsuarioDetalle`=`giroempresa`.`idUsuarioDetalle`
+LEFT JOIN `usuariodetalle` ON `usuariodetalle`.`usuarioIDDetalle`=`giroempresa`.`usuarioIDDetalle`
 limit 1) as nombreGiro, (select giroempresa.giroID as giroID
 from `giroempresa`
 LEFT JOIN `giro` g ON `giroempresa`.`giroID`=`g`.`giroID` 
-LEFT JOIN `usuariodetalle` ON `usuariodetalle`.`idUsuarioDetalle`=`giroempresa`.`idUsuarioDetalle`
+LEFT JOIN `usuariodetalle` ON `usuariodetalle`.`usuarioIDDetalle`=`giroempresa`.`usuarioIDDetalle`
 limit 1) as giroID');
          */
 
@@ -484,12 +486,12 @@ limit 1) as giroID');
         $this->db->join("raza r", "p.razaID=r.razaID", 'left');
         $this->db->join("paquete pa", "dp.paqueteID=pa.paqueteID");
         $this->db->join("seccion se", "p.seccion=se.seccionID");
-        $this->db->join("usuario u", "sc.idUsuario=u.idUsuario");
+        $this->db->join("usuario u", "sc.usuarioID=u.usuarioID");
 
-        $this->db->join('usuariodetalle ud', 'u.idUsuario=ud.idUsuario', 'left');
-        $this->db->join('usuariodato uda', 'u.idUsuario=uda.idUsuario');
-        $this->db->join('ubicacionusuario uu', 'uda.idUsuarioDato=uu.idUsuarioDato', 'left');
-        $this->db->join('giroempresa ge', 'ud.idUsuarioDetalle=ge.idUsuarioDetalle', 'left');
+        $this->db->join('usuariodetalle ud', 'u.usuarioID=ud.usuarioID', 'left');
+        $this->db->join('usuariodato uda', 'u.usuarioID=uda.usuarioID');
+        $this->db->join('ubicacionusuario uu', 'uda.usuarioIDDato=uu.usuarioIDDato', 'left');
+        $this->db->join('giroempresa ge', 'ud.usuarioIDDetalle=ge.usuarioIDDetalle', 'left');
         $this->db->join('giro g', 'ge.giroID=g.giroID', 'left');
 
         $this->db->join("estado es", "p.estadoID=es.estadoID");
@@ -527,7 +529,7 @@ limit 1) as giroID');
             $clause = "(ud.nombreNegocio like '%" . $palabraclave . "%'";
             $clause .= "OR g.nombreGiro like '%" . $palabraclave . "%'";
             $clause .= "OR u.telefono like '%" . $palabraclave . "%'";
-            $clause .= "OR ud.idUsuario like '%" . $palabraclave . "%'";
+            $clause .= "OR ud.usuarioID like '%" . $palabraclave . "%'";
             $clause .= "OR ud.calle like '%" . $palabraclave . "%'";
             $clause .= "OR ud.colonia like '%" . $palabraclave . "%'";
             $clause .= "OR ud.cp like '%" . $palabraclave . "%'";
@@ -544,7 +546,7 @@ limit 1) as giroID');
         }
 
         if (!is_null($id)) {
-            $this->db->where('u.idUsuario', $id);
+            $this->db->where('u.usuarioID', $id);
 
             return $this->db->get()->row();
         }
@@ -599,7 +601,7 @@ limit 1');
 
     function getFav($publicacionID){
         $this->db->where('publicacionID',$publicacionID);
-        $this->db->where('idUsuario',$this->session->userdata('idUsuario'));
+        $this->db->where('usuarioID',$this->session->userdata('usuarioID'));
         $query = $this->db->get('favoritos');
         if ($query->num_rows() >= 1) {
             return true;
@@ -609,10 +611,10 @@ limit 1');
 
     }
 
-    function updateDireccion($data, $idUsuario){
-        $query = $this -> db -> get_where('direccionenvio', array('idUsuario' => $idUsuario));
+    function updateDireccion($data, $usuarioID){
+        $query = $this -> db -> get_where('direccionenvio', array('usuarioID' => $usuarioID));
         if ($query -> num_rows() == 1) {
-            $this -> db -> where('idUsuario', $idUsuario);
+            $this -> db -> where('usuarioID', $usuarioID);
             $this -> db -> update('direccionenvio', $data);
             return true;
         } else {
@@ -621,12 +623,12 @@ limit 1');
         }
     }
 
-    function getIDDetalle($idUsuario){
-        $this->db->where('idUsuario',$idUsuario);
+    function getIDDetalle($usuarioID){
+        $this->db->where('usuarioID',$usuarioID);
         $query = $this->db->get('usuariodetalle');
         if ($query->num_rows() == 1) {
             $detalle = $query->row();
-            return $detalle = $detalle->idusuarioDetalle;
+            return $detalle = $detalle->usuarioIDDetalle;
         } else {
             return null;
         }

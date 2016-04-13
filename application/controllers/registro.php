@@ -30,22 +30,19 @@ class Registro extends CI_Controller {
 
 	function isthereemail() {
 		/*EXISTE EL EMAIL EN LA DB?*/
-		$validateValue=$this->input->post('fieldValue');
-		$validateId= $this->input->post('fieldId');
-
-		$emailUsuario = $this->input->post('fieldValue');
-		$emailUsuario_ = $this->input->post('fieldValue');
+		
+		$emailUsuario = $this->input->post('correo');
 		$emailUsuario = str_replace('_', '@', $emailUsuario);
 
-		$arrayToJs = array();
-		$arrayToJs[0] = $validateId;
+		
 		if (!$this->usuario_model->is_there_emailUsuario($emailUsuario)) {
-			$arrayToJs[1] = true;
-			echo json_encode($arrayToJs);
+			$data['existe'] = true;
 		} else {
-			$arrayToJs[1] = false;
-			echo json_encode($arrayToJs);
+			$data['existe'] = false;
+			
 		}
+
+		echo json_encode($data);
 	}
 
 	function registrar() {	
@@ -81,7 +78,7 @@ class Registro extends CI_Controller {
 
 		if($this->email_model->send_email('', $emailUsuario, 'Gracias por registrarte en Interpretes', $mensajePlano)){
 			$data['response'] = true;
-			$data['message'] = "Su registro se ha guardado con éxito, favor de revisar su correo para activar su usuario";
+			$data['message'] = "Éxito, favor de revisar su correo para activar su usuario";
 		}
 		else{
 			$data['response'] = false;
@@ -307,13 +304,10 @@ class Registro extends CI_Controller {
 		switch($result) {
 			case 'usuario-activado' :
 				if($this->session->userdata('tipoUsuario')==1){
-				redirect('usuario/cuenta/activado');
+				redirect('usuario/cuenta');
 				} 
 				if ($this->session->userdata('tipoUsuario')==2) {
-					redirect('negocio');
-				}
-				if ($this->session->userdata('tipoUsuario')==3) {
-					redirect('asociacion');
+					redirect('interprete/cuenta');
 				}
 				if ($this->session->userdata('tipoUsuario')==0) {
 					redirect('admin');
@@ -330,49 +324,17 @@ class Registro extends CI_Controller {
 				$data['errorActivo2'] = true;
 				break;
 		}
-		$e = $this->usuario_model->myID($this->session->userdata('idUsuario'));
-		
-		$f = $this->usuario_model->myInfo($this->session->userdata('idUsuario'));
-		$g = $this->usuario_model->miUbicacion($this->session->userdata('idUsuarioDato'));
-
-		$data['SYS_metaTitle'] 			= '';
-		$data['SYS_metaKeyWords'] 		= '';
-		$data['SYS_metaDescription'] 	= '';  
-		$data['estados'] 	= $this->defaultdata_model->getEstados();
-		$data['paises'] 	= $this->defaultdata_model->getPaises();
-		$data['mapaSegundo'] = 'mapa_view';
-		
-		// mapa
 		
 
-		$config = array();
-		$config['center'] = '19.433463102009004,-99.13711169501954';
-		$config['zoom'] = 'auto';
-		$config['onboundschanged'] = 'if (!centreGot) {
-				var mapCentre = map.getCenter();
-				marker_0.setOptions({
-				position: new google.maps.LatLng(mapCentre.lat(), mapCentre.lng()) 
-		});
-		} 
-		centreGot = true;';
-		$config['map_name'] = 'map';
-		$config['map_div_id'] = 'map_canvas';
-		$this->googlemaps->initialize($config);
-   
-		// set up the marker ready for positioning 
-		// once we know the users location
-		$marker = array();
-		$marker['draggable'] = true;
-		$marker['ondragend'] = 'updateDatabase(event.latLng.lat(), event.latLng.lng());';
-		//$marker['ondragend'] = 'alert(\'You just dropped me at: \' + event.latLng.lat() + \', \' + event.latLng.lng());';
-		$this->googlemaps->add_marker($marker);
-		$data['map'] = $this->googlemaps->create_map();
-		//var_dump($data['map']);
+	
 
 		$this->load->view('index_view', $data);
 	}     
 
 	function activar($activationCode) {
+		echo $activationCode;
+		var_dump($this->usuario_model->is_there_activation_code($activationCode));
+
 		switch($this->usuario_model->activar($activationCode)) {
 			case 1 :
 				redirect('registro/activacion/usuario-activado');
@@ -387,6 +349,7 @@ class Registro extends CI_Controller {
 				// die('No existe ese codigo carnal :(');
 				break;
 		}
+		
 	}
 
 	function nuevocodigo() {
@@ -426,7 +389,7 @@ class Registro extends CI_Controller {
 	}
 
 	function meh(){
-		var_dump($this->email_model->send_email('', 'prueba@talentoindustrial.com', 'Gracias por registrarte en Interpretes', 'Mensaje'));
+		var_dump($this->email_model->send_email('', 'ntest111@mailinator.com', 'Gracias por registrarte en Interpretes_ beta', 'Mensaje'));
 
 	}
 

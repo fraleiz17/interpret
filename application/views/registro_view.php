@@ -143,7 +143,7 @@
 <div class="container">
 
 	<div class="logregform two">
-    <form method="post" id="registro" action="<?=base_url()?>registro/registrar" onsubmit="return checkForm(this);">
+    <form id="registro" >
         
         <div class="title">
         
@@ -169,8 +169,8 @@
                 <input type="text" name="apellidoMaterno" required="required">
                 </div>
                 <label>Email <em>*</em></label>
-                <input type="email" name="correo" required>
-                
+                <input type="email" name="correo" id="correo" required>
+                <label id="error_e" style="display: none; color: red;">* Correo ya registrado</label>
                 <div class="one_half">
                     <label>Contraseña <em>*</em></label>
                     <input type="password" name="contrasena" id="contrasena" minlength="4" maxlength="8" class="contrasena_">
@@ -180,7 +180,7 @@
                     <label>Confirma Contraseña <em>*</em></label>
                     <input type="password" name="contrasenaConfirm" id="contrasenaConfirm" minlength="4" maxlength="8" class="contrasena_">
                 </div>
-                <label id="error_c" style="display: none; color: red;">Las contraseñas no coinciden</label>
+                <label id="error_c" style="display: none; color: red;">* Las contraseñas no coinciden</label>
                  <div class="one_half radiobut">
                     <label>Sexo</label>
                     <input class="one" type="radio" name="sexo" value="1" checked>
@@ -319,8 +319,19 @@
                     <label>Estoy de acuerdo con los <a href="#">Terminos y condiciones.</a></label>
                 </div> -->
                 
-                <button type="submit" class="fbut">Create Account</button>
-
+                <button type="submit" class="fbut registrar">Crear Cuenta</button>
+                <div class="margin_top3"></div><div class="clearfix"></div>
+        
+                <div id="div1" class="infomes" style="display: none;">
+                <div class="message-box-wrap">
+                    Registrando...</div>
+                </div>
+        
+        <div class="successmes" style="display: none;">
+            <div class="message-box-wrap">
+            <i class="fa fa-check-square fa-lg"></i><span class="info"></span></div>
+        </div>
+                
                     
             </form>
         
@@ -382,6 +393,28 @@
   $(document).ready(function() {
 	$('.overlay').overlay();
   });
+
+  $('form').submit(function(e){
+            e.preventDefault();
+            var form = $('form');
+            $(".registrar").hide(); 
+            $(".infomes").fadeIn();
+            $.ajax({
+                url: '<?php echo base_url('registro/registrar')?>',
+                data: form.serialize(),
+                dataType: 'json',
+                type: 'post',
+                before: function () {
+                    $(".registrar").hide(); 
+                    $(".successmes").fadeOut();
+                },
+                success: function (data) {
+                    $(".infomes").fadeOut();
+                    $(".successmes").fadeIn();
+                    $('.info').html(data.message);
+                }
+            });
+        });
 </script>
 
 <script src="js/tabs/assets/js/responsive-tabs.min.js" type="text/javascript"></script>
@@ -401,6 +434,27 @@ $(".contrasena_").blur(
           $("#error_c").fadeIn();
           return false;
         }                          
+    }
+); 
+
+$("#correo").blur(
+    function(){
+        var form = $('form');
+        $.ajax({
+                url: '<?php echo base_url('registro/isthereemail')?>',
+                data: form.serialize(),
+                dataType: 'json',
+                type: 'post',
+                success: function (data) {
+                    if(data.existe == false){
+                        $("#error_e").fadeIn();
+                        return false; 
+                    } else{
+                        $("#error_e").fadeOut();
+                        return true;
+                    }
+                }
+        });                          
     }
 );        
  

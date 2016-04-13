@@ -63,40 +63,40 @@ class Auth_model extends CI_Model {
 			'last_access' => date('Y-m-d H:i:s', time())
 		);
 		if($Usuario!=null){
-			$this->db->where('idUsuario', $Usuario);
+			$this->db->where('usuarioID', $Usuario);
 			$this->db->or_where('correo', $Usuario);
 			$this->db->or_where('usuario', $Usuario);
 			$this->db->update($this->tablas['usuario'], array('status'=>2));
 			
-			$this->db->where('idUsuario', $Usuario);
+			$this->db->where('usuarioID', $Usuario);
 			$this->db->or_where('correo', $Usuario);
 			$this->db->or_where('usuario', $Usuario);
 			$query = $this->db->get($this->tablas['usuario']);
 			$row = $query->row();
-			$arrInsert['idUsuario'] = $row->idUsuario;
+			$arrInsert['usuarioID'] = $row->usuarioID;
 		}
 		$this->db->insert($this->tablas['ataque'], $arrInsert);
 		return true;
 	}
 	
-	function setUserData($idUsuario){
+	function setUserData($usuarioID){
 		//obtenemos user agent, ip del usuario y un timestamp para guardar en la db
 		$arrUpdate = array(
 			'useragent' => $this->agent->agent_string(),
 			'last_ip_access' => $this->input->ip_address(),
 			'last_access' => date('Y-m-d H:i:s', time())
 		);
-		$this->db->where('idUsuario',$idUsuario);
+		$this->db->where('usuarioID',$usuarioID);
 		$this->db->update($this->tablas['usuario'],$arrUpdate);
 		return true;
 	}
 	
-	function setCookies($idUsuario, $authKey) {
+	function setCookies($usuarioID, $authKey) {
 		//funcion que crea las cookies para recordar un usuario
 		//esta cookie almacena un hash con el aget user del usuario, y con ese hash crea otro con sha1 para almacenar en la DB
 		$authId = md5($this->agent->agent_string());		
 		setcookie('AuthID',$authId,time() + 60 * 60 * 24 * 30,'/');
-		$this->db->where('idUsuario',$idUsuario);
+		$this->db->where('usuarioID',$usuarioID);
 		$this->db->update($this->tablas['usuario'],array('authId' => sha1($authId)));
 		//esta cookie almacena el authkey del usuario, debe almacenarse el authkey renovado, no el viejo
 		setcookie('AuthKey',$authKey,time() + 60 * 60 * 24 * 30,'/');
@@ -172,7 +172,7 @@ class Auth_model extends CI_Model {
         /*TODO datos de sesion*/
 		$userdata = array(
 			'logged' => true, 
-			'idUsuario' => $result->idUsuario, 
+			'usuarioID' => $result->usuarioID, 
 			'correo' => $result->correo, 
 			'nombre' => $result->nombre,
 			'apellidoPaterno' => $result->apellidoPaterno,
@@ -184,85 +184,30 @@ class Auth_model extends CI_Model {
 		);
 
 		$tipoUsuario = $result->tipoUsuario;
-		$idUsuario = $result->idUsuario;
+		$usuarioID = $result->usuarioID;
 
 		if($tipoUsuario == 0){
 			$this->load->model('usuario_model');
-			$info = $this->usuario_model->myID($idUsuario);			
 			$tipoUsuario = 0;
 			$rol = 0;
-			$idUsuarioDato = $info->idUsuarioDato;			
-			$userdata['idUsuarioDato'] = $idUsuarioDato;
 			$userdata['rol'] = $rol;
 		}
 
 		if($tipoUsuario == 1){
 			$this->load->model('usuario_model');
-			$info = $this->usuario_model->myID($idUsuario);			
 			$tipoUsuario = 1;
 			$rol = 1;
-			$idUsuarioDato = $info->idUsuarioDato;			
-			$userdata['idUsuarioDato'] = $idUsuarioDato;
 			$userdata['rol'] = $rol;
 		}
 
 
 		if($tipoUsuario == 2){
 			$this->load->model('usuario_model');
-			$info = $this->usuario_model->myInfoR($idUsuario);
 			$tipoUsuario = 2;
-			$idUsuarioDato = $info->idUsuarioDato;
-			$idUsuarioDetalle = $info->idUsuarioDetalle;
-			$ubicacion = $this->usuario_model->miUbicacion($idUsuarioDato);
-			if($ubicacion != null){
-			$estadoID = $ubicacion->estadoID;
-			$zonaID = $ubicacion->zonageograficaID;
-			$zonaNombre = $ubicacion->nombre;
-			$estadoNombre = $ubicacion->nombreEstado;	
-			
-			$userdata['estadoID'] = $estadoID;
-			$userdata['zonaNombre'] = $zonaNombre;
-			$userdata['zonaID'] = $zonaID;
-			$userdata['estadoNombre'] = $estadoNombre;
-			$userdata['latitud'] = $ubicacion->latitud;
-			$userdata['longitud'] = $ubicacion->longitud;
-                        
-			}
 			$rol = 2;	
 			$nivel = 2;
-			$userdata['idUsuarioDato'] = $idUsuarioDato;
-			$userdata['idUsuarioDetalle'] = $idUsuarioDetalle;
-			$userdata['nivel'] = $nivel;
 			$userdata['rol'] = $rol;
 		}
-
-		if($tipoUsuario == 3){
-			$this->load->model('usuario_model');
-			$info = $this->usuario_model->myInfoR($idUsuario);
-			$tipoUsuario = 3;
-			$idUsuarioDato = $info->idUsuarioDato;
-			$idUsuarioDetalle = $info->idUsuarioDetalle;	
-			$ubicacion = $this->usuario_model->miUbicacion($idUsuarioDato);
-			if($ubicacion != null){
-			$estadoID = $ubicacion->estadoID;
-			$zonaID = $ubicacion->zonageograficaID;
-			$zonaNombre = $ubicacion->nombre;
-			$estadoNombre = $ubicacion->nombreEstado;	
-			$userdata['estadoID'] = $estadoID;
-			$userdata['zonaNombre'] = $zonaNombre;
-			$userdata['zonaID'] = $zonaID;
-			$userdata['estadoNombre'] = $estadoNombre;
-                        $userdata['latitud'] = $ubicacion->latitud;
-			$userdata['longitud'] = $ubicacion->longitud;
-			}
-			$userdata['idUsuarioDato'] = $idUsuarioDato;
-			$userdata['idUsuarioDetalle'] = $idUsuarioDetalle;
-			$rol = 3;
-			$nivel = 3;
-			$userdata['nivel'] = $nivel;
-			$userdata['rol'] = $rol;
-		}
-
 		
 
 		//Creamos variables de sesi�n
@@ -271,7 +216,7 @@ class Auth_model extends CI_Model {
 		if ($cookie == 'true') {
 			//si el usuario eligi� recordar, limpiamos cookies existentes y renovamos con el nuevo authkey
 			// $this->deleteCookies();
-			$this->setCookies($result->idUsuario, $authKey);
+			$this->setCookies($result->usuarioID, $authKey);
 		}
 		$this->setAuthKey($authKey, $result->correo);
 		//actualizamos authkey en la DB con el ya generado

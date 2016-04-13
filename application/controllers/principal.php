@@ -15,6 +15,7 @@ class Principal extends CI_Controller {
 
 	function index() {
 		$data = array();
+		$data['estados'] = $this->defaultdata_model->getEstados();
         $this->load->view('index_view', $data);
 
 	}
