@@ -33,6 +33,29 @@ CREATE TABLE IF NOT EXISTS `categorias` (
   KEY `categoriaID` (`categoriaID`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AVG_ROW_LENGTH=5461 AUTO_INCREMENT=1 ;
 
+--Categorias disponibles
+INSERT INTO Categorias Values (1,'Administrativos');
+INSERT INTO Categorias Values (2,'Biología');
+INSERT INTO Categorias Values (3,'Comunicaciones');
+INSERT INTO Categorias Values (4,'Construcción');
+INSERT INTO Categorias Values (5,'Contabilidad');
+INSERT INTO Categorias Values (6,'Creatividad, Producción y Diseño Comercial');
+INSERT INTO Categorias Values (7,'Derecho y Leyes');
+INSERT INTO Categorias Values (8,'Educación');
+INSERT INTO Categorias Values (9,'Ingeniería');
+INSERT INTO Categorias Values (10,'Logística, Transportación y Distribución');
+INSERT INTO Categorias Values (11,'Manufactura, Producción y Operación');
+INSERT INTO Categorias Values (12,'Mercadotecnia, Publicidad y Relaciones Públicas');
+INSERT INTO Categorias Values (13,'Recursos Humanos');
+INSERT INTO Categorias Values (14,'Salud y Belleza');
+INSERT INTO Categorias Values (15,'Sector Salud');
+INSERT INTO Categorias Values (16,'Seguro y Reaseguro');
+INSERT INTO Categorias Values (17,'Tecnologías de la Información / Sistemas');
+INSERT INTO Categorias Values (18,'Turismo, Hospitalidad y Gastronomía');
+INSERT INTO Categorias Values (19,'Ventas ');
+INSERT INTO Categorias Values (20,'Veterinaria / Zoología');
+
+
 -- --------------------------------------------------------
 
 --
