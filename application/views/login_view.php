@@ -141,7 +141,7 @@
 <div class="container">
 
   <div class="logregform">
-    
+      <form method="post" action="<?=base_url()?>login/login/principal/principal">
         <div class="title">
         
       <h3>Inicia Sesión</h3>
@@ -155,23 +155,23 @@
             <form role="form">
             
                 <label><i class="fa fa-user"></i> Email</label>
-                <input type="text">
+                <input type="text" name="correo">
                 
                 <label><i class="fa fa-lock"></i> Contraseña</label>
-                <input type="password">
+                <input type="password" name="contrasena">
                 
                 
-                    <label><a href="#"><strong>Forgot Password?</strong></a></label>
+                    <label><a href="#"><strong>Olvid&eacute; mi contrase&ntilde;a</strong></a></label>
                 
                 
-                <button type="button" class="fbut">Entrar</button>
+                <button type="submit" class="fbut">Entrar</button>
 
                     
             </form>
         
         </div>
         
-
+    </form>
   </div>
 
 
