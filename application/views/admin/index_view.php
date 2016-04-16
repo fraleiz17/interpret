@@ -95,6 +95,7 @@
 
               <ul class="nav navbar-nav">
 
+                <li class="dropdown"><a href="http://localhost/interpret/login/logout/principal" class="dropdown-toggle active">Cerrar sesión</a>
                 </li>
               </ul>
 
