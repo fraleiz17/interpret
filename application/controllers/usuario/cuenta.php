@@ -35,7 +35,8 @@ class Cuenta extends CI_Controller {
         $data['SYS_metaTitle']          = '';
         $data['SYS_metaKeyWords']       = '';
         $data['SYS_metaDescription']    = '';  
-        
+        $data['estados']    = $this->defaultdata_model->getEstados();
+        $data['paises']     = $this->defaultdata_model->getPaises();
 
         $this->load->view('usuario/index_view', $data);
     }
