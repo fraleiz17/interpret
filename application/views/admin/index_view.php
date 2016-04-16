@@ -69,18 +69,6 @@
 
 
 </head>
-
-<style>
-
-
-.copyright_info {
-  
-  bottom: 0;
-    /* Set the fixed height of the footer here */
-}
-.feature_section2
-{padding:80px 0px 285px 0px;}
-</style>
 <body>
 <div class="site_wrapper">
 <header class="header">
@@ -107,19 +95,6 @@
 
               <ul class="nav navbar-nav">
 
-                <li class="dropdown yamm-fw"> <a href="index.html" class="dropdown-toggle">Inicio</a>
-                </li>
-
-                <li class="dropdown"><a href="nuestros.html" class="dropdown-toggle">Nuestros Interpretes</a>
-                </li>
-
-                <li class="dropdown"><a href="login.html" class="dropdown-toggle active">Inicia sesión</a>
-                </li>
-
-                <li class="dropdown yamm-fw"> <a href="nosotros.html" class="dropdown-toggle">Sobre nosotros</a>
-                </li>
-
-                <li class="dropdown"> <a href="contact.html" class="dropdown-toggle">Contacto</a>
                 </li>
               </ul>
 
@@ -141,21 +116,13 @@
 </div>
 <div class="content_fullwidth less2">
 <div class="container">
-
 	<div class="logregform two">
     <form id="registro" >
-        
         <div class="title">
-        
 			<h3>Usuarios (<?=$n_usuarios?>)</h3>
-        		
-			
         </div>
-        
         <div class="feildcont">
-        
             <form role="form">
-                
                 <div class="one_third">
                 	<label><strong>Usuario</strong></label>
                 </div>
@@ -189,6 +156,7 @@
                  }?>
         
                  <!-- USUARIOS INTERPRETES -->  
+ </div>
                  <div class="title">
         
 			<h3>Interpretes (<?=$n_interpretes?>)</h3>
@@ -241,37 +209,6 @@
 </div>
 </div><!-- end content area -->
 <div class="clearfix"></div>
-<div class="copyright_info">
-<div class="container">
-    <div class="clearfix"></div>
-    <div class="one_half">
-
-        Copyright © 2016 TuInterprete.com. All rights reserved.  <a href="#">Terminos de uso</a> | <a href="#">Politica de privacidad</a>
-
-    </div>
-
-    <div class="one_half last">
-
-        <ul class="footer_social_links">
-            <li class="animate" data-anim-type="zoomIn"><a href="#"><i class="fa fa-facebook"></i></a></li>
-            <li class="animate" data-anim-type="zoomIn"><a href="#"><i class="fa fa-twitter"></i></a></li>
-            <li class="animate" data-anim-type="zoomIn"><a href="#"><i class="fa fa-google-plus"></i></a></li>
-            <li class="animate" data-anim-type="zoomIn"><a href="#"><i class="fa fa-linkedin"></i></a></li>
-            <li class="animate" data-anim-type="zoomIn"><a href="#"><i class="fa fa-skype"></i></a></li>
-            <li class="animate" data-anim-type="zoomIn"><a href="#"><i class="fa fa-flickr"></i></a></li>
-            <li class="animate" data-anim-type="zoomIn"><a href="#"><i class="fa fa-html5"></i></a></li>
-            <li class="animate" data-anim-type="zoomIn"><a href="#"><i class="fa fa-youtube"></i></a></li>
-            <li class="animate" data-anim-type="zoomIn"><a href="#"><i class="fa fa-rss"></i></a></li>
-        </ul>
-
-    </div>
-
-</div>
-</div><!-- end copyright info -->
-
-
-    
-</div>
 
 
 <!-- ######### JS FILES ######### --> 
