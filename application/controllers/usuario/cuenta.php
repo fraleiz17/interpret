@@ -89,7 +89,9 @@ class Cuenta extends CI_Controller {
                 'height' => 146
             );
             $imagen = $this->file_model->uploadItem('foto', $file_data, 'foto', true);
-            $existe_foto = $this->usuario_model->getRow('usuarioID', $this->session->userdata('usuarioID'),'fotoperfil');
+
+            if (!is_array($imagen)) {
+                $existe_foto = $this->usuario_model->getRow('usuarioID', $this->session->userdata('usuarioID'),'fotoperfil');
 
             $dataFoto = array(
                 'usuarioID' => $this->session->userdata('usuarioID'),
@@ -101,6 +103,8 @@ class Cuenta extends CI_Controller {
             } else {
                 $this->usuario_model->insertItem('fotoperfil', $dataFoto);
             }
+            }
+            
 
         }
         
