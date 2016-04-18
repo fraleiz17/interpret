@@ -104,7 +104,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <li class="dropdown yamm-fw"> <a href="index.html" class="dropdown-toggle active">Inicio</a>
                 </li>
 
-                <li class="dropdown"><a href="nuestros.html" class="dropdown-toggle">Nuestros Interpretes</a>
+                <li class="dropdown"><a href="<?=base_url()?>interpretes" class="dropdown-toggle">Nuestros Interpretes</a>
                 </li>
 
                 <?php if(!is_logged()) { ?>

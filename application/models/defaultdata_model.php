@@ -306,7 +306,42 @@ where pagado = 0)");
         return $this -> db -> get('banner') -> result();
     }
 
-    
+    function getResult($itemID, $ID, $tabla){
+        $this->db->where($itemID,$ID);
+        $query = $this->db->get($tabla);
+        if ($query->num_rows() >= 1)
+            return $query->result();
+        return null;
+        
+    }
+
+    function getResult2($itemID, $ID,$itemID2,$ID2, $tabla){
+        $this->db->where($itemID,$ID);
+        $this->db->where($itemID2,$ID2);
+        $query = $this->db->get($tabla);
+        if ($query->num_rows() >= 1)
+            return $query->result();
+        return null;
+        
+    }
+
+    function getRow($itemID, $ID, $tabla){
+        $this->db->where($itemID,$ID);
+        $query = $this->db->get($tabla);
+        if ($query->num_rows() == 1)
+            return $query->row();
+        return null;
+        
+    }
+
+    function getCategoriasUsuario($usuarioID){
+      $query = $this->db->query('select categoria from categorias where categoriaID in (select categoriaID from categoriasusuario where usuarioID = '.$usuarioID.') limit 2');
+      if ($query->num_rows() >= 1){
+            return $query->result();
+         } else {
+            return null;
+         }
+    }
 
 
 

@@ -163,7 +163,7 @@ margin: 0 auto;}
 
           <div class="one_third last">
           <?php if($foto != null):?>
-          <img class="efit" src="<?=base_url()?>docs/foto/<?=$foto->foto;?>" alt="">
+          <img class="efit" src="<?=base_url()?>docs/foto/<?=$foto->foto;?>" width="146px" height="146px">
           <?php endif; ?>
         </div>
                 <div class = "one_third">

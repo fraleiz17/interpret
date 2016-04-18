@@ -105,8 +105,8 @@ function updateMiPerfil(){
                 'date'=>false,
                 'random' => true,
                 'user_id' => null,
-                'width'=>146,
-                'height' => 146
+                'width'=>357,
+                'height' => 250
             );
             $imagen = $this->file_model->uploadItem('foto', $file_data, 'foto', true);
 
