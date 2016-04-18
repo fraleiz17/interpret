@@ -253,13 +253,34 @@ margin: 0 auto;}
                 <label>Link video</label>
                 <input type="text" name="video">
 
+                <div class="clearfix"></div>
+        
+                <div id="div3" class="noticemes">
+                    <div class="message-box-wrap">
+                    <ul>
+                      <li><strong>Pasos a seguir para insertar video:</strong></li>
+                      <li>Selecciona el video</li>
+                      <li>Selecciona compartir</li>
+                      <li>Selecciona insertar</li>
+                      <li>Copia la dirección que se encuentra dentro de las comillas</li>
+                      <li>Ejemplo: <strong> src="https://www.youtube.com/embed/ejemplo"</strong></li>
+                    </ul>
+                    </div>
+                </div><!-- end box -->
+
+                <div class="margin_top3"></div><div class="clearfix"></div>
+
+                <?php if($video != null): ?>
+                <iframe width="500" src="<?=$video->link;?>" frameborder="0" allowfullscreen></iframe>
+                <?php endif;?>
+
                 <div class="one_half">
                     <label onclick="$('#idiomas').toggle();"> <strong>Idiomas</strong></label>
                     <ul id="idiomas" style="display: none;">
                     <?php if($idiomas != null):
                         foreach ($idiomas as $i ):?>
 
-                   <li><input type="checkbox" name="idioma[]" value="<?=$i->idiomaID?>">
+                   <li><input type="checkbox" name="idioma[]" value="<?=$i->idiomaID?>" <?=($i->idiomaID == $this->session->userdata('ni'.$i->idiomaID)) ? 'checked' : '' ?>>
                     <label><?=$i->idioma?></label></li>
 
                   <?php 
@@ -275,7 +296,7 @@ margin: 0 auto;}
                     <?php if($conocimientos != null):
                         foreach ($conocimientos as $c ):?>
 
-                   <li><input type="checkbox" name="conocimiento[]" value="<?=$c->categoriaID?>">
+                   <li><input type="checkbox" name="conocimiento[]" value="<?=$c->categoriaID?>" <?=($c->categoriaID == $this->session->userdata('ic'.$c->categoriaID)) ? 'checked' : '' ?>>
                     <label><?=$c->categoria?></label></li>
 
                   <?php 

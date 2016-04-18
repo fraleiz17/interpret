@@ -45,7 +45,24 @@ class Cuenta extends CI_Controller {
         $data['usuario']    = $this->usuario_model->getRow('usuarioID', $this->session->userdata('usuarioID'),'usuario');
         $data['u_dato']    = $this->usuario_model->getRow('usuarioID', $this->session->userdata('usuarioID'),'usuariodato');
         $data['foto']    = $this->usuario_model->getRow('usuarioID', $this->session->userdata('usuarioID'),'fotoperfil'); 
+        $data['video']    = $this->usuario_model->getRow('usuarioID', $this->session->userdata('usuarioID'),'videos');
+       
+        $conocimientos = $this->usuario_model->getResult('usuarioID', $this->session->userdata('usuarioID'),'categoriasusuario');
+        if ($conocimientos != null) {
+           foreach ($conocimientos as $c) {
+            $this->session->set_userdata('ic'.$c->categoriaID,$c->categoriaID);
 
+           }
+        }
+
+        $iduimas_u = $this->usuario_model->getResult('usuarioID', $this->session->userdata('usuarioID'),'idiomasusuario');
+        if ($iduimas_u != null) {
+           foreach ($iduimas_u as $ni) {
+            $this->session->set_userdata('ni'.$ni->idiomaID,$ni->idiomaID);
+
+           }
+        }
+        
         $this->load->view('interprete/index_view', $data);
     }
 
@@ -110,7 +127,81 @@ function updateMiPerfil(){
             
 
         }
-        
+
+        //VIDEO
+        $video = $this->input->post('video');
+        if ($video != null && $video != '') {
+            $existe_video = $this->usuario_model->getRow('usuarioID', $this->session->userdata('usuarioID'),'videos');
+
+            $dataVideo = array(
+                'usuarioID' => $this->session->userdata('usuarioID'),
+                'link'      => $video 
+            );
+
+            if ($existe_video != null) {
+                $this->usuario_model->updateItem('usuarioID', $this->session->userdata('usuarioID'), $dataVideo, 'videos'); 
+            } else {
+                $this->usuario_model->insertItem('videos', $dataVideo);
+            }
+        }
+
+        //IDIOMAS
+        $idiomas = $this->input->post('idioma');
+        if ($idiomas != null && $idiomas != '') {
+            $num_id = $this->usuario_model->getResult('usuarioID', $this->session->userdata('usuarioID'), 'idiomasusuario');
+            if ($num_id != null) {
+                foreach ($num_id as $ni) {
+                 $this->session->unset_userdata('ni'.$ni->idiomaID);
+                }
+            }
+
+            $this->usuario_model->deleteItem('usuarioID', $this->session->userdata('usuarioID'), 'idiomasusuario');
+            $n_idiomas = count($idiomas);
+            for ($i=0; $i < $n_idiomas; $i++) { 
+                $existe_idiomas = $this->usuario_model->getRow2('usuarioID', $this->session->userdata('usuarioID'),'idiomaID',$idiomas[$i],'idiomasusuario');
+
+                $dataIdioma = array(
+                    'usuarioID' => $this->session->userdata('usuarioID'),
+                    'idiomaID'      => $idiomas[$i] 
+                );
+                $this->session->set_userdata('ni'.$idiomas[$i],$idiomas[$i]);
+                if ($existe_idiomas != null) {
+                    $this->usuario_model->updateItem('usuarioID', $this->session->userdata('usuarioID'), $dataIdioma,'idiomaID',$idiomas[$i], 'idiomasusuario'); 
+                } else {
+                    $this->usuario_model->insertItem('idiomasusuario', $dataIdioma);
+                }
+            }
+
+        }
+
+        //CONOCIMIENTO
+        $conocimientos = $this->input->post('conocimiento');
+        if ($conocimientos != null && $conocimientos != '') {
+            $num_con = $this->usuario_model->getResult('usuarioID', $this->session->userdata('usuarioID'), 'categoriasusuario');
+            if ($num_con != null) {
+                foreach ($num_con as $nc) {
+               $this->session->unset_userdata('ic'.$nc->categoriaID);
+                }
+            }
+            
+            $this->usuario_model->deleteItem('usuarioID', $this->session->userdata('usuarioID'), 'categoriasusuario');
+            $n_conocimientos = count($conocimientos);
+            for ($i=0; $i < $n_conocimientos; $i++) { 
+                $existe_conocimiento = $this->usuario_model->getRow2('usuarioID', $this->session->userdata('usuarioID'),'categoriaID',$conocimientos[$i],'categoriasusuario');
+
+                $dataConocimientos = array(
+                    'usuarioID' => $this->session->userdata('usuarioID'),
+                    'categoriaID'      => $conocimientos[$i] 
+                );
+                $this->session->set_userdata('ic'.$conocimientos[$i],$conocimientos[$i]);
+                if ($existe_conocimiento != null) {
+                    $this->usuario_model->updateItem('usuarioID', $this->session->userdata('usuarioID'), $dataConocimientos,'categoriaID',$conocimientos[$i], 'categoriasusuario'); 
+                } else {
+                    $this->usuario_model->insertItem('categoriasusuario', $dataConocimientos);
+                }
+            }
+
+        }
 
         $this->session->set_flashdata('mensaje', 'Perfil actualizado');
         redirect('interprete/cuenta');

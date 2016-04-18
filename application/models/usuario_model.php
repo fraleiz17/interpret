@@ -60,6 +60,14 @@ class Usuario_model extends CI_Model
         return true;
     }
 
+    function updateItem2($itemID, $ID,$itemID2, $ID2, $data, $tabla)
+    {
+        $this->db->where($itemID, $ID);
+        $this->db->where($itemID2, $ID2);
+        $this->db->update($this->tablas[$tabla], $data);
+        return true;
+    }
+
     function getRow($itemID, $ID, $tabla){
         $this->db->where($itemID,$ID);
         $query = $this->db->get($tabla);
@@ -67,6 +75,33 @@ class Usuario_model extends CI_Model
             return $query->row();
         return null;
         
+    }
+
+    function getRow2($itemID, $ID,$itemID2,$ID2, $tabla){
+        $this->db->where($itemID,$ID);
+        $this->db->where($itemID2,$ID2);
+        $query = $this->db->get($tabla);
+        if ($query->num_rows() == 1)
+            return $query->row();
+        return null;
+        
+    }
+
+    function getResult($itemID, $ID, $tabla){
+        $this->db->where($itemID,$ID);
+        $query = $this->db->get($tabla);
+        if ($query->num_rows() >= 1)
+            return $query->result();
+        return null;
+        
+    }
+
+
+    function deleteItem($idTabla, $id, $tabla)
+    {
+        $this->db->where($idTabla, $id);
+        $this->db->delete($this->tablas[$tabla]);
+        return true;
     }
 
     function is_there_activation_code($activationCode)
