@@ -46,6 +46,29 @@ class Usuario_model extends CI_Model
         return $this->db->insert_id();
     }
 
+    function insertItem($tabla, $data)
+    {
+        $this->db->insert($this->tablas[$tabla], $data);
+        $itemID = $this->db->insert_id();
+        return $itemID;
+    }
+    
+    function updateItem($itemID, $ID, $data, $tabla)
+    {
+        $this->db->where($itemID, $ID);
+        $this->db->update($this->tablas[$tabla], $data);
+        return true;
+    }
+
+    function getRow($itemID, $ID, $tabla){
+        $this->db->where($itemID,$ID);
+        $query = $this->db->get($tabla);
+        if ($query->num_rows() == 1)
+            return $query->row();
+        return null;
+        
+    }
+
     function is_there_activation_code($activationCode)
     {
         $this->db->select('*');

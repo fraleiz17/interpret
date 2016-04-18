@@ -65,7 +65,7 @@ class File_model extends CI_Model {
 
 		$ori_name = $_FILES[$file]['name'];
 		$config['upload_path'] = $this->path . $target;
-		$config['allowed_types'] = 'gif|jpg|png|jpeg|pdf|doc|docx';
+		$config['allowed_types'] = 'gif|jpg|png|jpeg';
 		// $config['allowed_types'] = '*';
 
 		// $config['encrypt_name'] = 'TRUE';

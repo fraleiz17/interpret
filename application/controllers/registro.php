@@ -68,6 +68,8 @@ class Registro extends CI_Controller {
 		
 		$idUsuario = $this->usuario_model->registrarUsuario($dataRegister);
 
+		$this->usuario_model->insertItem('usuariodato', $dataUsuariodato  = array('usuarioID' => $idUsuario));
+
 		$mensajePlano = 'Hola '.$this->input->get('nombre').'<br><br>
 					Gracias por registrarte en Interpretes.<br><br>
 					Activa tu cuenta con el siguiente link:<br><br><br><br>			
