@@ -115,6 +115,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
                 <li class="dropdown"> <a href="#" class="dropdown-toggle active">Perfil</a>
                 </li>
+                <li class="dropdown"><a href="<?=base_url()?>login/logout/principal" class="dropdown-toggle active">Cerrar sesión</a>
+                </li>
               </ul>
 
             </nav>

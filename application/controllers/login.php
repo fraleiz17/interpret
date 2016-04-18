@@ -52,7 +52,7 @@ class Login extends CI_Controller {
                 			redirect('usuario/cuenta');
                 		} 
                 		if ($this->session->userdata('tipoUsuario')==2) {
-                		    redirect('interprete/principal');
+                		    redirect('interprete/cuenta');
                 		}
 
                 		if ($this->session->userdata('tipoUsuario')==0) {

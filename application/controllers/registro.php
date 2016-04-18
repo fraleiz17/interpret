@@ -68,9 +68,8 @@ class Registro extends CI_Controller {
 		
 		$idUsuario = $this->usuario_model->registrarUsuario($dataRegister);
 
-		$this->usuario_model->insertItem('usuariodato', $dataUsuariodato  = array('usuarioID' => $idUsuario));
 
-		$mensajePlano = 'Hola '.$this->input->get('nombre').'<br><br>
+		$mensajePlano = 'Hola '.$this->input->post('nombre').'<br><br>
 					Gracias por registrarte en Interpretes.<br><br>
 					Activa tu cuenta con el siguiente link:<br><br><br><br>			
 					<a href="'.base_url().'registro/activar/'.$confirmationCode.'">Activar cuenta Interpretes</a>';
@@ -86,6 +85,8 @@ class Registro extends CI_Controller {
 			$data['response'] = false;
 			$data['message'] = "Ocurrió un error intentelo nuevamente";
 		}
+
+		$this->usuario_model->insertItem('usuariodato', $dataUsuariodato  = array('usuarioID' => $idUsuario));
 
 		$data['url'] = base_url();
 		$data['registro'] = true;
