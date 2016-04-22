@@ -6,7 +6,7 @@
 <html lang="es" xml:lang="es" class="no-js">
 <!--<![endif]-->
 <head>
-<title>Interpretes LSM</title>
+<title>Intérpretes</title>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="keywords" content="" />
@@ -88,7 +88,7 @@
   <div class="container_full_menu">
 
     <!-- Logo -->
-    <div class="logo"><a href="index.html" id="logo"></a></div>
+    <div class="logo"><a href="<?=base_url()?>" id="logo"></a></div>
 
   <!-- Navigation Menu -->
     <div class="menu_main">
@@ -103,30 +103,54 @@
 
           <div id="navbar-collapse-1" class="navbar-collapse collapse pull-right">
 
+             <div id="navbar-collapse-1" class="navbar-collapse collapse pull-right">
+
             <nav>
 
               <ul class="nav navbar-nav">
 
-                <li class="dropdown yamm-fw"> <a href="index.html" class="dropdown-toggle">Inicio</a>
+                <li class="dropdown yamm-fw"> <a href="<?=base_url()?>" class="dropdown-toggle active">Inicio</a>
                 </li>
 
-                <li class="dropdown"><a href="nuestros.html" class="dropdown-toggle">Nuestros Interpretes</a>
+                <li class="dropdown"><a href="<?=base_url()?>interpretes" class="dropdown-toggle">Nuestros Interpretes</a>
                 </li>
 
-                <li class="dropdown"><a href="login.html" class="dropdown-toggle active">Inicia sesión</a>
+                <?php if(!is_logged()) { ?>
+                <li class="dropdown"><a href="<?=base_url()?>login" class="dropdown-toggle">Inicia sesión</a>
+                </li>
+                <?php } else { 
+                  if($this->session->userdata('tipoUsuario')==1){
+                   $a = 'usuario/cuenta';
+                  } 
+                  if ($this->session->userdata('tipoUsuario')==2) {
+                      $a = 'interprete/principal';
+                  }
+
+                  if ($this->session->userdata('tipoUsuario')==0) {
+                      $a = 'admin';
+                  }
+                  ?>
+                <li class="dropdown"><a href="<?=base_url().$a?>" class="dropdown-toggle">Mi Cuenta</a>
+                </li>
+                <?php } ?>
+
+                <li class="dropdown yamm-fw"> <a href="<?=base_url()?>nosotros" class="dropdown-toggle">Sobre nosotros</a>
                 </li>
 
-                <li class="dropdown yamm-fw"> <a href="nosotros.html" class="dropdown-toggle">Sobre nosotros</a>
+                <li class="dropdown"> <a href="<?=base_url()?>contacto" class="dropdown-toggle">Contacto</a>
                 </li>
 
-                <li class="dropdown"> <a href="contact.html" class="dropdown-toggle">Contacto</a>
+                <?php if(is_logged()) { ?>
+                <li class="dropdown"><a href="<?=base_url()?>login/logout/principal" class="dropdown-toggle">Cerrar sesión</a>
                 </li>
+                <?php } else { ?>
+                <li class="dropdown"><a href="<?=base_url()?>registro" class="dropdown-toggle">Regístrate</a>
+                <?php  } ?>
               </ul>
 
             </nav>
 
           </div>
-
       </div>
     </div>
 

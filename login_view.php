@@ -6,7 +6,7 @@
 <html lang="es" xml:lang="es" class="no-js">
 <!--<![endif]-->
 <head>
-<title>Interpretes LSM</title>
+<title>Intérpretes</title>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="keywords" content="" />
@@ -88,7 +88,7 @@
   <div class="container_full_menu">
 
     <!-- Logo -->
-    <div class="logo"><a href="index.html" id="logo"></a></div>
+    <div class="logo"><a href="<?=base_url()?>" id="logo"></a></div>
 
   <!-- Navigation Menu -->
     <div class="menu_main">

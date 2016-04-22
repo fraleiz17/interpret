@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Principal extends CI_Controller {
+class Nosotros extends CI_Controller {
 	
 	public function __construct(){
 		parent::__construct();
@@ -14,11 +14,15 @@ class Principal extends CI_Controller {
     }
 
 	function index() {
-		$data = array();
-		$data['estados']    = $this->defaultdata_model->getEstados();
-		$data['categorias'] = $this->defaultdata_model->getTable('categorias');
-		$data['idiomas']        = $this->defaultdata_model->getTable('idiomas');
-        $this->load->view('index_view', $data);
+		$data = array();		
+        $this->load->view('nosotros_view', $data);
+
+	}
+
+	function detalle() {
+		$data = array();	
+		$data['idiomas']        = $this->defaultdata_model->getTable('idiomas');	
+        $this->load->view('interprete_detalle_view', $data);
 
 	}
 

@@ -1,6 +1,3 @@
-<?php
-defined('BASEPATH') OR exit('No direct script access allowed');
-?>
 <!doctype html>
 <!--[if IE 7 ]>    <html lang="en-gb" class="isie ie7 oldie no-js"> <![endif]-->
 <!--[if IE 8 ]>    <html lang="en-gb" class="isie ie8 oldie no-js"> <![endif]-->
@@ -79,12 +76,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 <header class="header">
 
-	<div class="container_full_menu">
+    <div class="container_full_menu">
 
     <!-- Logo -->
     <div class="logo"><a href="<?=base_url()?>" id="logo"></a></div>
 
-	<!-- Navigation Menu -->
+    <!-- Navigation Menu -->
     <div class="menu_main">
 
       <div class="navbar yamm navbar-default">
@@ -147,140 +144,107 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       </div>
     </div>
 
-	</div>
+    </div>
 
 </header><!-- end Navigation Menu -->
 
 
 <div class="clearfix"></div>
-
-<!-- slider -->
-<div class="slider">
-
-    <div class="fadein">
-        <img src="http://www.naveedkashif.com/wp-content/uploads/2015/08/Guide-To-Business-Setup-in-Dubai-Mainland-1920x770.jpg" alt="" />
-        <img src="https://img.grouponcdn.com/seocmsimages/beyS9FSjuXqcKDWuM7ee/VX-1920x770" alt="" />
-        <img src="http://insightfultax.com/wp-content/uploads/2015/03/paris.jpg" alt="" />
-    </div>
-
-    <div class="prosearch">
-    <div class="container">
-
-        <h1>¡Encuentra a tu interprete!</h1>
-		<h2>Fácil y rápido</h2>
-
-        <div class="clearfix margin_bottom4"></div>
-
-
-
-        <div class="tabs-content5 fullw">
-
-            <div id="example-5-tab-1" class="tabs-panel5">
-            <form method="get" action="index.html">
-
-                <select>
-                <option value="">Estado</option>
-                <?php if($estados != null):
-                        foreach ($estados as $c): ?>
-                <option value="<?$c->estadoID?>"><?=$c->nombreEstado?></option>
-                <?php endforeach;
-                    endif;
-                ?>
-                </select>
-
-            <select>
-                <option value="">Interés</option>
-                <?php if($categorias != null):
-                        foreach ($categorias as $c): ?>
-                <option value="<?$c->categoriaID?>"><?=$c->categoria?></option>
-                <?php endforeach;
-                    endif;
-                ?>
-            </select>
-
-            <select>
-                <option value="">Idioma</option>
-                <?php if($idiomas != null):
-                        foreach ($idiomas as $c): ?>
-                <option value="<?$c->idiomaID?>"><?=$c->nombreIdioma?></option>
-                <?php endforeach;
-                    endif;
-                ?>
-            </select>
-
-            <select>
-                <option value="">Género</option>
-                <option value="">Femenino</option>
-                <option value="">Masculino</option>
-            </select>
-
-            <a href="<?=base_url()?>interpretes" class="but1"><i class="fa fa-search"></i> Buscar </a>
-
-            <div class="clearfix margin_bottom2"></div>
-
-            <!-- <a href="#" class="but3"><i class="fa fa-caret-right"></i>Busqueda Avanzada</a>-->
-
-            </form>
-
-            <div id="busqueda_av">
-
-              
-            </div>
-
-
-            </div><!-- end tab 1 -->
-
-        </div>
-
-
-    </div>
-    </div>
-
-
-</div><!-- end slider -->
-<div class="feature_section2">
-<div class="container">
-
-    <h2 class="caps medium"><strong>¿Que ofrecemos?</strong></h2>
-
-  <div class="one_third">
-    <div class="box"> <i class="fa fa-thumbs-o-up"></i>
-      <h4 class="caps">Comodidad</h4>
-      <p>Encuentra a tu interprete con solo unos cuantos clicks.</p>
-    </div>
-  </div>
-  <!-- end -->
-
-  <div class="one_third">
-    <div class="box"> <i class="fa fa-star-o"></i>
-      <h4 class="caps"><col>Confianza</col></h4>
-      <p>Selecciona al interprete en base a su rating.<br><br></p>
-    </div>
-  </div>
-
-  <div class="one_third last">
-    <div class="box"> <i class="fa fa-home"></i>
-      <h4 class="caps">Facilmente</h4>
-      <p>Desde tu hogar.<br><br></p>
-    </div>
-  </div>
-
-<!--
-  <div class="one_fourth last">
-    <div class="box"> <i class="fa fa-paper-plane-o"></i>
-      <h4 class="caps">Expert Guidance</h4>
-      <p>Many as desktop packages ands webpage editor now use search many web sites</p>
-    </div>
-  </div>
-  <!-- end -->
-
-</div>
-</div>
+<div class="slider"><br><br><br><br></div>
 <div class="clearfix"></div>
 
+
+<div class="content_fullwidth less2">
+<div class="container">
+	
+    <div class="one_half">
+      
+        <p>Feel free to talk to our online representative at any time you please using our Live Chat system on our website or one of the below instant messaging programs.</p>
+        <br />
+        <p>Please be patient while waiting for response. (24/7 Support!) <strong>Phone General Inquiries: 1-888-123-4567-8900</strong></p>
+        <br /><br />
+        
+        <div class="cforms_sty3">
+        
+        
+        <div id="form_status"></div>
+    	<form type="POST" id="gsr-contact" onSubmit="return valid_datas( this );">
+	        <label class="label">Name <em>*</em></label>
+	        <label class="input">
+	            <input type="text" name="name" id="name">
+	        </label>
+	        
+	        <div class="clearfix"></div>
+	        
+	        <label class="label">E-mail <em>*</em></label>
+	        <label class="input">
+	            <input type="email" name="email" id="email">
+	        </label>
+	
+	        <!-- <div class="clearfix"></div>
+	
+	
+	        <label class="label">Phone <em>*</em></label>
+	        <label class="input">
+	            <input type="text" name="phone" id="phone">
+	        </label> -->
+	
+	        <div class="clearfix"></div>
+	
+	        <label class="label">Subject <em>*</em></label>
+	        <label class="input">
+	            <input type="text" name="subject" id="subject">
+	        </label>
+	
+	        <div class="clearfix"></div>
+	
+	        <label class="label">Message <em>*</em></label>
+	        <label class="textarea">
+	            <textarea rows="5" name="message" id="message"></textarea>
+	        </label>
+	
+	        <div class="clearfix"></div>
+			<input type="hidden" name="token" value="FsWga4&@f6aw" />
+	        <button type="submit" class="button">Send Message</button>
+	        
+    	</form>	
+        
+        
+        </div>
+        
+      </div>
+      
+      <div class="one_half last">
+      
+        <div class="address_info">
+        
+          <h4>Company <strong>Address</strong></h4>
+          <ul>
+            <li> <strong>Company Name</strong><br />
+              2901 Marmora Road, Glassgow, Seattle, WA 98122-1090<br />
+              Telephone: +1 1234-567-89000<br />
+              FAX: +1 0123-4567-8900<br />
+              E-mail: <a href="mailto:mail@companyname.com">mail@companyname.com</a><br />
+              Website: <a href="index.html">www.yoursitename.com</a> </li>
+          </ul>
+        </div>
+        
+        <div class="clearfix"></div>
+        
+        <h4>Find the Address</h4>
+        <iframe class="google-map" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=WA,+United+States&amp;aq=0&amp;oq=WA&amp;sll=47.605288,-122.329296&amp;sspn=0.008999,0.016544&amp;ie=UTF8&amp;hq=&amp;hnear=Washington,+District+of+Columbia&amp;t=m&amp;z=7&amp;iwloc=A&amp;output=embed"></iframe>
+        <br />
+        <small><a href="http://maps.google.com/maps?f=q&amp;source=embed&amp;hl=en&amp;geocode=&amp;q=WA,+United+States&amp;aq=0&amp;oq=WA&amp;sll=47.605288,-122.329296&amp;sspn=0.008999,0.016544&amp;ie=UTF8&amp;hq=&amp;hnear=Washington,+District+of+Columbia&amp;t=m&amp;z=7&amp;iwloc=A">View Larger Map</a></small> </div>
+
+</div>
+</div><!-- end content area -->
+
+
+
+<div class="clearfix"></div>
 <div class="copyright_info">
 <div class="container">
-	<div class="clearfix"></div>
+    <div class="clearfix"></div>
     <div class="one_half">
 
         Copyright © 2016 TuInterprete.com. All rights reserved.  <a href="#">Terminos de uso</a> | <a href="#">Politica de privacidad</a>
@@ -307,62 +271,20 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </div><!-- end copyright info -->
 
 
-
-
+    
 </div>
 
-<!-- ######### JS FILES ######### -->
-<!-- get jQuery used for the theme -->
+
+<!-- ######### JS FILES ######### --> 
+<!-- get jQuery used for the theme --> 
 <script type="text/javascript" src="js/universal/jquery.js"></script>
 <script src="js/style-switcher/styleselector.js"></script>
 <script src="js/animations/js/animations.min.js" type="text/javascript"></script>
-<script src="js/mainmenu/bootstrap.min.js"></script>
-<script src="js/mainmenu/customeUI.js"></script>
+<script src="js/mainmenu/bootstrap.min.js"></script> 
+<script src="js/mainmenu/customeUI.js"></script> 
 <script type="text/javascript" src="js/mainmenu/sticky.js"></script>
 <script type="text/javascript" src="js/mainmenu/modernizr.custom.75180.js"></script>
-
-<script src="js/masterslider/jquery.easing.min.js"></script>
-<script src="js/masterslider/masterslider.min.js"></script>
-<script type="text/javascript">
-(function($) {
- "use strict";
-
-    var slider = new MasterSlider();
-
-    slider.control('arrows');
-    slider.control('thumblist' , {autohide:false ,dir:'h',arrows:false, align:'bottom', width:160, height:100, margin:2, space:2});
-
-    slider.setup('masterslider' , {
-        width:1170,
-        height:500,
-        space:5,
-        view:'slide'
-    });
-
-})(jQuery);
-</script>
-
-<script type="text/javascript">
-(function($) {
- "use strict";
-
-$('.fadein img:gt(0)').hide();
-
-setInterval(function () {
-    $('.fadein :first-child').fadeOut()
-                             .next('img')
-                             .fadeIn()
-                             .end()
-                             .appendTo('.fadein');
-}, 3000); // 4 seconds
-
-})(jQuery);
-</script>
-
-<!-- carousel -->
-<script src="js/carouselowl/owl.carousel.js"></script>
-<script type="text/javascript" src="js/universal/custom.js"></script>
-<script src="js/tabs/assets/js/responsive-tabs.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="js/cform/form-validate.js"></script>
 
 </body>
 </html>

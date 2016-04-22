@@ -14,7 +14,6 @@ class Interpretes extends CI_Controller {
 	function index() {
 		$data = array();
 		$data['interpretes'] = $this->defaultdata_model->getResult2('status', 1,'tipoUsuario',2, 'usuario');
-		var_dump($data['interpretes']);
         $this->load->view('interpretes_view', $data);
 
 	}

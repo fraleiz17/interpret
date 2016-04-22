@@ -181,126 +181,76 @@ margin: 0 auto;}
             <form role="form" action="cuenta/updateMiPerfil" method="post" enctype="multipart/form-data">
 
           <div class="one_third last">
-          <?php if($foto != null):?>
-          <img class="efit" src="<?=base_url()?>docs/foto/<?=$foto->foto;?>" width="146px" height="146px">
-          <?php endif; ?>
+          
+          <img class="efit" src="<?=base_url()?>docs/foto/2.jpg?>" width="146px" height="146px">
+          
         </div>
                 <div class = "one_third">
-                <label>Nombre(s) <em>*</em></label>
-                <input type="text" name="nombre" value="<?=$usuario->nombre?>">
+                <label>Nombre</em></label>
+                <strong>Jorge Villaseñor</strong>
                 </div>
-                <div class = "one_third last">
-                <label>Apellido Paterno<em>*</em></label>
-                <input type="text" name="apellidoPaterno" value="<?=$usuario->apellidoPaterno?>">
-                </div>
-                <div class = "two_third last">
-                <label>Apellido Materno <em>*</em></label>
-                <input type="text" name="apellidoMaterno" value="<?=$usuario->apellidoMaterno?>">
-                </div>
-                <label>Fotograf&iacute;a </label>
-                <input type="file" name="foto" >
-
-                <label>Email <em>*</em></label>
-                <input type="text" name="correo" value="<?=$usuario->correo?>">
                 
-                <div class="one_half">
-                    <label>Contraseña <em>*</em></label>
-                    <input type="password" name="contrasena" id="contrasena" minlength="4" maxlength="8" class="contrasena_" placeholder="Solo si requieres cambiarla">
-                </div>
-                <div class="one_half last">
-                    <label>Confirma Contraseña <em>*</em></label>
-                   <input type="password" name="contrasenaConfirm" id="contrasenaConfirm" minlength="4" maxlength="8" class="contrasena_" placeholder="Solo si requieres cambiarla">
-                </div>
-                <label id="error_c" style="display: none; color: red;">* Las contraseñas no coinciden</label>
+                
+                
+                <strong>jv_interprete@mailinator.com</strong>
+                
 
                 <div class="one_half radiobut">
-                    <label>Sexo</label>
-                    <input class="one" type="radio" name="sexo" value="1" <?=($usuario->sexo == 1) ? 'checked' :''?>>
-                    <span class="onelb">M</span>
-                    <input class="two" type="radio" name="sexo" value="0" <?=($usuario->sexo == 0) ? 'checked' :''?>>
-                    <span class="onelb">F</span>
+                    <label><strong> Hombre</strong></label>
                 </div>
                 
+                <p><strong>Calificación: </strong>
+                <img class="efit" src="<?=base_url()?>docs/foto/5s.png?>" width="80px" >
+                </p>
+
+
                 <div class="one_half last">
                     <label>Tel&eacute;fono</label>
-                    <input type="text" name="telefono" value="<?=$usuario->telefono?>">
+                    <strong>(442) 352 6566</strong>
                 </div>
                 
                 <div class="clearfix"></div>
                 <div class="margin_bottom2"></div>
                 
                 <label>Dirección</label>
-                <input type="text" name="direccion" value="<?=$u_dato->direccion?>">
+                <strong>Zaragoza #456 Colonia Centro, 76000</strong>
 
                 <div class="one_half">
                     <label>Ciudad</label>
-                    <input type="text" name="municipio" value="<?=$u_dato->municipio?>">
+                    <strong>Querétaro</strong>
                 </div>
 
                 <div class="one_half last">
                     <label>Estado</label>
-                    <select name="estadoID">
-                            <?php foreach ($estados as $estado) { ?>
-                            <option value="<?=$estado->estadoID?>" <?=($u_dato->estadoID == $estado->estadoID) ? 'selected' : ''?> ><?=$estado->nombreEstado?></option>
-                            <?php } ?>
- 
-                    </select>
+                    <strong>Querétaro</strong>
                 </div>
 
-                 <div class="one_half">
-                    <label>C.P.</label>
-                    <input type="text" name="cp" value="<?=$u_dato->cp?>">
-                </div>
                 
                 <div class="one_half last">
                   <label>País</label>
-                    
-                    <select name="idPais">
-                    		<option value="146">M&eacute;xico</option>
-                            <?php foreach ($paises as $pais) { ?>
-                            <option value="<?=$pais->paisID?>" <?=($u_dato->idPais == $pais->paisID) ? 'selected' : ''?>><?=$pais->nombrePais?></option>
-                            <?php } ?>
- 
-                        </select>
+                  <strong>México</strong>
                 </div>
                 <div class="clearfix"></div>
+                <div class="margin_bottom2"></div>
                 <div class="stcode_title4">
             
         <h3><span class="line"></span><span class="text"><strong>Información Profesional</strong></span></h3>
         </div>
 
-                <label>Link video</label>
-                <input type="text" name="video">
-
-                <div class="clearfix"></div>
-        
-                <div id="div3" class="noticemes">
-                    <div class="message-box-wrap">
-                    <ul>
-                      <li><strong>Pasos a seguir para insertar video:</strong></li>
-                      <li>Selecciona el video</li>
-                      <li>Selecciona compartir</li>
-                      <li>Selecciona insertar</li>
-                      <li>Copia la dirección que se encuentra dentro de las comillas</li>
-                      <li>Ejemplo: <strong> src="https://www.youtube.com/embed/ejemplo"</strong></li>
-                    </ul>
-                    </div>
-                </div><!-- end box -->
+                <label>Video</label>
+                
 
                 <div class="margin_top3"></div><div class="clearfix"></div>
 
-                <?php if($video != null): ?>
-                <iframe width="500" src="<?=$video->link;?>" frameborder="0" allowfullscreen></iframe>
-                <?php endif;?>
+                <iframe width="500" src="https://www.youtube.com/embed/e1gN3hxmS2c" frameborder="0" allowfullscreen></iframe>
+                
 
                 <div class="one_half">
                     <label onclick="$('#idiomas').toggle();"> <strong>Idiomas</strong></label>
-                    <ul id="idiomas" style="display: none;">
+                    <ul id="idiomas" style="display: ;">
                     <?php if($idiomas != null):
                         foreach ($idiomas as $i ):?>
-
-                   <li><input type="checkbox" name="idioma[]" value="<?=$i->idiomaID?>" <?=($i->idiomaID == $this->session->userdata('ni'.$i->idiomaID)) ? 'checked' : '' ?>>
-                    <label><?=$i->idioma?></label></li>
+                    <li><label><?=$i->idioma?></label></li>
 
                   <?php 
                         endforeach;
@@ -311,23 +261,19 @@ margin: 0 auto;}
 
                 <div class="one_half last">
                   <label onclick="$('#categorias').toggle();"><strong>Áreas de conocimiento</strong></label>
-                  <ul id="categorias" style="display: none;">
-                    <?php if($conocimientos != null):
-                        foreach ($conocimientos as $c ):?>
+                  <ul id="categorias" style="display: ;">
+                    
+                    <li><label>Derecho y Leyes</label></li>
+                    <li><label>Administración</label></li>
+                    <li><label>Contabiidad</label></li>
 
-                   <li><input type="checkbox" name="conocimiento[]" value="<?=$c->categoriaID?>" <?=($c->categoriaID == $this->session->userdata('ic'.$c->categoriaID)) ? 'checked' : '' ?>>
-                    <label><?=$c->categoria?></label></li>
-
-                  <?php 
-                        endforeach;
-                  endif;?>
                     </ul>
                     
                    
                 </div>
                 
                 
-                <button type="submit" class="fbut">Actualizar</button>
+                
 
                     
             </form>
