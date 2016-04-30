@@ -165,7 +165,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
     <div class="prosearch">
     <div class="container">
+        <?php if($this->session->flashdata('error_login')):?>
+        <div class="alertymes1">
+        <div class="message-box-wrap">
+            <button class="close-but" id="colosebut1" onclick="$('.alertymes1').hide()">close</button> <i class="fa fa-cog fati11 imagede"></i>
+              <?=$this->session->flashdata('error_login');?>
+            </div>
+        
+        </div>
+        <?php endif;?>
 
+        <div class="clearfix margin_bottom4"></div>
         <h1>¡Encuentra a tu interprete!</h1>
 		<h2>Fácil y rápido</h2>
 
@@ -202,7 +212,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <option value="">Idioma</option>
                 <?php if($idiomas != null):
                         foreach ($idiomas as $c): ?>
-                <option value="<?$c->idiomaID?>"><?=$c->nombreIdioma?></option>
+                <option value="<?$c->idiomaID?>"><?=$c->idioma?></option>
                 <?php endforeach;
                     endif;
                 ?>

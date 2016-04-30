@@ -115,12 +115,12 @@ class Registro extends CI_Controller {
 				
 				break;
 			case 'usuario-activo' :
-				$data['mensaje'] = 'Este usuario ya ha sido activado anteriormente, puedes iniciar sesión desde la página principal.';
-				$data['errorActivo'] = true;
+				$this->session->set_flashdata('error_login', 'Este usuario ya ha sido activado anteriormente, puedes iniciar sesión desde la página principal.');
+				redirect('');
 				break;
 			case 'error' :
-				$data['mensaje'] = 'Tu registro a fallado, intentalo nuevamente.';
-				$data['errorActivo2'] = true;
+				$this->session->set_flashdata('error_login', 'Tu registro ha fallado, inténtalo nuevamente');
+				redirect('');
 				break;
 		}
 		
@@ -131,8 +131,8 @@ class Registro extends CI_Controller {
 	}     
 
 	function activar($activationCode) {
-		echo $activationCode;
-		var_dump($this->usuario_model->is_there_activation_code($activationCode));
+		//echo $activationCode;
+		//var_dump($this->usuario_model->is_there_activation_code($activationCode));
 
 		switch($this->usuario_model->activar($activationCode)) {
 			case 1 :
