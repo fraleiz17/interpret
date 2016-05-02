@@ -163,6 +163,16 @@
 <div class="feature_section2">
 <div class="container">
 
+<?php if($this->session->flashdata('error_login')):?>
+        <div class="errormes">
+        <div class="message-box-wrap">
+            <button class="close-but" id="colosebut1" onclick="$('.errormes').hide()">close</button> <i class="fa fa-exclamation-circle fa-lg"></i>
+              <?=$this->session->flashdata('error_login');?>
+            </div>
+        
+        </div>
+        <?php endif;?>
+
   <div class="logregform">
       <form method="post" action="<?=base_url()?>login/login/principal/principal">
         <div class="title">

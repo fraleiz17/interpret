@@ -62,8 +62,22 @@ class Login extends CI_Controller {
 						
 					
 				break;
+
+				case 0:
+					$this->session->set_flashdata('error_login', 'Activa tu usuario para entrar a tu cuenta.');
+					redirect('login');	
+					
+				break;
+
+				case 9:
+					$this->session->set_flashdata('error_login', 'Los datos ingresados son incorrectos, inténtalo nuevamente.');
+					redirect('login');	
+					
+				break;
+
 				default:
-					redirect('principal');
+					$this->session->set_flashdata('error_login', 'Tu registro ha fallado, inténtalo nuevamente');
+					redirect('login');
 
 				break;
 			}

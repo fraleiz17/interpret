@@ -116,11 +116,11 @@ class Registro extends CI_Controller {
 				break;
 			case 'usuario-activo' :
 				$this->session->set_flashdata('error_login', 'Este usuario ya ha sido activado anteriormente, puedes iniciar sesión desde la página principal.');
-				redirect('');
+				redirect('principal');
 				break;
 			case 'error' :
 				$this->session->set_flashdata('error_login', 'Tu registro ha fallado, inténtalo nuevamente');
-				redirect('');
+				redirect('principal');
 				break;
 		}
 		
