@@ -188,10 +188,10 @@
 
 </header><!-- end Navigation Menu -->
 
-
+<div class="clearfix"></div>
+<div class="slider"><br><br><br><br></div>
 <div class="clearfix"></div>
 
-<div class="slider"><br><br><br><br></div>
 <div class="feature_section81">
 <div class="container">
     <div class="clearfix margin_bottom2"></div>
@@ -226,7 +226,7 @@
 
 
         <div class="one_third_less">
-        <img src="http://placehold.it/357x250" class="rimg" alt="" id="fotop<?=$i->usuarioID?>" />
+        <img src="http://placehold.it/357x250" class="rimg" style="width:357px;height:250px;" alt="" id="fotop<?=$i->usuarioID?>" />
         <h3><?=$i->nombre.' '.$i->apellidoPaterno.' '.$i->apellidoMaterno?></h3><p class="less6" id="categorias_u<?=$i->usuarioID?>">Interes</p>
         <p><div id="example-default<?=$i->usuarioID?>" class="example-default<?=$i->usuarioID?>"></div><p>
          <?php if(!is_logged()) { ?>
