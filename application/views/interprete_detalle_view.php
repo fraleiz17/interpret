@@ -181,22 +181,23 @@ margin: 0 auto;}
             <form role="form" action="cuenta/updateMiPerfil" method="post" enctype="multipart/form-data">
 
           <div class="one_third last">
-          
-          <img class="efit" src="<?=base_url()?>docs/foto/2.jpg?>" width="146px" height="146px">
+          <?php if($foto != null):?>
+          <img class="efit" src="<?=base_url()?>docs/foto/<?=$foto->foto?>" width="146px" height="146px">
+           <?php endif; ?>
           
         </div>
                 <div class = "one_third">
                 <label>Nombre</em></label>
-                <strong>Jorge Villaseñor</strong>
+                <strong><?=$usuario->nombre.' '.$usuario->apellidoPaterno.' '.$usuario->apellidoMaterno?></strong>
                 </div>
                 
                 
                 
-                <strong>jv_interprete@mailinator.com</strong>
+                <strong><?=$usuario->correo?></strong>
                 
 
                 <div class="one_half radiobut">
-                    <label><strong> Hombre</strong></label>
+                    <label><strong><?=($usuario->sexo == 1) ? 'Masculino' : 'Femenino'?></strong></label>
                 </div>
                 
                 <p><strong>Calificación: </strong>
@@ -206,23 +207,23 @@ margin: 0 auto;}
 
                 <div class="one_half last">
                     <label>Tel&eacute;fono</label>
-                    <strong>(442) 352 6566</strong>
+                    <strong></strong>
                 </div>
                 
                 <div class="clearfix"></div>
                 <div class="margin_bottom2"></div>
                 
                 <label>Dirección</label>
-                <strong>Zaragoza #456 Colonia Centro, 76000</strong>
+                <strong><?=$u_dato->direccion?>, <?=$u_dato->cp?></strong>
 
                 <div class="one_half">
                     <label>Ciudad</label>
-                    <strong>Querétaro</strong>
+                    <strong><?=$u_dato->municipio?></strong>
                 </div>
 
                 <div class="one_half last">
                     <label>Estado</label>
-                    <strong>Querétaro</strong>
+                    <strong><?=$estado->nombreEstado?></strong>
                 </div>
 
                 
@@ -242,7 +243,9 @@ margin: 0 auto;}
 
                 <div class="margin_top3"></div><div class="clearfix"></div>
 
-                <iframe width="500" src="https://www.youtube.com/embed/e1gN3hxmS2c" frameborder="0" allowfullscreen></iframe>
+                 <?php if($video != null):?>
+                <iframe width="500" src="<?=$video->link?>" frameborder="0" allowfullscreen></iframe>
+                <?php  endif;?>
                 
 
                 <div class="one_half">
@@ -262,10 +265,13 @@ margin: 0 auto;}
                 <div class="one_half last">
                   <label onclick="$('#categorias').toggle();"><strong>Áreas de conocimiento</strong></label>
                   <ul id="categorias" style="display: ;">
-                    
-                    <li><label>Derecho y Leyes</label></li>
-                    <li><label>Administración</label></li>
-                    <li><label>Contabiidad</label></li>
+                    <?php if($conocimientos != null):
+                        foreach ($conocimientos as $i ):?>
+                    <li><label><?=$i->categoria?></label></li>
+
+                  <?php 
+                        endforeach;
+                  endif;?>
 
                     </ul>
                     

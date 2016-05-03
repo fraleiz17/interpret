@@ -33,9 +33,6 @@
 
 <!-- font awesome icons -->
 <link rel="stylesheet" href="css/font-awesome/css/font-awesome.min.css">
-<link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
-<link href="css/labs.css" media="screen" rel="stylesheet" type="text/css">
-
 
 <!-- simple line icons -->
 <link rel="stylesheet" type="text/css" href="css/simpleline-icons/simple-line-icons.css" media="screen" />
@@ -70,43 +67,6 @@
 <!-- tabs -->
 <link rel="stylesheet" type="text/css" href="js/tabs/assets/css/responsive-tabs5.css">
 
-<!-- ######### JS FILES ######### --> 
-<!-- get jQuery used for the theme --> 
-<script type="text/javascript" src="js/universal/jquery.js"></script>
-<script src="js/style-switcher/styleselector.js"></script>
-<script src="js/animations/js/animations.min.js" type="text/javascript"></script>
-<script src="js/mainmenu/bootstrap.min.js"></script> 
-<script src="js/mainmenu/customeUI.js"></script> 
-<script type="text/javascript" src="js/mainmenu/sticky.js"></script>
-<script type="text/javascript" src="js/mainmenu/modernizr.custom.75180.js"></script>
-<script src="js/masterslider/jquery.easing.min.js"></script>
-
-<script src="js/scrolltotop/totop.js" type="text/javascript"></script>
-
-<!-- cubeportfolio --> 
-<script type="text/javascript" src="js/cubeportfolio/js/jquery.cubeportfolio.min.js"></script> 
-<script type="text/javascript" src="js/cubeportfolio/main.js"></script>
-
-<!-- aninum --> 
-<script src="js/aninum/jquery.animateNumber.min.js"></script>
-
-<!-- tabs --> 
-<script type="text/javascript" src="js/tabs3/tabulous.js"></script>
-<script type="text/javascript" src="js/tabs3/js.js"></script>
-
-<!-- carouselowl --> 
-<script src="js/carouselowl/owl.carousel.js"></script> 
-<script type="text/javascript" src="js/universal/custom.js"></script>
-<script type="text/javascript" src="js/carouselowl/custom.js"></script> 
-<script src="js/rating/jquery.raty-fa.js"></script>
-
-<!-- search box --> 
-<script src="js/searchbox/overlay.js"></script>
-<script>
-  $(document).ready(function() {
-    $('.overlay').overlay();
-  });
-</script>
 
 </head>
 
@@ -132,7 +92,7 @@
             </div>
           </div>
 
-          <div id="navbar-collapse-1" class="navbar-collapse collapse pull-right">
+           <div id="navbar-collapse-1" class="navbar-collapse collapse pull-right">
 
             <nav>
 
@@ -197,90 +157,52 @@
     <div class="clearfix margin_bottom2"></div>
     <h2>Conócelos:</h2>
     <div class="clearfix margin_bottom2"></div>
-
-    <?php if($interpretes != null): 
-          foreach ($interpretes as $i): ?>
-         <script type="text/javascript">
-
-        $.ajax({
-                url: '<?php echo base_url()?>interpretes/getFoto/<?=$i->usuarioID?>',
-                dataType: 'html',
-                type: 'post',
-                success: function (data) {
-                $('#fotop<?=$i->usuarioID?>').attr("src",'<?=base_url()?>docs/foto/'+data);
-                }
-        });
-
-        $.ajax({
-                url: '<?php echo base_url()?>interpretes/getCategorias/<?=$i->usuarioID?>',
-                dataType: 'html',
-                type: 'post',
-                success: function (data) {
-                $('#categorias_u<?=$i->usuarioID?>').html(data+'...');
-                }
-        });                          
-         
-        $('.example-default<?=$i->usuarioID?>').raty();
- 
-        </script> 
-
-
-        <div class="one_third_less">
-        <img src="http://placehold.it/357x250" class="rimg" alt="" id="fotop<?=$i->usuarioID?>" />
-        <h3><?=$i->nombre.' '.$i->apellidoPaterno.' '.$i->apellidoMaterno?></h3><p class="less6" id="categorias_u<?=$i->usuarioID?>">Interes</p>
-        <p><div id="example-default<?=$i->usuarioID?>" class="example-default<?=$i->usuarioID?>"></div><p>
-         <?php if(!is_logged()) { ?>
-                <a href="<?=base_url()?>login" class="">Inicia sesión para ver detalle</a>
-         <?php } else { ?>
-        <a href="<?=base_url()?>nosotros/detalle/<?=$i->usuarioID?>" class="button eleven" style="color: #71c135; font-weight:bolder;">Ver perfil</a>
-         <?php } ?>
-        </div>
-    <?php 
-        endforeach;
-    endif; ?>
     
     <div class="one_third_less">
-        <img src="http://placehold.it/357x250" class="rimg" alt=""/>
-        <h3>Nombre</h3><p class="less6">Interes</p>
-        <p><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><p>
-        <a href="#" class="button eleven">Ver perfil</a>
+        <img src="<?=base_url()?>docs/foto/1.jpg" class="rimg" alt="" width="357px" heigth="250px"/>
+        <h3>Andrea Martínez</h3>
+        <p class="less6">Educación, Creavtividad</p>
+        <img class="efit" src="<?=base_url()?>docs/foto/5s.png?>" width="80px" ><br>
+        <a href="<?=base_url()?>nosotros/detalle" class="button eleven" style="color: #71c135; font-weight:bolder;">Ver perfil</a>
     </div>
     
     <div class="one_third_less">
-        <img src="http://placehold.it/357x250" class="rimg" alt=""/>
-        <h3>Nombre</h3><p class="less6">Interes</p>
-        <p><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><p>
-        <a href="#" class="button eleven">Ver perfil</a>
+        <img src="<?=base_url()?>docs/foto/2.jpg" class="rimg" alt="" width="357px" heigth="250px"/>
+        <h3>Jorge Villaseñor</h3>
+        <p class="less6">Derecho y Leyes</p>
+        <img class="efit" src="<?=base_url()?>docs/foto/5s.png?>" width="80px" ><br>
+        <a href="<?=base_url()?>nosotros/detalle" class="button eleven" style="color: #71c135; font-weight:bolder;">Ver perfil</a>
     </div>
     
     <div class="one_third_less last">
-        <img src="http://placehold.it/357x250" class="rimg" alt=""/>
-        <h3>Nombre</h3><p class="less6">Interes</p>
+        <img src="<?=base_url()?>docs/foto/5.jpg" class="rimg" alt="" width="357px" heigth="250px"/>
+        <h3>Hugo Cuellar</h3>
+        <p class="less6">Recursos Humanos</p>
         <p><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><p>
-        <a href="#" class="button eleven">Ver perfil</a>
+        <a href="<?=base_url()?>nosotros/detalle" class="button eleven" style="color: #71c135; font-weight:bolder;">Ver perfil</a>
     </div>
     
   <div class="clearfix margin_bottom3"></div>
     
     <div class="one_third_less">
-        <img src="http://placehold.it/357x250" class="rimg" alt=""/>
-        <h3>Nombre</h3><p class="less6">Interes</p>
+        <img src="<?=base_url()?>docs/foto/3.jpg" class="rimg" alt=""/>
+        <h3>Pablo Yañez</h3><p class="less6">Sector Salud</p>
         <p><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><p>
-        <a href="#" class="button eleven">Ver perfil</a>
+        <a href="<?=base_url()?>nosotros/detalle" class="button eleven" style="color: #71c135; font-weight:bolder;">Ver perfil</a>
     </div>
     
     <div class="one_third_less">
-        <img src="http://placehold.it/357x250" class="rimg" alt=""/>
-        <h3>Nombre</h3><p class="less6">Interes</p>
-        <p><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><p>
-        <a href="#" class="button eleven">Ver perfil</a>
+        <img src="<?=base_url()?>docs/foto/4.jpg" class="rimg" alt=""/>
+        <h3>Daniel Monroy</h3><p class="less6">Contabilidad</p>
+        <img class="efit" src="<?=base_url()?>docs/foto/5s.png?>" width="80px" ><br>
+        <a href="<?=base_url()?>nosotros/detalle" class="button eleven" style="color: #71c135; font-weight:bolder;">Ver perfil</a>
     </div>
     
     <div class="one_third_less last">
-      <img src="http://placehold.it/357x250" class="rimg" alt=""/>
-        <h3>Nombre</h3><p class="less6">Interes</p>
+      <img src="<?=base_url()?>docs/foto/6.jpg" class="rimg" alt=""/>
+        <h3>Silvia Montalvo</h3><p class="less6">Administración</p>
         <p><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><p>
-        <a href="#" class="button eleven">Ver perfil</a>
+        <a href="<?=base_url()?>nosotros/detalle" class="button eleven" style="color: #71c135; font-weight:bolder;">Ver perfil</a>
     </div>
     
 </div>
@@ -320,6 +242,42 @@
 </div>
 
 
+<!-- ######### JS FILES ######### --> 
+<!-- get jQuery used for the theme --> 
+<script type="text/javascript" src="js/universal/jquery.js"></script>
+<script src="js/style-switcher/styleselector.js"></script>
+<script src="js/animations/js/animations.min.js" type="text/javascript"></script>
+<script src="js/mainmenu/bootstrap.min.js"></script> 
+<script src="js/mainmenu/customeUI.js"></script> 
+<script type="text/javascript" src="js/mainmenu/sticky.js"></script>
+<script type="text/javascript" src="js/mainmenu/modernizr.custom.75180.js"></script>
+<script src="js/masterslider/jquery.easing.min.js"></script>
+
+<script src="js/scrolltotop/totop.js" type="text/javascript"></script>
+
+<!-- cubeportfolio --> 
+<script type="text/javascript" src="js/cubeportfolio/js/jquery.cubeportfolio.min.js"></script> 
+<script type="text/javascript" src="js/cubeportfolio/main.js"></script>
+
+<!-- aninum --> 
+<script src="js/aninum/jquery.animateNumber.min.js"></script>
+
+<!-- tabs --> 
+<script type="text/javascript" src="js/tabs3/tabulous.js"></script>
+<script type="text/javascript" src="js/tabs3/js.js"></script>
+
+<!-- carouselowl --> 
+<script src="js/carouselowl/owl.carousel.js"></script> 
+<script type="text/javascript" src="js/universal/custom.js"></script>
+<script type="text/javascript" src="js/carouselowl/custom.js"></script> 
+
+<!-- search box --> 
+<script src="js/searchbox/overlay.js"></script>
+<script>
+  $(document).ready(function() {
+    $('.overlay').overlay();
+  });
+</script>
 
 
 

@@ -87,6 +87,42 @@ class Usuario_model extends CI_Model
         
     }
 
+    /*
+        
+    **/
+    function getIdiomasUsuario($usuarioID){
+        $query = $this->db->query('SELECT idioma
+from idiomas
+where idiomaID in (select idiomaID from idiomasusuario where usuarioID =  '.$usuarioID.' )');
+        if ($query->num_rows() >= 1) {
+            return $query->result();
+        } else {
+            return null;
+        }
+   }
+
+   function getExpUsuario($usuarioID){
+        $query = $this->db->query('SELECT categoria
+from categorias
+where categoriaID in (SELECT categoriaID from categoriasusuario where usuarioID = '.$usuarioID.' )');
+        if ($query->num_rows() >= 1) {
+            return $query->result();
+        } else {
+            return null;
+        }
+   }
+
+    function estado($idEstado)
+    {
+        $this->db->where('estadoID', $idEstado);
+        $query = $this->db->get($this->tablas['estado']);
+        if ($query->num_rows() == 1) {
+            return $query->row();
+        } else {
+            return null;
+        }
+    }
+
     function getResult($itemID, $ID, $tabla){
         $this->db->where($itemID,$ID);
         $query = $this->db->get($tabla);

@@ -343,6 +343,41 @@ where pagado = 0)");
          }
     }
 
+    function getBusqueda($estado,$categoria,$idioma,$sexo){
+      $sql = 'SELECT DISTINCT usuario.* FROM usuario
+left join usuariodato on usuariodato.usuarioID = usuario.usuarioID
+left join categoriasusuario on categoriasusuario.usuarioID = usuario.usuarioID
+left join idiomasusuario on idiomasusuario.usuarioID = usuario.usuarioID
+where usuario.tipoUsuario = 2 and status = 1 ';
+/**
+
+
+*/
+      if($sexo  != '' && $sexo != null){
+        $sql .= ' and usuario.sexo = '.$sexo;
+      }
+
+      if($estado  != '' && $estado != null){
+        $sql .= ' and usuariodato.estadoID = '.$estado;
+      }
+
+      if($categoria  != '' && $categoria != null){
+        $sql .= ' and categoriasusuario.categoriaID = '.$categoria;
+      }
+
+      if($idioma  != '' && $idioma != null){
+        $sql .= ' and idiomasusuario.idiomaID = '.$idioma;
+      }
+
+      
+      $query = $this->db->query($sql);
+      if ($query->num_rows() >= 1){
+            return $query->result();
+         } else {
+            return null;
+         }
+    }
+
 
 
 }

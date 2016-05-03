@@ -186,46 +186,45 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <div class="tabs-content5 fullw">
 
             <div id="example-5-tab-1" class="tabs-panel5">
-            <form method="get" action="index.html">
+            <form method="post" action="<?=base_url()?>busqueda">
 
-                <select>
+                <select name="estado">
                 <option value="">Estado</option>
                 <?php if($estados != null):
                         foreach ($estados as $c): ?>
-                <option value="<?$c->estadoID?>"><?=$c->nombreEstado?></option>
+                <option value="<?=$c->estadoID?>"><?=$c->nombreEstado?></option>
                 <?php endforeach;
                     endif;
                 ?>
                 </select>
 
-            <select>
+            <select name="categoria">
                 <option value="">Interés</option>
                 <?php if($categorias != null):
                         foreach ($categorias as $c): ?>
-                <option value="<?$c->categoriaID?>"><?=$c->categoria?></option>
+                <option value="<?=$c->categoriaID?>"><?=$c->categoria?></option>
                 <?php endforeach;
                     endif;
                 ?>
             </select>
 
-            <select>
+            <select name="idioma">
                 <option value="">Idioma</option>
                 <?php if($idiomas != null):
                         foreach ($idiomas as $c): ?>
-                <option value="<?$c->idiomaID?>"><?=$c->idioma?></option>
+                <option value="<?=$c->idiomaID?>"><?=$c->idioma?></option>
                 <?php endforeach;
                     endif;
                 ?>
             </select>
 
-            <select>
+            <select name="sexo">
                 <option value="">Género</option>
-                <option value="">Femenino</option>
-                <option value="">Masculino</option>
+                <option value="0">Femenino</option>
+                <option value="1">Masculino</option>
             </select>
 
-            <a href="<?=base_url()?>interpretes" class="but1"><i class="fa fa-search"></i> Buscar </a>
-
+            <button type="submit" class="but1"><i class="fa fa-search"></i> Buscar</button>
             <div class="clearfix margin_bottom2"></div>
 
             <!-- <a href="#" class="but3"><i class="fa fa-caret-right"></i>Busqueda Avanzada</a>-->

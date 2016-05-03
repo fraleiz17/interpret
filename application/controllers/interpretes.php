@@ -39,6 +39,17 @@ class Interpretes extends CI_Controller {
 
 	}
 
+	function getBusqueda(){
+		var_dump($_POST);
+		$estado =$this->input->post('estado'); 
+		$categoria =$this->input->post('categoria'); 
+		$idioma =$this->input->post('idioma'); 
+		$sexo =$this->input->post('sexo'); 
+		$usuarios = $this->defaultdata_model->getBusqueda($estado,$categoria,$idioma,$sexo);
+		$data['interpretes'] = $usuarios;
+        $this->load->view('interpretes_view', $data);
+	}
+
 	
 
 	
