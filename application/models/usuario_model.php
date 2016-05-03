@@ -179,7 +179,7 @@ where categoriaID in (SELECT categoriaID from categoriasusuario where usuarioID 
         //si el usuario ya esta activo y se intenta activar nuevamente, cambia el confirmation code nuevamente
         $activacion = $this->is_there_activation_code($activationCode);
         if ($activacion != null) {
-            $row = $activacion->row();
+            $row = $activacion;
 
             $this->db->where('usuarioID', $row->usuarioID);
             $this->db->update($this->tablas['usuario'], array('status' => 1, 'codigoConfirmacion' => $this->getNewConfirmationCode($row->correo)));;

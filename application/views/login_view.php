@@ -194,7 +194,7 @@
                 <input type="password" name="contrasena">
                 
                 
-                    <label><a href="#"><strong>Olvid&eacute; mi contrase&ntilde;a</strong></a></label>
+                    <label><a href="<?=base_url()?>recuperar"><strong>Olvid&eacute; mi contrase&ntilde;a</strong></a></label>
                 
                 
                 <button type="submit" class="fbut">Entrar</button>

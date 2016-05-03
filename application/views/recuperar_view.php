@@ -163,21 +163,21 @@
 <div class="feature_section2">
 <div class="container">
 
-<?php if($this->session->flashdata('error_login')):?>
+<?php if($this->session->flashdata('cambioContrasena')):?>
         <div class="errormes">
         <div class="message-box-wrap">
             <button class="close-but" id="colosebut1" onclick="$('.errormes').hide()">close</button> <i class="fa fa-exclamation-circle fa-lg"></i>
-              <?=$this->session->flashdata('error_login');?>
+              <?=$this->session->flashdata('cambioContrasena');?>
             </div>
         
         </div>
         <?php endif;?>
 
   <div class="logregform">
-      <form method="post" action="<?=base_url()?>login/login/principal/principal">
+      <form method="post" action="<?=base_url()?>recuperar/sendLink">
         <div class="title">
         
-      <h3>Inicia Sesión</h3>
+      <h3>Recuperar Contrase&ntilde;a</h3>
             
       <p>¿Aún no eres miembro? &nbsp;<a href="<?=base_url()?>registro">Registrate.</a></p>
             
@@ -188,14 +188,8 @@
             <form role="form">
             
                 <label><i class="fa fa-user"></i> Email</label>
-                <input type="text" name="correo">
-                
-                <label><i class="fa fa-lock"></i> Contraseña</label>
-                <input type="password" name="contrasena">
-                
-                
-                    <label><a href="#"><strong>Olvid&eacute; mi contrase&ntilde;a</strong></a></label>
-                
+                <input type="email" name="correo" id="correo" required>
+                <label id="error_e" style="display: none; color: red;">* El correo no está registrado</label>
                 
                 <button type="submit" class="fbut">Entrar</button>
 
@@ -273,6 +267,29 @@
 
 <script src="js/tabs/assets/js/responsive-tabs.min.js" type="text/javascript"></script>
 <script type="text/javascript" src="js/universal/custom.js"></script>
+<script type="text/javascript">
+$("#correo").blur(
+    function(){
+        var form = $('form');
+        $.ajax({
+                url: '<?php echo base_url('registro/isthereemail')?>',
+                data: form.serialize(),
+                dataType: 'json',
+                type: 'post',
+                success: function (data) {
+                    if(data.existe == false){
+                        $("#error_e").show();
+                        return false; 
+                    } else{
+                        $("#error_e").hide();
+                        return true;
+                    }
+                }
 
+        });                          
+    }
+);        
+ 
+</script>
 </body>
 </html>

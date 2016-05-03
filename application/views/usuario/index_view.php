@@ -164,6 +164,13 @@ margin: 0 auto;}
         <button class="close-but" id="colosebut2" onclick="$('.successmes').hide();">close</button><?php echo $this->session->flashdata('mensaje'); ?></div>
         </div><!-- end box -->
         <?php endif;?>
+
+        <?php if($this->session->flashdata('cambioContrasena')):?>
+        <div id="div2" class="successmes">
+            <div class="message-box-wrap">
+        <button class="close-but" id="colosebut2" onclick="$('.successmes').hide();">close</button><?php echo $this->session->flashdata('cambioContrasena'); ?></div>
+        </div><!-- end box -->
+        <?php endif;?>
         
         <div class="logregform two">
     
