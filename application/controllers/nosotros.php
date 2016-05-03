@@ -20,8 +20,17 @@ class Nosotros extends CI_Controller {
 	}
 
 	function detalle() {
-		$data = array();	
-		$data['idiomas']        = $this->defaultdata_model->getTable('idiomas');	
+		$data = array();
+		$usuarioID = 29;	
+		$data['idiomas'] = $this->defaultdata_model->getTable('idiomas');	
+		$data['usuario'] = $this->usuario_model->getRow('usuarioID', $usuarioID,'usuario');
+        $data['u_dato']  = $this->usuario_model->getRow('usuarioID', $usuarioID,'usuariodato');
+        $data['foto']    = $this->usuario_model->getRow('usuarioID', $usuarioID,'fotoperfil'); 
+        $data['video']   = $this->usuario_model->getRow('usuarioID', $usuarioID,'videos');
+       
+        $data['conocimientos'] = $this->usuario_model->getResult('usuarioID', $usuarioID,'categoriasusuario');
+		$data['iduimas_u']     = $this->usuario_model->getResult('usuarioID', $usuarioID,'idiomasusuario');
+		var_dump($data);
         $this->load->view('interprete_detalle_view', $data);
 
 	}
