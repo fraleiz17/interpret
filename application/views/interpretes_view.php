@@ -218,9 +218,21 @@
                 success: function (data) {
                 $('#categorias_u<?=$i->usuarioID?>').html(data+'...');
                 }
-        });                          
+        });      
+
+        $(function() {
+        $('.rate<?=$i->usuarioID?>').raty({
+            readOnly   : true,
+            size     : 6,
+            score    : <?=$i->rating?>,
+            /*starHalf : 'star-half-big.png',
+            starOff  : 'star-off-big.png',
+            starOn   : 'star-on-big.png',*/
+            
+        });
+  });                    
          
-        $('.example-default<?=$i->usuarioID?>').raty();
+        //$('div #example-default<?=$i->usuarioID?>').raty();
  
         </script> 
 
@@ -228,7 +240,7 @@
         <div class="one_third_less">
         <img src="http://placehold.it/357x250" class="rimg" style="width:357px;height:250px;" alt="" id="fotop<?=$i->usuarioID?>" />
         <h3><?=$i->nombre.' '.$i->apellidoPaterno.' '.$i->apellidoMaterno?></h3><p class="less6" id="categorias_u<?=$i->usuarioID?>">Interes</p>
-        <p><div id="example-default<?=$i->usuarioID?>" class="example-default<?=$i->usuarioID?>"></div><p>
+        <p><div id="rate<?=$i->usuarioID?>" class="rate<?=$i->usuarioID?>" data-score="<?=$i->rating?>"></div><p>
          <?php if(!is_logged()) { ?>
                 <a href="<?=base_url()?>login" class="">Inicia sesión para ver detalle</a>
          <?php } else { ?>

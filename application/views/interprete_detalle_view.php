@@ -36,7 +36,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 <!-- font awesome icons -->
 <link rel="stylesheet" href="<?=base_url()?>css/font-awesome/<?=base_url()?>css/font-awesome.min.css">
-
+<link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 <!-- simple line icons -->
 <link rel="stylesheet" type="text/css" href="<?=base_url()?>css/simpleline-icons/simple-line-icons.css" media="screen" />
 
@@ -69,6 +69,45 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 <!-- tabs -->
 <link rel="stylesheet" type="text/css" href="<?=base_url()?>js/tabs/assets/<?=base_url()?>css/responsive-tabs5.css">
+<!-- ######### JS FILES ######### --> 
+<!-- get jQuery used for the theme --> 
+<script type="text/javascript" src="<?=base_url()?>js/universal/jquery.js"></script>
+<script src="<?=base_url()?>js/style-switcher/styleselector.js"></script>
+<script src="<?=base_url()?>js/animations/<?=base_url()?>js/animations.min.js" type="text/javascript"></script>
+<script src="<?=base_url()?>js/mainmenu/bootstrap.min.js"></script> 
+<script src="<?=base_url()?>js/mainmenu/customeUI.js"></script> 
+<script type="text/javascript" src="<?=base_url()?>js/mainmenu/sticky.js"></script>
+<script type="text/javascript" src="<?=base_url()?>js/mainmenu/modernizr.custom.75180.js"></script>
+<script src="<?=base_url()?>js/masterslider/jquery.easing.min.js"></script>
+<script src="<?=base_url()?>js/rating/jquery.raty-fa.js"></script>
+<!-- search box --> 
+<script src="<?=base_url()?>js/searchbox/overlay.js"></script>
+<script>
+  $(document).ready(function() {
+  $('.overlay').overlay();
+  });
+</script>
+
+<script src="<?=base_url()?>js/tabs/assets/<?=base_url()?>js/responsive-tabs.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="<?=base_url()?>js/universal/custom.js"></script>
+<script type="text/javascript">
+$(".contrasena_").blur(
+    function(){
+        console.log('miau');
+        var contrasena = $("#contrasena").val();
+        var contrasena2 = $("#contrasenaConfirm").val();      
+
+        if(contrasena != "" && contrasena == contrasena2) {
+          $("#error_c").fadeOut();
+          return true;
+        } else {
+          $("#error_c").fadeIn();
+          return false;
+        }                          
+    }
+); 
+
+</script>
 
 
 </head>
@@ -151,13 +190,30 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 margin: 0 auto;}
 </style>
 </header><!-- end Navigation Menu -->
-
+<script type="text/javascript">
+        $(function() {
+        $('.rate').raty({
+            readOnly   : false,
+            size     : 3,
+            click: function() {
+              var puntuacion = $("input[name='score']").val();
+              $('#save_rate').fadeIn();
+            }
+            
+        });
+  });                     
+        </script> 
 
 <div class="clearfix"></div>
 <div class="slider"><br><br><br><br></div>
 <div class="feature_section2">
 <div class="container">
-        
+        <div id="save_rate" class="successmes" style="display: none">
+            <div class="message-box-wrap">
+        <button class="close-but" id="colosebut2" onclick="$('#save_rate').hide();">close</button><?php echo 'Su puntuación ha sido guardada, recuerde que se verá reflejada en el puntaje del intérprete'; ?></div>
+        </div><!-- end box --> 
+
+
         <?php if($this->session->flashdata('mensaje')):?>
         <div id="div2" class="successmes">
             <div class="message-box-wrap">
@@ -190,7 +246,7 @@ margin: 0 auto;}
                 <label>Nombre</em></label>
                 <strong><?=$usuario->nombre.' '.$usuario->apellidoPaterno.' '.$usuario->apellidoMaterno?></strong>
                 </div>
-                
+                <input type="hidden" name="interpreteID" value="<?=$usuario->usuarioID?>">
                 
                 
                 <strong><?=$usuario->correo?></strong>
@@ -201,7 +257,7 @@ margin: 0 auto;}
                 </div>
                 
                 <p><strong>Calificación: </strong>
-                <img class="efit" src="<?=base_url()?>docs/foto/5s.png?>" width="80px" >
+                <div id="rate" class="rate"></div>
                 </p>
 
 
@@ -339,44 +395,6 @@ margin: 0 auto;}
 </div>
 
 
-<!-- ######### JS FILES ######### --> 
-<!-- get jQuery used for the theme --> 
-<script type="text/javascript" src="<?=base_url()?>js/universal/jquery.js"></script>
-<script src="<?=base_url()?>js/style-switcher/styleselector.js"></script>
-<script src="<?=base_url()?>js/animations/<?=base_url()?>js/animations.min.js" type="text/javascript"></script>
-<script src="<?=base_url()?>js/mainmenu/bootstrap.min.js"></script> 
-<script src="<?=base_url()?>js/mainmenu/customeUI.js"></script> 
-<script type="text/javascript" src="<?=base_url()?>js/mainmenu/sticky.js"></script>
-<script type="text/javascript" src="<?=base_url()?>js/mainmenu/modernizr.custom.75180.js"></script>
-<script src="<?=base_url()?>js/masterslider/jquery.easing.min.js"></script>
 
-<!-- search box --> 
-<script src="<?=base_url()?>js/searchbox/overlay.js"></script>
-<script>
-  $(document).ready(function() {
-  $('.overlay').overlay();
-  });
-</script>
-
-<script src="<?=base_url()?>js/tabs/assets/<?=base_url()?>js/responsive-tabs.min.js" type="text/javascript"></script>
-<script type="text/javascript" src="<?=base_url()?>js/universal/custom.js"></script>
-<script type="text/javascript">
-$(".contrasena_").blur(
-    function(){
-        console.log('miau');
-        var contrasena = $("#contrasena").val();
-        var contrasena2 = $("#contrasenaConfirm").val();      
-
-        if(contrasena != "" && contrasena == contrasena2) {
-          $("#error_c").fadeOut();
-          return true;
-        } else {
-          $("#error_c").fadeIn();
-          return false;
-        }                          
-    }
-); 
-
-</script>
 </body>
 </html>
