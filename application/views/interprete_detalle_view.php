@@ -155,7 +155,7 @@ $(".contrasena_").blur(
                          $a = 'usuario/cuenta';
                      } 
                      if ($this->session->userdata('tipoUsuario')==2) {
-                      $a = 'interprete/principal';
+                      $a = 'interprete/cuenta';
                   }
 
                   if ($this->session->userdata('tipoUsuario')==0) {

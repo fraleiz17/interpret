@@ -115,7 +115,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                    $a = 'usuario/cuenta';
                   } 
                   if ($this->session->userdata('tipoUsuario')==2) {
-                      $a = 'interprete/principal';
+                      $a = 'interprete/cuenta';
                   }
 
                   if ($this->session->userdata('tipoUsuario')==0) {
