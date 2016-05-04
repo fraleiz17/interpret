@@ -9,21 +9,21 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <html lang="es" xml:lang="es" class="no-js">
 <!--<![endif]-->
 <head>
-<title>Intérpretes</title>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="keywords" content="" />
-<meta name="description" content="" />
+    <title>Intérpretes</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
 
-<!-- Favicon -->
-<link rel="shortcut icon" href="images/favicon.png">
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="images/favicon.png">
 
-<!-- this styles only adds some repairs on idevices  -->
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- this styles only adds some repairs on idevices  -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<!-- Google fonts - witch you want to use - (rest you can just remove) -->
-<link href='http://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
-<link href='http://fonts.googleapis.com/css?family=Raleway:400,100,200,300,500,600,700,800,900' rel='stylesheet' type='text/css'>
+    <!-- Google fonts - witch you want to use - (rest you can just remove) -->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Raleway:400,100,200,300,500,600,700,800,900' rel='stylesheet' type='text/css'>
 
 <!--[if lt IE 9]>
 <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -33,6 +33,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 <link rel="stylesheet" href="<?=base_url()?>css/reset-realestate.css" type="text/css" />
 <link rel="stylesheet" href="<?=base_url()?>css/style-realestate.css" type="text/css" />
+<link rel="stylesheet" href="<?=base_url()?>css/bootstrap.css" type="text/css" />
 
 <!-- font awesome icons -->
 <link rel="stylesheet" href="<?=base_url()?>css/font-awesome/<?=base_url()?>css/font-awesome.min.css">
@@ -83,11 +84,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <!-- search box --> 
 <script src="<?=base_url()?>js/searchbox/overlay.js"></script>
 <script>
-  $(document).ready(function() {
+$(document).ready(function() {
   $('.overlay').overlay();
 
 
-  });
+});
 </script>
 
 <script src="<?=base_url()?>js/tabs/assets/<?=base_url()?>js/responsive-tabs.min.js" type="text/javascript"></script>
@@ -102,12 +103,12 @@ $(".contrasena_").blur(
         if(contrasena != "" && contrasena == contrasena2) {
           $("#error_c").fadeOut();
           return true;
-        } else {
+      } else {
           $("#error_c").fadeIn();
           return false;
-        }                          
-    }
-); 
+      }                          
+  }
+  ); 
 
 </script>
 
@@ -115,45 +116,45 @@ $(".contrasena_").blur(
 </head>
 
 <body>
-<div class="site_wrapper">
-<header class="header">
+    <div class="site_wrapper">
+        <header class="header">
 
-  <div class="container_full_menu">
+          <div class="container_full_menu">
 
-    <!-- Logo -->
-    <div class="logo"><a href="<?=base_url()?>" id="logo"></a></div>
+            <!-- Logo -->
+            <div class="logo"><a href="<?=base_url()?>" id="logo"></a></div>
 
-  <!-- Navigation Menu -->
-    <div class="menu_main">
+            <!-- Navigation Menu -->
+            <div class="menu_main">
 
-      <div class="navbar yamm navbar-default">
+              <div class="navbar yamm navbar-default">
 
-          <div class="navbar-header">
-            <div class="navbar-toggle .navbar-collapse .pull-right " data-toggle="collapse" data-target="#navbar-collapse-1" > <span></span>
-              <button type="button" > <i class="fa fa-bars"></i></button>
-            </div>
-          </div>
+                  <div class="navbar-header">
+                    <div class="navbar-toggle .navbar-collapse .pull-right " data-toggle="collapse" data-target="#navbar-collapse-1" > <span></span>
+                      <button type="button" > <i class="fa fa-bars"></i></button>
+                  </div>
+              </div>
 
-           <div id="navbar-collapse-1" class="navbar-collapse collapse pull-right">
+              <div id="navbar-collapse-1" class="navbar-collapse collapse pull-right">
 
-            <nav>
+                <nav>
 
-              <ul class="nav navbar-nav">
+                  <ul class="nav navbar-nav">
 
-                <li class="dropdown yamm-fw"> <a href="<?=base_url()?>" class="dropdown-toggle active">Inicio</a>
-                </li>
+                    <li class="dropdown yamm-fw"> <a href="<?=base_url()?>" class="dropdown-toggle active">Inicio</a>
+                    </li>
 
-                <li class="dropdown"><a href="<?=base_url()?>interpretes" class="dropdown-toggle">Nuestros Interpretes</a>
-                </li>
+                    <li class="dropdown"><a href="<?=base_url()?>interpretes" class="dropdown-toggle">Nuestros Interpretes</a>
+                    </li>
 
-                <?php if(!is_logged()) { ?>
-                <li class="dropdown"><a href="<?=base_url()?>login" class="dropdown-toggle">Inicia sesión</a>
-                </li>
-                <?php } else { 
-                  if($this->session->userdata('tipoUsuario')==1){
-                   $a = 'usuario/cuenta';
-                  } 
-                  if ($this->session->userdata('tipoUsuario')==2) {
+                    <?php if(!is_logged()) { ?>
+                    <li class="dropdown"><a href="<?=base_url()?>login" class="dropdown-toggle">Inicia sesión</a>
+                    </li>
+                    <?php } else { 
+                      if($this->session->userdata('tipoUsuario')==1){
+                         $a = 'usuario/cuenta';
+                     } 
+                     if ($this->session->userdata('tipoUsuario')==2) {
                       $a = 'interprete/principal';
                   }
 
@@ -161,212 +162,224 @@ $(".contrasena_").blur(
                       $a = 'admin';
                   }
                   ?>
-                <li class="dropdown"><a href="<?=base_url().$a?>" class="dropdown-toggle">Mi Cuenta</a>
-                </li>
-                <?php } ?>
+                  <li class="dropdown"><a href="<?=base_url().$a?>" class="dropdown-toggle">Mi Cuenta</a>
+                  </li>
+                  <?php } ?>
 
-                <li class="dropdown yamm-fw"> <a href="<?=base_url()?>nosotros" class="dropdown-toggle">Sobre nosotros</a>
-                </li>
+                  <li class="dropdown yamm-fw"> <a href="<?=base_url()?>nosotros" class="dropdown-toggle">Sobre nosotros</a>
+                  </li>
 
-                <li class="dropdown"> <a href="<?=base_url()?>contacto" class="dropdown-toggle">Contacto</a>
-                </li>
+                  <li class="dropdown"> <a href="<?=base_url()?>contacto" class="dropdown-toggle">Contacto</a>
+                  </li>
 
-                <?php if(is_logged()) { ?>
-                <li class="dropdown"><a href="<?=base_url()?>login/logout/principal" class="dropdown-toggle">Cerrar sesión</a>
-                </li>
-                <?php } else { ?>
-                <li class="dropdown"><a href="<?=base_url()?>registro" class="dropdown-toggle">Regístrate</a>
-                <?php  } ?>
-              </ul>
+                  <?php if(is_logged()) { ?>
+                  <li class="dropdown"><a href="<?=base_url()?>login/logout/principal" class="dropdown-toggle">Cerrar sesión</a>
+                  </li>
+                  <?php } else { ?>
+                  <li class="dropdown"><a href="<?=base_url()?>registro" class="dropdown-toggle">Regístrate</a>
+                    <?php  } ?>
+                </ul>
 
             </nav>
 
-          </div>
+        </div>
 
-      </div>
     </div>
+</div>
 
-  </div>
+</div>
 <style>
 .efit{border-radius: 100%;
-margin: 0 auto;}
-</style>
+    margin: 0 auto;}
+    </style>
 </header><!-- end Navigation Menu -->
 <script type="text/javascript">
 
 
-        $(function() {
+$(function() {
 
-          var valor = $("input[name='rateU']").val();
+  var valor = $("input[name='rateU']").val();
 
-        $('.rate').raty({
-            readOnly   : false,
-            size     : 3,
-            score: valor,
-            click: function() {
-              var puntuacion = $("input[name='score']").val();
-              var interpreteID = $("input[name='interpreteID']").val();
-              $.ajax({
-                url: '<?php echo base_url()?>interpretes/guardarRating/'+puntuacion+'/'+interpreteID,
-                dataType: 'json',
-                type: 'post',
-                success: function (data) {
-                     $('#save_rate').fadeIn();
-                }
-                });
-             
-            }
-            
-        });
-  });                     
-        </script> 
+  $('.rate').raty({
+    readOnly   : false,
+    size     : 3,
+    score: valor,
+    click: function() {
+      var puntuacion = $("input[name='score']").val();
+      var interpreteID = $("input[name='interpreteID']").val();
+      $.ajax({
+        url: '<?php echo base_url()?>interpretes/guardarRating/'+puntuacion+'/'+interpreteID,
+        dataType: 'json',
+        type: 'post',
+        success: function (data) {
+           $('#save_rate').fadeIn();
+       }
+   });
+
+  }
+
+});
+});                     
+</script> 
 
 <div class="clearfix"></div>
 <div class="slider"><br><br><br><br></div>
 <div class="feature_section2">
-<div class="container">
+    <div class="container">
         <div id="save_rate" class="successmes" style="display: none">
             <div class="message-box-wrap">
-        <button class="close-but" id="colosebut2" onclick="$('#save_rate').hide();">close</button><?php echo 'Su puntuación ha sido guardada, recuerde que se verá reflejada en el puntaje del intérprete'; ?></div>
-        </div><!-- end box --> 
+                <button class="close-but" id="colosebut2" onclick="$('#save_rate').hide();">close</button><?php echo 'Su puntuación ha sido guardada, recuerde que se verá reflejada en el puntaje del intérprete'; ?></div>
+            </div><!-- end box --> 
 
 
-        <?php if($this->session->flashdata('mensaje')):?>
-        <div id="div2" class="successmes">
-            <div class="message-box-wrap">
-        <button class="close-but" id="colosebut2" onclick="$('.successmes').hide();">close</button><?php echo $this->session->flashdata('mensaje'); ?></div>
-        </div><!-- end box -->
-        <?php endif;?>
-        
-        <div class="logregform two">
-    
-        
-        <div class="title">
-        
-      <h3>Perfil</h3>
-                      
-        </div>
-        <div class="margin_top3"></div><div class="clearfix"></div>
-        
-        
-        <div class="feildcont">
+            <?php if($this->session->flashdata('mensaje')):?>
+            <div id="div2" class="successmes">
+                <div class="message-box-wrap">
+                    <button class="close-but" id="colosebut2" onclick="$('.successmes').hide();">close</button><?php echo $this->session->flashdata('mensaje'); ?></div>
+                </div><!-- end box -->
+            <?php endif;?>
 
-            <form role="form" action="cuenta/updateMiPerfil" method="post" enctype="multipart/form-data">
+            <div class="logregform two">
 
-          <div class="one_third last">
-          <?php if($foto != null):?>
-          <img class="efit" src="<?=base_url()?>docs/foto/<?=$foto->foto?>" width="146px" height="146px">
-           <?php endif; ?>
-          
-        </div>
-                <div class = "one_third">
-                <label>Nombre</em></label>
-                <strong><?=$usuario->nombre.' '.$usuario->apellidoPaterno.' '.$usuario->apellidoMaterno?></strong>
-                </div>
+
+                <div class="title">
+
+                  <h3>Perfil</h3>
+
+              </div>
+              <div class="margin_top3"></div><div class="clearfix"></div>
+
+
+              <div class="feildcont">
+
+                <form role="form" action="cuenta/updateMiPerfil" method="post" enctype="multipart/form-data">
+
+                  <div class="one_third">
+                      <?php if($foto != null):?>
+                      <img class="efit" src="<?=base_url()?>docs/foto/<?=$foto->foto?>" width="146px" height="146px">
+                  <?php endif; ?>
+
+                    </div>
+              <div class = "two_third last">
+                <div class="two_third">
+                <label>Nombre: &nbsp;</label><strong><?=$usuario->nombre.' '.$usuario->apellidoPaterno.' '.$usuario->apellidoMaterno?></strong>
+
                 <input type="hidden" name="interpreteID" value="<?=$usuario->usuarioID?>">
                 <input type="hidden" name="rateU" class="rateU" value="<?=$rating?>">
-                
-                
-                <strong><?=$usuario->correo?></strong>
-                
+            </div>
+            <div class="clearfix"></div>
+            <div class="margin_bottom2"></div>
 
-                <div class="one_half radiobut">
-                    <label><strong><?=($usuario->sexo == 1) ? 'Masculino' : 'Femenino'?></strong></label>
+                <div class="one_half">
+                    Sexo: &nbsp;<label><strong><?=($usuario->sexo == 1) ? 'Masculino' : 'Femenino'?></strong></label>
                 </div>
-                
-                <p><strong>Calificación: </strong>
-                <div id="rate" class="rate"></div>
-                </p>
-
-
                 <div class="one_half last">
-                    <label>Tel&eacute;fono</label>
-                    <strong></strong>
+                    <p><strong>Calificación: </strong>
+                        <div id="rate" class="rate"></div>
+                    </p>
                 </div>
-                
-                <div class="clearfix"></div>
-                <div class="margin_bottom2"></div>
-                
+            </div>
+            <div class="clearfix"></div>
+            <div class="margin_bottom2"></div>
+
+            <div class="one_half">
+                <label>Correo: &nbsp;</label>
+                <strong><?=$usuario->correo?></strong>
+            </div>
+
+            <div class="one_half last">
+                <label>Tel&eacute;fono:&nbsp;</label>
+                <strong><?=$usuario->telefono?> </strong>
+            </div>
+
+            <div class="clearfix"></div>
+            <div class="margin_bottom2"></div>
+
+              <!--  <div class="one_half">
                 <label>Dirección</label>
                 <strong><?=$u_dato->direccion?>, <?=$u_dato->cp?></strong>
+            </div>-->
+            <div class="one_third">
+                <label>Ciudad</label>
+                <strong><?=$u_dato->municipio?></strong>
+            </div>
 
-                <div class="one_half">
-                    <label>Ciudad</label>
-                    <strong><?=$u_dato->municipio?></strong>
-                </div>
+            <div class="one_third">
+                <label>Estado</label>
+                <strong><?=$estado->nombreEstado?></strong>
+            </div>
 
-                <div class="one_half last">
-                    <label>Estado</label>
-                    <strong><?=$estado->nombreEstado?></strong>
-                </div>
+            <div class="one_third last">
+              <label>País</label>
+              <strong>México</strong>
+          </div>
+          <div class="clearfix"></div>
+          <div class="margin_bottom2"></div>
+          <div class="stcode_title4">
 
-                
-                <div class="one_half last">
-                  <label>País</label>
-                  <strong>México</strong>
-                </div>
-                <div class="clearfix"></div>
-                <div class="margin_bottom2"></div>
-                <div class="stcode_title4">
-            
-        <h3><span class="line"></span><span class="text"><strong>Información Profesional</strong></span></h3>
+            <h3><span class="line"></span><span class="text"><strong>Información Profesional</strong></span></h3>
         </div>
 
-                <label>Video</label>
-                
-
-                <div class="margin_top3"></div><div class="clearfix"></div>
-
-                 <?php if($video != null):?>
-                <iframe width="500" src="<?=$video->link?>" frameborder="0" allowfullscreen></iframe>
-                <?php  endif;?>
-                
-
-                <div class="one_half">
-                    <label onclick="$('#idiomas').toggle();"> <strong>Idiomas</strong></label>
-                    <ul id="idiomas" style="display: ;">
-                    <?php if($idiomas != null):
-                        foreach ($idiomas as $i ):?>
-                    <li><label><?=$i->idioma?></label></li>
-
-                  <?php 
-                        endforeach;
-                  endif;?>
-                    </ul>
-                </div>
+        <label>Video</label>
 
 
-                <div class="one_half last">
-                  <label onclick="$('#categorias').toggle();"><strong>Áreas de conocimiento</strong></label>
-                  <ul id="categorias" style="display: ;">
-                    <?php if($conocimientos != null):
-                        foreach ($conocimientos as $i ):?>
-                    <li><label><?=$i->categoria?></label></li>
-
-                  <?php 
-                        endforeach;
-                  endif;?>
-
-                    </ul>
-                    
-                   
-                </div>
-                
-                
-                
-
-                    
-            </form>
+        <div class="margin_top3"></div><div class="clearfix"></div>
         
-        </div>
+        <div class="embed-responsive embed-responsive-16by9">
+  
 
-  </div>
+
+        <?php if($video != null):?>
+        <iframe class="embed-responsive-item" src="<?=$video->link?>" frameborder="0" allowfullscreen></iframe>
+        <?php  endif;?>
+        </div>    
+        
+
+    <div class="one_half">
+        <label onclick="$('#idiomas').toggle();"> <strong>Idiomas</strong></label>
+        <ul id="idiomas" style="display: ;">
+            <?php if($idiomas != null):
+            foreach ($idiomas as $i ):?>
+            <li><label><?=$i->idioma?></label></li>
+
+            <?php 
+            endforeach;
+            endif;?>
+        </ul>
+    </div>
+
+
+    <div class="one_half last">
+      <label onclick="$('#categorias').toggle();"><strong>Áreas de conocimiento</strong></label>
+      <ul id="categorias" style="display: ;">
+        <?php if($conocimientos != null):
+        foreach ($conocimientos as $i ):?>
+        <li><label><?=$i->categoria?></label></li>
+
+        <?php 
+        endforeach;
+        endif;?>
+
+    </ul>
+
+
+</div>
+
+
+
+
+
+</form>
+
+</div>
+
+</div>
 
 
 
 </div><!-- end content area -->
 
-  </div>
+</div>
 
 
 </div>
@@ -381,9 +394,9 @@ margin: 0 auto;}
 <div class="clearfix"></div>
 
 <div class="copyright_info">
-<div class="container">
-  <div class="clearfix"></div>
-    <div class="one_half">
+    <div class="container">
+      <div class="clearfix"></div>
+      <div class="one_half">
 
         Copyright © 2016 TuInterprete.com. All rights reserved.  <a href="#">Terminos de uso</a> | <a href="#">Politica de privacidad</a>
 
@@ -409,7 +422,7 @@ margin: 0 auto;}
 </div><!-- end copyright info -->
 
 <a href="#" class="scrollup">Scroll</a><!-- end scroll to top of the page-->
-    
+
 </div>
 
 
