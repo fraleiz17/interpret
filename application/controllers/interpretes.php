@@ -15,6 +15,7 @@ class Interpretes extends CI_Controller {
 	function index() {
 		$data = array();
 		$data['interpretes'] = $this->defaultdata_model->getResult2('status', 1,'tipoUsuario',2, 'usuario');
+		$this->updateRating();
         $this->load->view('interpretes_view', $data);
 
 	}
@@ -61,9 +62,9 @@ class Interpretes extends CI_Controller {
 
         if($existe_rating != null){
            $this->usuario_model->updateItem2('usuarioID', $this->session->userdata('usuarioID'),'interpreteID',$interpreteID, $dataRating, 'ratinginterprete'); 
-       } else {
+        } else {
            $this->usuario_model->insertItem('ratinginterprete', $dataRating);
-       }
+        }
 
 
        $data['registro'] = true;
@@ -80,6 +81,19 @@ class Interpretes extends CI_Controller {
 		}
 		
 
+	}
+
+	function updateRating(){
+		$interpretes = $this->defaultdata_model->getResult2('status', 1,'tipoUsuario',2, 'usuario');
+
+		foreach ($interpretes as $i) {
+			$promedio = $this->defaultdata_model->getNUsuarios($i->usuarioID);
+			$data = array(
+				'rating' => $promedio
+			 );
+			$this->usuario_model->updateItem('usuarioID', $i->usuarioID, $data, 'usuario');
+
+		}
 	}
 
 	

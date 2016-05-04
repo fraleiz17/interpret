@@ -36,6 +36,8 @@ class Nosotros extends CI_Controller {
 
 		if(is_logged()) {
 			$valor = $this->getRating($usuarioID);
+		} else{
+			$valor = 0;
 		}
 
 		$data['rating']     = $valor;

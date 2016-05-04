@@ -378,6 +378,20 @@ where usuario.tipoUsuario = 2 and status = 1 ';
          }
     }
 
+    function getNUsuarios($interpreteID){
+      $query = $this->db->query("SELECT SUM(valor)/COUNT(usuarioID) as promedio
+from ratinginterprete
+where interpreteID = ".$interpreteID);
+      if ($query->num_rows() >= 1){
+            $n = $query->row();
+            return $n->promedio;
+         } else {
+            return 0;
+         }
+    }
+    /*
+      
+    */
 
 
 }
