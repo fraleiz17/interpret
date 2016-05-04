@@ -33,9 +33,6 @@
 
 <!-- font awesome icons -->
 <link rel="stylesheet" href="css/font-awesome/css/font-awesome.min.css">
-<link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
-<link href="css/labs.css" media="screen" rel="stylesheet" type="text/css">
-
 
 <!-- simple line icons -->
 <link rel="stylesheet" type="text/css" href="css/simpleline-icons/simple-line-icons.css" media="screen" />
