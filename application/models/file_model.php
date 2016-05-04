@@ -148,7 +148,7 @@ class File_model extends CI_Model {
 		$config['image_library'] = 'gd2';
 		$config['source_image'] = 'docs/'.$target.'/' . $imgName;
 		$config['create_thumb'] = TRUE;
-		$config['maintain_ratio'] = TRUE;
+		$config['maintain_ratio'] = false;
 		$config['width'] = $width;
 		$config['height'] = $height;
 

@@ -196,6 +196,8 @@
     <div class="clearfix margin_bottom2"></div>
 
     <?php if($interpretes != null): 
+          $c = 1;
+          $clase = '';
           foreach ($interpretes as $i): ?>
          <script type="text/javascript">
 
@@ -233,9 +235,11 @@
  
         </script> 
 
-
-        <div class="one_third_less">
-        <img src="http://placehold.it/357x250" class="rimg" alt="" id="fotop<?=$i->usuarioID?>" />
+        <?php if($c == 3):
+              $clase = 'last';
+              endif; ?>
+        <div class="one_third_less <?=$clase?>">
+        <img src="http://placehold.it/357x250" class="rimg" alt="" id="fotop<?=$i->usuarioID?>"/>
         <h3><?=$i->nombre.' '.$i->apellidoPaterno.' '.$i->apellidoMaterno?></h3>
         <!--<p class="less6" id="categorias_u<?=$i->usuarioID?>">Interes</p>-->
         <p><div id="rate<?=$i->usuarioID?>" class="rate<?=$i->usuarioID?>" data-score="<?=$i->rating?>"></div><p>
@@ -246,14 +250,37 @@
          <?php } ?>
         </div>
     <?php 
+    if($c == 3):
+      echo '<div class="clearfix margin_bottom3"></div>';
+      $c = 0;
+    endif;
+        $c++;
         endforeach;
+    else:
+      echo '<div class="alertymes1">
+        <div class="message-box-wrap">
+            <i class="fa fa-cog fati11 imagede"></i>No hay resultados
+            </div>
+        
+        </div>
+        <div class="clearfix margin_bottom3"></div>';
+
     endif; ?>
     
    
     
+<<<<<<< HEAD
+   <!-- <div class="one_third_less last">
+        <img src="http://placehold.it/357x250" class="rimg" alt=""/>
+        <h3>Nombre</h3><p class="less6">Interes</p>
+        <p><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><p>
+        <a href="#" class="button eleven">Ver perfil</a>
+    </div>-->
+=======
     
+>>>>>>> cf67209674879cb711cb5709c02903a568acd046
     
-  <div class="clearfix margin_bottom3"></div>
+  
     
     
 </div>
