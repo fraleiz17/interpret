@@ -235,8 +235,9 @@
 
 
         <div class="one_third_less">
-        <img src="http://placehold.it/357x250" class="rimg" style="width:357px;height:250px;" alt="" id="fotop<?=$i->usuarioID?>" />
-        <h3><?=$i->nombre.' '.$i->apellidoPaterno.' '.$i->apellidoMaterno?></h3><p class="less6" id="categorias_u<?=$i->usuarioID?>">Interes</p>
+        <img src="http://placehold.it/357x250" class="rimg" alt="" id="fotop<?=$i->usuarioID?>" />
+        <h3><?=$i->nombre.' '.$i->apellidoPaterno.' '.$i->apellidoMaterno?></h3>
+        <!--<p class="less6" id="categorias_u<?=$i->usuarioID?>">Interes</p>-->
         <p><div id="rate<?=$i->usuarioID?>" class="rate<?=$i->usuarioID?>" data-score="<?=$i->rating?>"></div><p>
          <?php if(!is_logged()) { ?>
                 <a href="<?=base_url()?>login" class="">Inicia sesión para ver detalle</a>
@@ -248,19 +249,7 @@
         endforeach;
     endif; ?>
     
-    <div class="one_third_less">
-        <img src="http://placehold.it/357x250" class="rimg" alt=""/>
-        <h3>Nombre</h3><p class="less6">Interes</p>
-        <p><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><p>
-        <a href="#" class="button eleven">Ver perfil</a>
-    </div>
-    
-    <div class="one_third_less">
-        <img src="http://placehold.it/357x250" class="rimg" alt=""/>
-        <h3>Nombre</h3><p class="less6">Interes</p>
-        <p><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><p>
-        <a href="#" class="button eleven">Ver perfil</a>
-    </div>
+   
     
     <div class="one_third_less last">
         <img src="http://placehold.it/357x250" class="rimg" alt=""/>
@@ -271,26 +260,6 @@
     
   <div class="clearfix margin_bottom3"></div>
     
-    <div class="one_third_less">
-        <img src="http://placehold.it/357x250" class="rimg" alt=""/>
-        <h3>Nombre</h3><p class="less6">Interes</p>
-        <p><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><p>
-        <a href="#" class="button eleven">Ver perfil</a>
-    </div>
-    
-    <div class="one_third_less">
-        <img src="http://placehold.it/357x250" class="rimg" alt=""/>
-        <h3>Nombre</h3><p class="less6">Interes</p>
-        <p><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><p>
-        <a href="#" class="button eleven">Ver perfil</a>
-    </div>
-    
-    <div class="one_third_less last">
-      <img src="http://placehold.it/357x250" class="rimg" alt=""/>
-        <h3>Nombre</h3><p class="less6">Interes</p>
-        <p><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><p>
-        <a href="#" class="button eleven">Ver perfil</a>
-    </div>
     
 </div>
 </div><!-- end feature_section 81 -->
