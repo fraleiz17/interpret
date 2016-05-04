@@ -6,6 +6,7 @@ class Interpretes extends CI_Controller {
 		parent::__construct();
 		$this->load->helper(array('form', 'url'));
 		$this->load->model('defaultdata_model');
+		$this->load->model('usuario_model');
 		$this->load->model('file_model');
 		$this -> load -> library('pagination');
 
@@ -40,7 +41,6 @@ class Interpretes extends CI_Controller {
 	}
 
 	function getBusqueda(){
-		var_dump($_POST);
 		$estado =$this->input->post('estado'); 
 		$categoria =$this->input->post('categoria'); 
 		$idioma =$this->input->post('idioma'); 
@@ -50,7 +50,37 @@ class Interpretes extends CI_Controller {
         $this->load->view('interpretes_view', $data);
 	}
 
-	
+	function guardarRating($rating,$interpreteID){//getRow2($itemID, $ID,$itemID2,$ID2, $tabla)
+		$existe_rating = $this->usuario_model->getRow2('usuarioID', $this->session->userdata('usuarioID'),'interpreteID',$interpreteID,'ratinginterprete');
+
+		$dataRating = array(
+			'usuarioID'    => $this->session->userdata('usuarioID'),
+			'interpreteID' => $interpreteID,
+			'valor'    => $rating
+		);
+
+        if($existe_rating != null){
+           $this->usuario_model->updateItem2('usuarioID', $this->session->userdata('usuarioID'),'interpreteID',$interpreteID, $dataRating, 'ratinginterprete'); 
+       } else {
+           $this->usuario_model->insertItem('ratinginterprete', $dataRating);
+       }
+
+
+       $data['registro'] = true;
+       echo json_encode($data);
+
+	}
+
+	function getRating($interpreteID){
+		$rating = $this->usuario_model->getRow2('usuarioID', $this->session->userdata('usuarioID'),'interpreteID',$interpreteID,'ratinginterprete');
+		if ($rating != null) {
+			echo $rating->valor;
+		} else{
+			echo 0;
+		}
+		
+
+	}
 
 	
 }

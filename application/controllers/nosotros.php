@@ -33,7 +33,24 @@ class Nosotros extends CI_Controller {
        
         $data['conocimientos'] = $this->usuario_model->getExpUsuario($usuarioID);
 		$data['idiomas']     = $this->usuario_model->getIdiomasUsuario($usuarioID);
+
+		if(is_logged()) {
+			$valor = $this->getRating($usuarioID);
+		}
+
+		$data['rating']     = $valor;
         $this->load->view('interprete_detalle_view', $data);
+
+	}
+
+	function getRating($interpreteID){
+		$rating = $this->usuario_model->getRow2('usuarioID', $this->session->userdata('usuarioID'),'interpreteID',$interpreteID,'ratinginterprete');
+		if ($rating != null) {
+			return $rating->valor;
+		} else{
+			return 0;
+		}
+		
 
 	}
 

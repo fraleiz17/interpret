@@ -37,6 +37,8 @@ class Admin_model extends CI_Model
 
     
 
+    
+
     function deleteItem($idTabla, $id, $tabla)
     {
         $this->db->where($idTabla, $id);

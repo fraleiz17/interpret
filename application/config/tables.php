@@ -50,4 +50,5 @@ $config['tablas']['usuario'] = 'usuario';
  $config['tablas']['mensajesadmin'] = 'mensajesadmin';
  $config['tablas']['grupoenvio'] = 'grupoenvio';
  $config['tablas']['destinoenvio'] = 'destinoenvio';
+ $config['tablas']['ratinginterprete'] = 'ratinginterprete';
 ?>

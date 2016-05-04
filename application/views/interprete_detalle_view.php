@@ -85,6 +85,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <script>
   $(document).ready(function() {
   $('.overlay').overlay();
+
+
   });
 </script>
 
@@ -191,13 +193,28 @@ margin: 0 auto;}
 </style>
 </header><!-- end Navigation Menu -->
 <script type="text/javascript">
+
+
         $(function() {
+
+          var valor = $("input[name='rateU']").val();
+
         $('.rate').raty({
             readOnly   : false,
             size     : 3,
+            score: valor,
             click: function() {
               var puntuacion = $("input[name='score']").val();
-              $('#save_rate').fadeIn();
+              var interpreteID = $("input[name='interpreteID']").val();
+              $.ajax({
+                url: '<?php echo base_url()?>interpretes/guardarRating/'+puntuacion+'/'+interpreteID,
+                dataType: 'json',
+                type: 'post',
+                success: function (data) {
+                     $('#save_rate').fadeIn();
+                }
+                });
+             
             }
             
         });
@@ -247,6 +264,7 @@ margin: 0 auto;}
                 <strong><?=$usuario->nombre.' '.$usuario->apellidoPaterno.' '.$usuario->apellidoMaterno?></strong>
                 </div>
                 <input type="hidden" name="interpreteID" value="<?=$usuario->usuarioID?>">
+                <input type="hidden" name="rateU" class="rateU" value="<?=$rating?>">
                 
                 
                 <strong><?=$usuario->correo?></strong>
