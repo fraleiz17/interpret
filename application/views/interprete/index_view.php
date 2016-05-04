@@ -321,8 +321,8 @@ margin: 0 auto;}
                     <?php if($conocimientos != null):
                         foreach ($conocimientos as $c ):?>
 
-                   <li><input type="checkbox" name="conocimiento[]" value="<?=$c->categoriaID?>" <?=($c->categoriaID == $this->session->userdata('ic'.$c->categoriaID)) ? 'checked' : '' ?>>
-                    <label><?=$c->categoria?></label></li>
+                   <li><label><?=$c->categoria?></label><input type="checkbox" name="conocimiento[]" value="<?=$c->categoriaID?>" <?=($c->categoriaID == $this->session->userdata('ic'.$c->categoriaID)) ? 'checked' : '' ?>>
+                    </li>
 
                   <?php 
                         endforeach;

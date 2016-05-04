@@ -251,12 +251,7 @@
     
    
     
-    <div class="one_third_less last">
-        <img src="http://placehold.it/357x250" class="rimg" alt=""/>
-        <h3>Nombre</h3><p class="less6">Interes</p>
-        <p><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><p>
-        <a href="#" class="button eleven">Ver perfil</a>
-    </div>
+    
     
   <div class="clearfix margin_bottom3"></div>
     
