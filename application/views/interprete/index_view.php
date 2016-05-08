@@ -33,6 +33,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 <link rel="stylesheet" href="<?=base_url()?>css/reset-realestate.css" type="text/css" />
 <link rel="stylesheet" href="<?=base_url()?>css/style-realestate.css" type="text/css" />
+<link rel="stylesheet" href="<?=base_url()?>css/bootstrap.css" type="text/css" />
 
 <!-- font awesome icons -->
 <link rel="stylesheet" href="<?=base_url()?>css/font-awesome/<?=base_url()?>css/font-awesome.min.css">
@@ -99,7 +100,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
               <ul class="nav navbar-nav">
 
-                <li class="dropdown yamm-fw"> <a href="<?=base_url()?>" class="dropdown-toggle active">Inicio</a>
+                <li class="dropdown yamm-fw"> <a href="<?=base_url()?>" class="dropdown-toggle ">Inicio</a>
                 </li>
 
                 <li class="dropdown"><a href="<?=base_url()?>interpretes" class="dropdown-toggle">Nuestros Interpretes</a>
@@ -120,7 +121,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                       $a = 'admin';
                   }
                   ?>
-                <li class="dropdown"><a href="<?=base_url().$a?>" class="dropdown-toggle">Mi Cuenta</a>
+                <li class="dropdown"><a href="<?=base_url().$a?>" class="dropdown-toggle active">Mi Cuenta</a>
                 </li>
                 <?php } ?>
 
@@ -294,40 +295,47 @@ margin: 0 auto;}
                 </div><!-- end box -->
 
                 <div class="margin_top3"></div><div class="clearfix"></div>
+                
+                <div class="embed-responsive embed-responsive-16by9">
+                  <?php if($video != null):?>
+                  <iframe class="embed-responsive-item" src="<?=$video->link?>" frameborder="0" allowfullscreen></iframe>
+              <?php  endif;?>
+            </div> 
 
-                <?php if($video != null): ?>
-                <iframe width="500" src="<?=$video->link;?>" frameborder="0" allowfullscreen></iframe>
-                <?php endif;?>
-
-                <div class="one_half">
-                    <label onclick="$('#idiomas').toggle();"> <strong>Idiomas</strong></label>
-                    <ul id="idiomas" style="display: none;">
+               
+                <br>
+                <div class="one_full">
+                   <label onclick="$('#idiomas').toggle();"> <strong>Idiomas</strong></label>
+                    <div id="idiomas" class="one_full" style="display: none;">
                     <?php if($idiomas != null):
                         foreach ($idiomas as $i ):?>
 
-                   <li><input type="checkbox" name="idioma[]" value="<?=$i->idiomaID?>" <?=($i->idiomaID == $this->session->userdata('ni'.$i->idiomaID)) ? 'checked' : '' ?>>
-                    <label><?=$i->idioma?></label></li>
+                   
+                    <div class="one_half"><label><?=$i->idioma?></label></div>
+                      <div class="one_half last"><input type="checkbox" name="idioma[]" value="<?=$i->idiomaID?>" <?=($i->idiomaID == $this->session->userdata('ni'.$i->idiomaID)) ? 'checked' : '' ?>></div>
 
                   <?php 
                         endforeach;
                   endif;?>
-                    </ul>
+                    </div>
                 </div>
 
 
-                <div class="one_half last">
+                <br>
+                <div class="one_full">
                   <label onclick="$('#categorias').toggle();"><strong>Áreas de conocimiento</strong></label>
-                  <ul id="categorias" style="display: none;">
+                        <div class="" id="categorias" style="display: none;">
                     <?php if($conocimientos != null):
                         foreach ($conocimientos as $c ):?>
 
-                   <li><label><?=$c->categoria?></label><input type="checkbox" name="conocimiento[]" value="<?=$c->categoriaID?>" <?=($c->categoriaID == $this->session->userdata('ic'.$c->categoriaID)) ? 'checked' : '' ?>>
-                    </li>
+                   <div class="one_half"><label><?=$c->categoria?></label></div>
+                    <div class="one_half last"><input type="checkbox" name="conocimiento[]" value="<?=$c->categoriaID?>" <?=($c->categoriaID == $this->session->userdata('ic'.$c->categoriaID)) ? 'checked' : '' ?>></div>
+                    
 
                   <?php 
                         endforeach;
                   endif;?>
-                    </ul>
+                    </div>
                     
                    
                 </div>

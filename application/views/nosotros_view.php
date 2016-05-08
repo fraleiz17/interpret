@@ -98,7 +98,7 @@
 
               <ul class="nav navbar-nav">
 
-                <li class="dropdown yamm-fw"> <a href="<?=base_url()?>" class="dropdown-toggle active">Inicio</a>
+                <li class="dropdown yamm-fw"> <a href="<?=base_url()?>" class="dropdown-toggle ">Inicio</a>
                 </li>
 
                 <li class="dropdown"><a href="<?=base_url()?>interpretes" class="dropdown-toggle">Nuestros Interpretes</a>
@@ -123,7 +123,7 @@
                 </li>
                 <?php } ?>
 
-                <li class="dropdown yamm-fw"> <a href="<?=base_url()?>nosotros" class="dropdown-toggle">Sobre nosotros</a>
+                <li class="dropdown yamm-fw"> <a href="<?=base_url()?>nosotros" class="dropdown-toggle active">Sobre nosotros</a>
                 </li>
 
                 <li class="dropdown"> <a href="<?=base_url()?>contacto" class="dropdown-toggle">Contacto</a>

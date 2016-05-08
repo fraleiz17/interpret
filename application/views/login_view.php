@@ -71,13 +71,6 @@
 </head>
 
 <style>
-
-
-.copyright_info {
-  position: absolute ;
-  bottom: 0;
-    /* Set the fixed height of the footer here */
-}
 .feature_section2
 {padding:80px 0px 285px 0px;}
 </style>
@@ -107,14 +100,14 @@
 
               <ul class="nav navbar-nav">
 
-                <li class="dropdown yamm-fw"> <a href="<?=base_url()?>" class="dropdown-toggle active">Inicio</a>
+                <li class="dropdown yamm-fw"> <a href="<?=base_url()?>" class="dropdown-toggle ">Inicio</a>
                 </li>
 
                 <li class="dropdown"><a href="<?=base_url()?>interpretes" class="dropdown-toggle">Nuestros Interpretes</a>
                 </li>
 
                 <?php if(!is_logged()) { ?>
-                <li class="dropdown"><a href="<?=base_url()?>login" class="dropdown-toggle">Inicia sesión</a>
+                <li class="dropdown"><a href="<?=base_url()?>login" class="dropdown-toggle active">Inicia sesión</a>
                 </li>
                 <?php } else { 
                   if($this->session->userdata('tipoUsuario')==1){
@@ -209,6 +202,7 @@
 
 
 </div>
+<br><br>
 </div><!-- end content area -->
 
 

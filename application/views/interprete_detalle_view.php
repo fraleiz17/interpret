@@ -141,10 +141,10 @@ $(".contrasena_").blur(
 
                   <ul class="nav navbar-nav">
 
-                    <li class="dropdown yamm-fw"> <a href="<?=base_url()?>" class="dropdown-toggle active">Inicio</a>
+                    <li class="dropdown yamm-fw"> <a href="<?=base_url()?>" class="dropdown-toggle">Inicio</a>
                     </li>
 
-                    <li class="dropdown"><a href="<?=base_url()?>interpretes" class="dropdown-toggle">Nuestros Interpretes</a>
+                    <li class="dropdown"><a href="<?=base_url()?>interpretes" class="dropdown-toggle active">Nuestros Interpretes</a>
                     </li>
 
                     <?php if(!is_logged()) { ?>
@@ -326,9 +326,6 @@ $(function() {
         <div class="margin_top3"></div><div class="clearfix"></div>
         
         <div class="embed-responsive embed-responsive-16by9">
-  
-
-
         <?php if($video != null):?>
         <iframe class="embed-responsive-item" src="<?=$video->link?>" frameborder="0" allowfullscreen></iframe>
         <?php  endif;?>

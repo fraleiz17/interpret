@@ -99,7 +99,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
               <ul class="nav navbar-nav">
 
-                <li class="dropdown yamm-fw"> <a href="<?=base_url()?>" class="dropdown-toggle active">Inicio</a>
+                <li class="dropdown yamm-fw"> <a href="<?=base_url()?>" class="dropdown-toggle ">Inicio</a>
                 </li>
 
                 <li class="dropdown"><a href="<?=base_url()?>interpretes" class="dropdown-toggle">Nuestros Interpretes</a>
@@ -120,7 +120,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                       $a = 'admin';
                   }
                   ?>
-                <li class="dropdown"><a href="<?=base_url().$a?>" class="dropdown-toggle">Mi Cuenta</a>
+                <li class="dropdown"><a href="<?=base_url().$a?>" class="dropdown-toggle active">Mi Cuenta</a>
                 </li>
                 <?php } ?>
 
@@ -271,11 +271,10 @@ margin: 0 auto;}
                         </select>
                 </div>
                 
-                
-                
-                
+                <div class="one_full">
+                  <label></label>
                 <button type="submit" class="fbut">Actualizar</button>
-
+                </div>
                     
             </form>
         

@@ -108,7 +108,6 @@
 </head>
 
 <body>
-
 <div class="site_wrapper">
 
 <header class="header">
@@ -135,10 +134,10 @@
 
               <ul class="nav navbar-nav">
 
-                <li class="dropdown yamm-fw"> <a href="<?=base_url()?>" class="dropdown-toggle active">Inicio</a>
+                <li class="dropdown yamm-fw"> <a href="<?=base_url()?>" class="dropdown-toggle">Inicio</a>
                 </li>
 
-                <li class="dropdown"><a href="<?=base_url()?>interpretes" class="dropdown-toggle">Nuestros Interpretes</a>
+                <li class="dropdown"><a href="<?=base_url()?>interpretes" class="dropdown-toggle active">Nuestros Interpretes</a>
                 </li>
 
                 <?php if(!is_logged()) { ?>
@@ -266,23 +265,12 @@
         <div class="clearfix margin_bottom3"></div>';
 
     endif; ?>
-    
-   
-    
-<<<<<<< HEAD
    <!-- <div class="one_third_less last">
         <img src="http://placehold.it/357x250" class="rimg" alt=""/>
         <h3>Nombre</h3><p class="less6">Interes</p>
         <p><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><p>
         <a href="#" class="button eleven">Ver perfil</a>
     </div>-->
-=======
-    
->>>>>>> cf67209674879cb711cb5709c02903a568acd046
-    
-  
-    
-    
 </div>
 </div><!-- end feature_section 81 -->
 
