@@ -58,6 +58,7 @@ class Registro extends CI_Controller {
   				'apellidoPaterno' => $this->input->post('apellido'),
   				'apellidoMaterno' => $this->input->post('apellidoMaterno'),
   				'correo' => $this->input->post('correo'),
+  				'sexo' => $this->input->post('sexo'),
   				'contrasena' => $this->input->post('contrasena'),
   				'tipoUsuario' => $this->input->post('tipoUsuario'), // '0 - Administrador\n1 - usuario normal\n2 - interprete',
   				'status'  => 0, //'0 - no activado\n1 - activo',

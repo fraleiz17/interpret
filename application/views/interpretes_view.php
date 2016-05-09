@@ -234,7 +234,9 @@
  
         </script> 
 
-        <?php if($c == 3):
+        <?php
+         $clase = '';
+         if($c == 3):
               $clase = 'last';
               endif; ?>
         <div class="one_third_less <?=$clase?>">
