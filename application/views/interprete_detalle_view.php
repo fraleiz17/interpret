@@ -332,8 +332,20 @@ $(function() {
         </div>    
         
 
-    <div class="one_half">
+    <div class="one_third">
         <label onclick="$('#idiomas').toggle();"> <strong>Idiomas</strong></label>
+        <ul id="idiomas" style="display: ;">
+            <?php if($idiomas != null):
+            foreach ($idiomas as $i ):?>
+            <li><label><?=$i->idioma?></label></li>
+
+            <?php 
+            endforeach;
+            endif;?>
+        </ul>
+    </div>
+    <div class="one_third">
+        <label onclick="$('#idiomas').toggle();"> <strong>Lenguaje de se&ntilde;as</strong></label>
         <ul id="idiomas" style="display: ;">
             <?php if($idiomas != null):
             foreach ($idiomas as $i ):?>
@@ -346,7 +358,7 @@ $(function() {
     </div>
 
 
-    <div class="one_half last">
+    <div class="one_third last">
       <label onclick="$('#categorias').toggle();"><strong>Áreas de conocimiento</strong></label>
       <ul id="categorias" style="display: ;">
         <?php if($conocimientos != null):

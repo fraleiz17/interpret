@@ -224,22 +224,35 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <option value="1">Masculino</option>
             </select>
 
-            <button type="submit" class="but1"><i class="fa fa-search"></i> Buscar</button>
+            <select name="LS">
+                <option value="">LS</option>
+                <option value="0">LSM</option>
+                <option value="1">LSA</option>
+                <option value="2">LSC</option>
+                <option value="3">LSI</option>
+            </select>
             <div class="clearfix margin_bottom2"></div>
+            </div><!-- end tab 1 -->
+             </div>
 
+             <div class="tabs-content5 fullw">
+
+            <div id="example-5-tab-1" class="tabs-panel5">
+            <div class="one_third last">
+                <button type="submit" class="one_full but1">
+                    <i class="fa fa-search"></i> Buscar
+                </button>
+            <div>
+            <div class="clearfix margin_bottom2"></div>
+</div><!-- end tab 1 -->
+             </div></div>
             <!-- <a href="#" class="but3"><i class="fa fa-caret-right"></i>Busqueda Avanzada</a>-->
 
             </form>
 
-            <div id="busqueda_av">
-
-              
-            </div>
 
 
-            </div><!-- end tab 1 -->
-
-        </div>
+       
 
 
     </div>

@@ -319,6 +319,21 @@ margin: 0 auto;}
                   endif;?>
                     </div>
                 </div>
+                <div class="one_full">
+                   <label onclick="$('#idiomas').toggle();"> <strong>Lenguaje de se&ntilde;as</strong></label>
+                    <div id="idiomas" class="one_full" style="display: none;">
+                    <?php if($idiomas != null):
+                        foreach ($idiomas as $i ):?>
+
+                   
+                    <div class="one_half"><label><?=$i->idioma?></label></div>
+                      <div class="one_half last"><input type="checkbox" name="idioma[]" value="<?=$i->idiomaID?>" <?=($i->idiomaID == $this->session->userdata('ni'.$i->idiomaID)) ? 'checked' : '' ?>></div>
+
+                  <?php 
+                        endforeach;
+                  endif;?>
+                    </div>
+                </div>
 
 
                 <br>
