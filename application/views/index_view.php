@@ -224,12 +224,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <option value="1">Masculino</option>
             </select>
 
-            <select name="LS">
+            <select name="lenguaje">
                 <option value="">LS</option>
-                <option value="0">LSM</option>
-                <option value="1">LSA</option>
-                <option value="2">LSC</option>
-                <option value="3">LSI</option>
+                <?php if($lenguaje != null):
+                        foreach ($lenguaje as $c): ?>
+                <option value="<?=$c->lenguajeID?>"><?=$c->nombre?></option>
+                <?php endforeach;
+                    endif;
+                ?>
             </select>
             <div class="clearfix margin_bottom2"></div>
             </div><!-- end tab 1 -->

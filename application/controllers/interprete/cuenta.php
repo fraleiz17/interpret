@@ -39,6 +39,7 @@ class Cuenta extends CI_Controller {
         $data['SYS_metaKeyWords']       = '';
         $data['SYS_metaDescription']    = '';  
         $data['idiomas']        = $this->defaultdata_model->getTable('idiomas');
+        $data['lenguajes']        = $this->defaultdata_model->getTable('lenguaje');
         $data['conocimientos']    = $this->defaultdata_model->getTable('categorias');
         $data['estados']    = $this->defaultdata_model->getEstados();
         $data['paises']     = $this->defaultdata_model->getPaises();
@@ -59,6 +60,14 @@ class Cuenta extends CI_Controller {
         if ($iduimas_u != null) {
            foreach ($iduimas_u as $ni) {
             $this->session->set_userdata('ni'.$ni->idiomaID,$ni->idiomaID);
+
+           }
+        }
+
+        $lenguajes_u = $this->usuario_model->getResult('usuarioID', $this->session->userdata('usuarioID'),'lenguajeusuario');
+        if ($lenguajes_u != null) {
+           foreach ($lenguajes_u as $li) {
+            $this->session->set_userdata('li'.$li->lenguajeID,$li->lenguajeID);
 
            }
         }
@@ -198,6 +207,35 @@ function updateMiPerfil(){
                     $this->usuario_model->updateItem('usuarioID', $this->session->userdata('usuarioID'), $dataConocimientos,'categoriaID',$conocimientos[$i], 'categoriasusuario'); 
                 } else {
                     $this->usuario_model->insertItem('categoriasusuario', $dataConocimientos);
+                }
+            }
+
+        }
+
+         //LENGUAJES
+        $lenguajes = $this->input->post('lenguaje');
+        if ($lenguajes != null && $lenguajes != '') {
+            $num_len = $this->usuario_model->getResult('usuarioID', $this->session->userdata('usuarioID'), 'lenguajeusuario');
+            if ($num_len != null) {
+                foreach ($num_len as $nl) {
+               $this->session->unset_userdata('li'.$nl->lenguajeID);
+                }
+            }
+            
+            $this->usuario_model->deleteItem('usuarioID', $this->session->userdata('usuarioID'), 'lenguajeusuario');
+            $n_lenguajes = count($lenguajes);
+            for ($i=0; $i < $n_lenguajes; $i++) { 
+                $existe_lenguaje = $this->usuario_model->getRow2('usuarioID', $this->session->userdata('usuarioID'),'lenguajeID',$lenguajes[$i],'lenguajeusuario');
+
+                $dataLenguajes = array(
+                    'usuarioID' => $this->session->userdata('usuarioID'),
+                    'lenguajeID'      => $lenguajes[$i] 
+                );
+                $this->session->set_userdata('li'.$lenguajes[$i],$lenguajes[$i]);
+                if ($existe_lenguaje != null) {
+                    $this->usuario_model->updateItem('usuarioID', $this->session->userdata('usuarioID'), $dataLenguajes,'lenguajeID',$lenguajes[$i], 'lenguajeusuario'); 
+                } else {
+                    $this->usuario_model->insertItem('lenguajeusuario', $dataLenguajes);
                 }
             }
 

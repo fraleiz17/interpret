@@ -345,11 +345,11 @@ $(function() {
         </ul>
     </div>
     <div class="one_third">
-        <label onclick="$('#idiomas').toggle();"> <strong>Lenguaje de se&ntilde;as</strong></label>
-        <ul id="idiomas" style="display: ;">
-            <?php if($idiomas != null):
-            foreach ($idiomas as $i ):?>
-            <li><label><?=$i->idioma?></label></li>
+        <label onclick="$('#lenguajes').toggle();"> <strong>Lenguaje de se&ntilde;as</strong></label>
+        <ul id="lenguajes" style="display: ;">
+            <?php if($lenguajes != null):
+            foreach ($lenguajes as $i ):?>
+            <li><label><?=$i->nombre?></label></li>
 
             <?php 
             endforeach;

@@ -51,4 +51,6 @@ $config['tablas']['usuario'] = 'usuario';
  $config['tablas']['grupoenvio'] = 'grupoenvio';
  $config['tablas']['destinoenvio'] = 'destinoenvio';
  $config['tablas']['ratinginterprete'] = 'ratinginterprete';
+ $config['tablas']['lenguaje'] = 'lenguaje';
+ $config['tablas']['lenguajeusuario'] = 'lenguajeusuario';
 ?>

@@ -343,11 +343,12 @@ where pagado = 0)");
          }
     }
 
-    function getBusqueda($estado,$categoria,$idioma,$sexo){
+    function getBusqueda($estado,$categoria,$idioma,$sexo,$lenguaje){
       $sql = 'SELECT DISTINCT usuario.* FROM usuario
 left join usuariodato on usuariodato.usuarioID = usuario.usuarioID
 left join categoriasusuario on categoriasusuario.usuarioID = usuario.usuarioID
 left join idiomasusuario on idiomasusuario.usuarioID = usuario.usuarioID
+left join lenguajeusuario on lenguajeusuario.usuarioID = usuario.usuarioID
 where usuario.tipoUsuario = 2 and status = 1 ';
 /**
 
@@ -367,6 +368,10 @@ where usuario.tipoUsuario = 2 and status = 1 ';
 
       if($idioma  != '' && $idioma != null){
         $sql .= ' and idiomasusuario.idiomaID = '.$idioma;
+      }
+
+      if($lenguaje  != '' && $lenguaje != null){
+        $sql .= ' and lenguajeusuario.lenguajeID = '.$lenguaje;
       }
 
       

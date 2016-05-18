@@ -101,6 +101,17 @@ where idiomaID in (select idiomaID from idiomasusuario where usuarioID =  '.$usu
         }
    }
 
+   function getLenguajesUsuario($usuarioID){
+        $query = $this->db->query('SELECT nombre
+from lenguaje
+where lenguajeID in (select lenguajeID from lenguajeusuario where usuarioID =  '.$usuarioID.' )');
+        if ($query->num_rows() >= 1) {
+            return $query->result();
+        } else {
+            return null;
+        }
+   }
+
    function getExpUsuario($usuarioID){
         $query = $this->db->query('SELECT categoria
 from categorias

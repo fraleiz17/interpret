@@ -18,6 +18,7 @@ class Principal extends CI_Controller {
 		$data['estados']    = $this->defaultdata_model->getEstados();
 		$data['categorias'] = $this->defaultdata_model->getTable('categorias');
 		$data['idiomas']        = $this->defaultdata_model->getTable('idiomas');
+		$data['lenguaje']        = $this->defaultdata_model->getTable('lenguaje');
         $this->load->view('index_view', $data);
 
 	}

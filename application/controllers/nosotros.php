@@ -33,6 +33,7 @@ class Nosotros extends CI_Controller {
        
         $data['conocimientos'] = $this->usuario_model->getExpUsuario($usuarioID);
 		$data['idiomas']     = $this->usuario_model->getIdiomasUsuario($usuarioID);
+		$data['lenguajes']     = $this->usuario_model->getLenguajesUsuario($usuarioID);
 
 		if(is_logged()) {
 			$valor = $this->getRating($usuarioID);

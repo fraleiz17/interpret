@@ -16,7 +16,8 @@ class Busqueda extends CI_Controller {
 		$categoria =$this->input->post('categoria'); 
 		$idioma =$this->input->post('idioma'); 
 		$sexo =$this->input->post('sexo'); 
-		$usuarios = $this->defaultdata_model->getBusqueda($estado,$categoria,$idioma,$sexo);
+		$lenguaje =$this->input->post('lenguaje'); 
+		$usuarios = $this->defaultdata_model->getBusqueda($estado,$categoria,$idioma,$sexo,$lenguaje);
 		$data['interpretes'] = $usuarios;
         $this->load->view('interpretes_view', $data);
 	}
