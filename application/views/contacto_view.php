@@ -159,26 +159,24 @@
 	
     <div class="one_half">
       
-        <p>Feel free to talk to our online representative at any time you please using our Live Chat system on our website or one of the below instant messaging programs.</p>
-        <br />
-        <p>Please be patient while waiting for response. (24/7 Support!) <strong>Phone General Inquiries: 1-888-123-4567-8900</strong></p>
+        <p>Envíanos tus comentarios</p>
         <br /><br />
         
         <div class="cforms_sty3">
         
         
         <div id="form_status"></div>
-    	<form type="POST" id="gsr-contact" onSubmit="return valid_datas( this );">
-	        <label class="label">Name <em>*</em></label>
+    	<form id="contacto">
+	        <label class="label">Nombre <em>*</em></label>
 	        <label class="input">
-	            <input type="text" name="name" id="name">
+	            <input type="text" name="name" id="name" required="required">
 	        </label>
 	        
 	        <div class="clearfix"></div>
 	        
 	        <label class="label">E-mail <em>*</em></label>
 	        <label class="input">
-	            <input type="email" name="email" id="email">
+	            <input type="email" name="email" id="email" required="required">
 	        </label>
 	
 	        <!-- <div class="clearfix"></div>
@@ -191,21 +189,30 @@
 	
 	        <div class="clearfix"></div>
 	
-	        <label class="label">Subject <em>*</em></label>
+	        <label class="label">Asunto <em>*</em></label>
 	        <label class="input">
-	            <input type="text" name="subject" id="subject">
+	            <input type="text" name="subject" id="subject" required="required">
 	        </label>
 	
 	        <div class="clearfix"></div>
 	
-	        <label class="label">Message <em>*</em></label>
+	        <label class="label">Mensaje <em>*</em></label>
 	        <label class="textarea">
-	            <textarea rows="5" name="message" id="message"></textarea>
+	            <textarea rows="5" name="message" id="message" required="required"></textarea>
 	        </label>
 	
 	        <div class="clearfix"></div>
 			<input type="hidden" name="token" value="FsWga4&@f6aw" />
-	        <button type="submit" class="button">Send Message</button>
+	        <button type="submit" class="button contactar">Contactar</button>
+          <div id="div1" class="infomes" style="display: none;">
+                <div class="message-box-wrap">
+                    Enviando...</div>
+                </div>
+
+          <div class="successmes" style="display: none;">
+            <div class="message-box-wrap">
+            <i class="fa fa-check-square fa-lg"></i><span class="info"></span></div>
+        </div>
 	        
     	</form>	
         
@@ -285,6 +292,31 @@
 <script type="text/javascript" src="js/mainmenu/sticky.js"></script>
 <script type="text/javascript" src="js/mainmenu/modernizr.custom.75180.js"></script>
 <script type="text/javascript" src="js/cform/form-validate.js"></script>
+<script>
+ 
+
+  $('form').submit(function(e){
+            e.preventDefault();
+            var form = $('form');
+            $(".contactar").hide(); 
+            $(".infomes").fadeIn();
+            $.ajax({
+                url: '<?php echo base_url('contacto/contactar')?>',
+                data: form.serialize(),
+                dataType: 'json',
+                type: 'post',
+                before: function () {
+                    $(".contactar").hide(); 
+                    $(".successmes").fadeOut();
+                },
+                success: function (data) {
+                    $(".infomes").fadeOut();
+                    $(".successmes").fadeIn();
+                    $('.info').html(data.message);
+                }
+            });
+        });
+</script>
 
 </body>
 </html>
