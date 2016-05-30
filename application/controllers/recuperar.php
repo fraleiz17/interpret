@@ -42,7 +42,22 @@ class Recuperar extends CI_Controller {
 			$this->usuario_model->insertNewConfirmationCode($usuario, $this->usuario_model->getNewConfirmationCode($usuario));
 			$CC = $this->usuario_model->getMyConfirmationCode($usuario);
 			//var_dump($CC,$usuario);
-			
+			$mensaje2 = '<div style="color: #1ea133;   border-color: #a9ecb4; background-color: #dffbe4; padding: 20px 20px; font-family:Arial, Helvetica, sans-serif;">
+    <p style="margin:10px 10px 10px 0px;"></p>
+<h2>Hola '.$CC->nombre.'<br><br></h2>
+               Has solicitado un cambio de contraseña. <br/><br/>
+Para efectuar el cambio, por favor, ingrese al enlace más abajo mostrado y cambie su contraseña.<br/><br/>
+Este enlace tiene una validez de <strong>sólo 24 horas</strong>, después de esto, tendrá que solicitar otro cambio en caso de que no lo haya efectuado.
+<br><br/>
+'.base_url().'recuperar/doChange/'.$CC->codigoConfirmacion.time().'
+<br><br/>En caso de que usted no haya solicitado este cambio, simplemente ignore este correo y su cuenta permancerá segura.
+<br/><br/>
+          
+
+        Copyright © 2016 TuInterprete.com. All rights reserved.  <a href="http://interpretelsm.com/#">Terminos de uso</a> | <a href="http://interpretelsm.com/#">Politica de privacidad</a>
+
+    </div>
+</div>';
 
 			$mensaje = ' Hola '.$CC->nombre.': <br/>
 Has solicitado un cambio de contraseña. <br/><br/>
@@ -54,7 +69,7 @@ Este enlace tiene una validez de <strong>sólo 24 horas</strong>, después de es
 <br/><br/>
 
 ';
-			$this->email_model->send_email(null, $CC->correo, 'Cambio de contraseña en Interpretes', $mensaje);
+			$this->email_model->send_email(null, $CC->correo, 'Cambio de contraseña en Interpretes', $mensaje2);
 			$data['email'] = $CC->correo;
 			$data['response'] = true;
 			$data['cambioContrasena'] = true;

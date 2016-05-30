@@ -70,153 +70,172 @@ class Registro extends CI_Controller {
 		$idUsuario = $this->usuario_model->registrarUsuario($dataRegister);
 
 
-		$mensajePlano = 'Hola '.$this->input->post('nombre').'<br><br>
-					Gracias por registrarte en Interpretes.<br><br>
-					Activa tu cuenta con el siguiente link:<br><br><br><br>			
-					<a href="'.base_url().'registro/activar/'.$confirmationCode.'">Activar cuenta Interpretes</a>';
+		$mensajePlano = '<div style="color: #1ea133;   border-color: #a9ecb4; background-color: #dffbe4; padding: 20px 20px; font-family:Arial, Helvetica, sans-serif;">
+    <p style="margin:10px 10px 10px 0px;"></p>
+<h2>Hola '.$this->input->post('nombre').'<br><br></h2>
+               Gracias por registrarte en Interpretes.<br><br>
+               Activa tu cuenta con el siguiente link:<br><br><br><br>        
+               <strong><a style="color: black;" href="'.base_url().'registro/activar/'.$confirmationCode.'">Activar cuenta Interpretes</a></strong><br><br>
+          
 
-	    $mensaje1 = '<html>
-   <head>
-      <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
-   </head>
-   <body style="margin:0px;" bgcolor="#eeeeee">
-      <table border="0" cellspacing="0" width="100%">
-         <tbody>
-            <tr>
-               <td align="center" bgcolor="#eeeeee">
-                  <table border="0" cellpadding="0" cellspacing="0" width="610">
-                     <tbody>
-                        <tr>
-                           <td height="15">&nbsp;</td>
-                        </tr>
-                        <tr></tr>
-                        <tr>
-                           <td bgcolor="#FFFFFF">
-                              <table border="0" cellpadding="0" cellspacing="0" width="610" height="610">
-                                 <tbody>
-                                    <tr>
-                                       <td width="30">&nbsp;</td>
-                                       <td valign="top">
-                                        <br><br><br>
-                                          <p style="font-size:30px;font-family:Arial, Helvetica, sans-serif;color:#009ddc;font-weight:normal; text-decoration:none; line-height:20px; margin-bottom:10px; margin-top:20px">Bienvenido '.$this->input->post('nombre').'</b>:<br><br></p>
-                                          <table border="0" cellpadding="0" cellspacing="0" style="margin-bottom: 0px" width="100%">
-                                             <tbody>
-                                                <tr>
-                                                   <td valign="bottom">
-                                                      <p style="margin-bottom:0px; font-family:Arial, Helvetica, sans-serif; color:#666666; font-size:20px; line-height:17px; text-align: justify;">¡Gracias por crear una cuenta con nosotros!</p>
+        Copyright © 2016 TuInterprete.com. All rights reserved.  <a href="http://interpretelsm.com/#">Terminos de uso</a> | <a href="http://interpretelsm.com/#">Politica de privacidad</a>
 
-                                                    <br>
-                                                    <p style="margin-bottom:0px; font-family:Arial, Helvetica, sans-serif; color:#666666; font-size:20px; line-height:17px; text-align: justify;">El proceso de activaci&oacute;n de tu cuenta concluye haciendo clic en &ldquo;Activar Cuenta&rdquo;.</p>
-                                                   </td>
-                                                </tr>
-                                             </tbody>
-                                          </table>
-                                          <p style="margin-bottom:0px; font-family:Arial, Helvetica, sans-serif; color:#666666; font-size:12px; line-height:15px;">&nbsp;</p>
-                                          <table border="0" cellpadding="0" cellspacing="0" width="100%">
-                                             <tbody>
-                                                <tr>
-                                                   <td align="center">
-                                                      <style>
-                                                         .btn {
-                                                            width: 150px;
-                                                            background: #85ed9f;
-                                                            background-image: -webkit-linear-gradient(top, #85ed9f, #439445);
-                                                            background-image: -moz-linear-gradient(top, #85ed9f, #439445);
-                                                            background-image: -ms-linear-gradient(top, #85ed9f, #439445);
-                                                            background-image: -o-linear-gradient(top, #85ed9f, #439445);
-                                                            background-image: linear-gradient(to bottom, #85ed9f, #439445);
-                                                            -webkit-border-radius: 5;
-                                                            -moz-border-radius: 5;
-                                                            border-radius: 5px;
-                                                            -webkit-box-shadow: 0px 1px 3px #666666;
-                                                            -moz-box-shadow: 0px 1px 3px #666666;
-                                                            box-shadow: 0px 1px 3px #666666;
-                                                            font-family: Arial;
-                                                            color: #ffffff;
-                                                            font-size: 20px;
-                                                            padding: 10px 35px 10px 35px;
-                                                            text-decoration: none !important;
-                                                         }
+    </div>
+</div>';
+      $message = '
+<!doctype html>
+<!--[if IE 7 ]>    <html lang="en-gb" class="isie ie7 oldie no-js"> <![endif]-->
+<!--[if IE 8 ]>    <html lang="en-gb" class="isie ie8 oldie no-js"> <![endif]-->
+<!--[if IE 9 ]>    <html lang="en-gb" class="isie ie9 no-js"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!-->
+<html lang="es" xml:lang="es" class="no-js">
+<!--<![endif]-->
+<head>
+<title>Intérpretes</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="keywords" content="" />
+<meta name="description" content="" />
 
-                                                         .btn:hover {
-                                                            background: #60f788;
-                                                            background-image: -webkit-linear-gradient(top, #60f788, #00b06f);
-                                                            background-image: -moz-linear-gradient(top, #60f788, #00b06f);
-                                                            background-image: -ms-linear-gradient(top, #60f788, #00b06f);
-                                                            background-image: -o-linear-gradient(top, #60f788, #00b06f);
-                                                            background-image: linear-gradient(to bottom, #60f788, #00b06f);
-                                                            text-decoration: none;
-                                                         }
-                                                         .btn a {
-                                                            text-decoration:none;
-                                                            text-align: justify;
-                                                            font-family: Arial; 
-                                                            font-size: 14px; 
-                                                            color: #FFF;
-                                                         }
-                                                      </style>
-                                                      <p style="margin:10px 0px 10px 0px;">
+<!-- Favicon -->
+<link rel="shortcut icon" href="http://interpretelsm.com/images/favicon.png">
+
+<!-- this styles only adds some repairs on idevices  -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Google fonts - witch you want to use - (rest you can just remove) -->
+<link href="http://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic,700,700italic,800,800italic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=Raleway:400,100,200,300,500,600,700,800,900" rel="stylesheet" type="text/css">
+
+<!--[if lt IE 9]>
+<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+<!-- ######### CSS STYLES ######### -->
+
+<link rel="stylesheet" href="http://interpretelsm.com/css/reset-realestate.css" type="text/css" />
+<link rel="stylesheet" href="http://interpretelsm.com/css/style-realestate.css" type="text/css" />
+
+<!-- font awesome icons -->
+<link rel="stylesheet" href="http://interpretelsm.com/css/font-awesome/css/font-awesome.min.css">
+
+<!-- simple line icons -->
+<link rel="stylesheet" type="text/css" href="http://interpretelsm.com/css/simpleline-icons/simple-line-icons.css" media="screen" />
+
+<!-- animations -->
+<link href="http://interpretelsm.com/js/animations/css/animations.min.css" rel="stylesheet" type="text/css" media="all" />
+
+<!-- responsive devices styles -->
+<link rel="stylesheet" media="screen" href="http://interpretelsm.com/css/responsive-leyouts-realestate.css" type="text/css" />
+
+<!-- shortcodes -->
+<link rel="stylesheet" media="screen" href="http://interpretelsm.com/http://interpretelsm.com/css/shortcodes-realestate.css" type="text/css" />
+
+<!-- style switcher -->
+<link rel = "stylesheet" media = "screen" href = "js/style-switcher/color-switcher.css" />
+
+<!-- MasterSlider -->
+<link rel="stylesheet" href="http://interpretelsm.com/http://interpretelsm.com/js/masterslider/style/masterslider.css" />
+<link rel="stylesheet" href="http://interpretelsm.com/js/masterslider/skins/default/style.css" />
+<link href="js/masterslider/style/ms-showcase2.css" rel="stylesheet" type="text/css">
+
+<!-- mega menu -->
+<link href="http://interpretelsm.com/js/mainmenu/bootstrap.min.css" rel="stylesheet">
+<link href="http://interpretelsm.com/js/mainmenu/demo.css" rel="stylesheet">
+<link href="http://interpretelsm.com/js/mainmenu/menu-realestate.css" rel="stylesheet">
+
+<!-- carouselowl -->
+<link href="http://interpretelsm.com/js/carouselowl/owl.transitions.css" rel="stylesheet">
+<link href="http://interpretelsm.com/js/carouselowl/owl.carousel.css" rel="stylesheet">
+<link href="http://interpretelsm.com/js/carouselowl/owl.theme.css" rel="stylesheet">
+
+<!-- tabs -->
+<link rel="stylesheet" type="text/css" href="http://interpretelsm.com/js/tabs/assets/css/responsive-tabs5.css">
+
+
+</head>
+
+<body>
+
+<div class="site_wrapper">
+
+<header class="header">
+
+    <div class="container_full_menu">
+
+    <!-- Logo -->
+    <div class="logo"><a href="http://interpretelsm.com/http://interpretelsm.com/" id="logo"></a></div>
+
+    </div>
+
+</header><!-- end Navigation Menu -->
+
+
+<div class="clearfix"></div>
+<div class="slider"><br><br><br><br></div>
+<div class="clearfix"></div>
+
+
+<div class="content_fullwidth less2">
+<div class="container">
+   <p>Bienvenido '.$this->input->post('nombre').'</br>:</p><br><br>
+    <p style="margin-bottom:0px; font-family:Arial, Helvetica, sans-serif; color:#666666; font-size:20px; line-height:17px; text-align: justify;">¡Gracias por crear una cuenta con nosotros!</p>
+
+   <br>
+   <p style="margin-bottom:0px; font-family:Arial, Helvetica, sans-serif; color:#666666; font-size:20px; line-height:17px; text-align: justify;">El proceso de activaci&oacute;n de tu cuenta concluye haciendo clic en &ldquo;Activar Cuenta&rdquo;.</p>
+
+   <p style="margin:10px 0px 10px 0px;">
                                                          <a href="'.base_url().'registro/activar/'.$confirmationCode.'" target="_blank" style="text-decoration:none;">
                                                             <div class="btn"> Activar Cuenta </div>
                                                          </a></p>
-                                                   </td>
-                                                </tr>
-                                             </tbody>
-                                          </table>
-                                          <p style="font-family: Arial; font-size: 12px; color: #666; font-weight: bold; text-align: left;"></p>
-                                          <p><span style="font-size: 12px; font-family: Arial; color: #666; font-weight: bold;"></span></p>
-                                          <table border="0" cellpadding="0" cellspacing="0" width="100%">
-                                             <tbody>
-                                                <tr></tr>
-                                             </tbody>
-                                          </table>
-                                       </td>
-                                       <td width="30">&nbsp;</td>
-                                       
-                                    </tr>
-                                 </tbody>
-                              </table>
-                           </td>
-                        </tr>
-                        
-                        <tr>
-                           <td bgcolor="#424242" height="5" style="line-height:0px;">&nbsp;</td>
-                        </tr>
-                        <tr>
-                           <td style="padding-top:10px; padding-bottom:0px;">
-                              <table border="0" cellpadding="0" cellspacing="0" style="margin-bottom:15px;" width="610">
-                                 <tbody>
-                                    <tr>
-                                       <td width="20">&nbsp;</td>
-                                       <td valign="top" width="280">
-                                          <p style="margin-top:0; margin-bottom:0px; font-family:Arial, Helvetica, sans-serif; color:#666666; font-size:12px;line-height:15px;">Este correo es enviado de forma autom&aacute;tica con fines informativos, por favor no respondas a esta direcci&oacute;n. Si deseas contactarnos puedes hacerlo a trav&eacute;s de <a href="mailto:ayuda@interprete.com" style="color:#009ddc; text-decoration:underline" title="Email a ventas@interprete.com">ayuda@interprete.com</a></p>
-                                       </td>
-                                       <td width="20">&nbsp;</td>
-                                       <td valign="top" width="280">
-                                          <p style="margin-top:0; margin-bottom:10px; font-family:Arial, Helvetica, sans-serif; color:#666666; font-size:12px;line-height:15px;">Este mensaje fue enviado a <span style="color:#009ddc;" title="">&lt;|correo|&gt;</span></p>
-                                          <p style="margin-top:0; margin-bottom:0px; font-family:Arial, Helvetica, sans-serif; color:#666666; font-size:12px;line-height:15px;">Si no eres el usuario o si deseas cancelar tu suscripci&oacute;n a este bolet&iacute;n <a href="|unsuscribe|" style="color:#009ddc; text-decoration:underline" target="_blank">haz clic aqu&iacute;</a>.</p>
-                                       </td>
-                                       <td width="20"><img height="1" src="|pixel|" width="1" /></td>
-                                    </tr>
-                                 </tbody>
-                              </table>
-                           </td>
-                        </tr>
-                     </tbody>
-                  </table>
-               </td>
-            </tr>
-         </tbody>
-      </table>
-      <p>&nbsp;</p>
-   </body>
-</html>
-';
+    <p style="margin-top:0; margin-bottom:0px; font-family:Arial, Helvetica, sans-serif; color:#666666; font-size:12px;line-height:15px;">Este correo es enviado de forma autom&aacute;tica con fines informativos, por favor no respondas a esta direcci&oacute;n. Si deseas contactarnos puedes hacerlo a trav&eacute;s de <a href="mailto:ayuda@interprete.com" style="color:#009ddc; text-decoration:underline" title="Email a ventas@interprete.com">ayuda@interprete.com</a></p>
+ 
+<p style="margin-top:0; margin-bottom:0px; font-family:Arial, Helvetica, sans-serif; color:#666666; font-size:12px;line-height:15px;">Si no eres el usuario o si deseas cancelar tu suscripci&oacute;n a este bolet&iacute;n <a href="|unsuscribe|" style="color:#009ddc; text-decoration:underline" target="_blank">haz clic aqu&iacute;</a>.</p>
+</div><!-- end content area -->
+
+    </div>
+
+<div class="clearfix"></div>
+<div class="copyright_info">
+<div class="container">
+    <div class="clearfix"></div>
+    <div class="one_half">
+
+        Copyright © 2016 TuInterprete.com. All rights reserved.  <a href="http://interpretelsm.com/#">Terminos de uso</a> | <a href="http://interpretelsm.com/#">Politica de privacidad</a>
+
+    </div>
+
+    <div class="one_half last">
 
 
+    </div>
+
+</div>
+</div><!-- end copyright info -->
+
+
+    
+</div>
+
+
+<!-- ######### JS FILES ######### --> 
+<!-- get jQuery used for the theme --> 
+<script type="text/javascript" src="js/universal/jquery.js"></script>
+<script src="js/style-switcher/styleselector.js"></script>
+<script src="js/animations/js/animations.min.js" type="text/javascript"></script>
+<script src="js/mainmenu/bootstrap.min.js"></script> 
+<script src="js/mainmenu/customeUI.js"></script> 
+<script type="text/javascript" src="js/mainmenu/sticky.js"></script>
+<script type="text/javascript" src="js/mainmenu/modernizr.custom.75180.js"></script>
+<script type="text/javascript" src="js/cform/form-validate.js"></script>
+
+</body>
+</html>';
+
+	   
 		
 
-		if($this->email_model->send_email('', $emailUsuario, 'Gracias por registrarte en Interpretes', $mensaje1)){
+		if($this->email_model->send_email('', $emailUsuario, 'Gracias por registrarte en Interpretes', $mensajePlano)){
 			$data['response'] = true;
 			$data['message'] = "Éxito, favor de revisar su correo para activar su usuario";
 		}
@@ -295,144 +314,148 @@ class Registro extends CI_Controller {
 
 	function meh(){
 
-		$mensaje1 =  '<html>
-   <head>
-      <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
-   </head>
-   <body style="margin:0px;" bgcolor="#eeeeee">
-      <table border="0" cellspacing="0" width="100%">
-         <tbody>
-            <tr>
-               <td align="center" bgcolor="#eeeeee">
-                  <table border="0" cellpadding="0" cellspacing="0" width="610">
-                     <tbody>
-                        <tr>
-                           <td height="15">&nbsp;</td>
-                        </tr>
-                        <tr></tr>
-                        <tr>
-                           <td bgcolor="#FFFFFF">
-                              <table border="0" cellpadding="0" cellspacing="0" width="610" height="610">
-                                 <tbody>
-                                    <tr>
-                                       <td width="30">&nbsp;</td>
-                                       <td valign="top">
-                                        <br><br><br>
-                                          <p style="font-size:30px;font-family:Arial, Helvetica, sans-serif;color:#009ddc;font-weight:normal; text-decoration:none; line-height:20px; margin-bottom:10px; margin-top:20px">Bienvenido Martha</b>:<br><br></p>
-                                          <table border="0" cellpadding="0" cellspacing="0" style="margin-bottom: 0px" width="100%">
-                                             <tbody>
-                                                <tr>
-                                                   <td valign="bottom">
-                                                      <p style="margin-bottom:0px; font-family:Arial, Helvetica, sans-serif; color:#666666; font-size:20px; line-height:17px; text-align: justify;">¡Gracias por crear una cuenta con nosotros!</p>
+		$mensaje1 =  '
+<!doctype html>
+<!--[if IE 7 ]>    <html lang="en-gb" class="isie ie7 oldie no-js"> <![endif]-->
+<!--[if IE 8 ]>    <html lang="en-gb" class="isie ie8 oldie no-js"> <![endif]-->
+<!--[if IE 9 ]>    <html lang="en-gb" class="isie ie9 no-js"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!-->
+<html lang="es" xml:lang="es" class="no-js">
+<!--<![endif]-->
+<head>
+<title>Intérpretes</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="keywords" content="" />
+<meta name="description" content="" />
 
-                                                    <br>
-                                                    <p style="margin-bottom:0px; font-family:Arial, Helvetica, sans-serif; color:#666666; font-size:20px; line-height:17px; text-align: justify;">El proceso de activaci&oacute;n de tu cuenta concluye haciendo clic en &ldquo;Activar Cuenta&rdquo;.</p>
-                                                   </td>
-                                                </tr>
-                                             </tbody>
-                                          </table>
-                                          <p style="margin-bottom:0px; font-family:Arial, Helvetica, sans-serif; color:#666666; font-size:12px; line-height:15px;">&nbsp;</p>
-                                          <table border="0" cellpadding="0" cellspacing="0" width="100%">
-                                             <tbody>
-                                                <tr>
-                                                   <td align="center">
-                                                      <style>
-                                                         .btn {
-                                                            width: 150px;
-                                                            background: #85ed9f;
-                                                            background-image: -webkit-linear-gradient(top, #85ed9f, #439445);
-                                                            background-image: -moz-linear-gradient(top, #85ed9f, #439445);
-                                                            background-image: -ms-linear-gradient(top, #85ed9f, #439445);
-                                                            background-image: -o-linear-gradient(top, #85ed9f, #439445);
-                                                            background-image: linear-gradient(to bottom, #85ed9f, #439445);
-                                                            -webkit-border-radius: 5;
-                                                            -moz-border-radius: 5;
-                                                            border-radius: 5px;
-                                                            -webkit-box-shadow: 0px 1px 3px #666666;
-                                                            -moz-box-shadow: 0px 1px 3px #666666;
-                                                            box-shadow: 0px 1px 3px #666666;
-                                                            font-family: Arial;
-                                                            color: #ffffff;
-                                                            font-size: 20px;
-                                                            padding: 10px 35px 10px 35px;
-                                                            text-decoration: none !important;
-                                                         }
+<!-- Favicon -->
+<link rel="shortcut icon" href="http://interpretelsm.com/images/favicon.png">
 
-                                                         .btn:hover {
-                                                            background: #60f788;
-                                                            background-image: -webkit-linear-gradient(top, #60f788, #00b06f);
-                                                            background-image: -moz-linear-gradient(top, #60f788, #00b06f);
-                                                            background-image: -ms-linear-gradient(top, #60f788, #00b06f);
-                                                            background-image: -o-linear-gradient(top, #60f788, #00b06f);
-                                                            background-image: linear-gradient(to bottom, #60f788, #00b06f);
-                                                            text-decoration: none;
-                                                         }
-                                                         .btn a {
-                                                            text-decoration:none;
-                                                            text-align: justify;
-                                                            font-family: Arial; 
-                                                            font-size: 14px; 
-                                                            color: #FFF;
-                                                         }
-                                                      </style>
-                                                      <p style="margin:10px 0px 10px 0px;">
-                                                         <a href="raw" target="_blank" style="text-decoration:none;">
-                                                            <div class="btn"> Activar Cuenta </div>
-                                                         </a></p>
-                                                   </td>
-                                                </tr>
-                                             </tbody>
-                                          </table>
-                                          <p style="font-family: Arial; font-size: 12px; color: #666; font-weight: bold; text-align: left;"></p>
-                                          <p><span style="font-size: 12px; font-family: Arial; color: #666; font-weight: bold;"></span></p>
-                                          <table border="0" cellpadding="0" cellspacing="0" width="100%">
-                                             <tbody>
-                                                <tr></tr>
-                                             </tbody>
-                                          </table>
-                                       </td>
-                                       <td width="30">&nbsp;</td>
-                                       
-                                    </tr>
-                                 </tbody>
-                              </table>
-                           </td>
-                        </tr>
-                        
-                        <tr>
-                           <td bgcolor="#424242" height="5" style="line-height:0px;">&nbsp;</td>
-                        </tr>
-                        <tr>
-                           <td style="padding-top:10px; padding-bottom:0px;">
-                              <table border="0" cellpadding="0" cellspacing="0" style="margin-bottom:15px;" width="610">
-                                 <tbody>
-                                    <tr>
-                                       <td width="20">&nbsp;</td>
-                                       <td valign="top" width="280">
-                                          <p style="margin-top:0; margin-bottom:0px; font-family:Arial, Helvetica, sans-serif; color:#666666; font-size:12px;line-height:15px;">Este correo es enviado de forma autom&aacute;tica con fines informativos, por favor no respondas a esta direcci&oacute;n. Si deseas contactarnos puedes hacerlo a trav&eacute;s de <a href="mailto:ayuda@interprete.com" style="color:#009ddc; text-decoration:underline" title="Email a ventas@interprete.com">ayuda@interprete.com</a></p>
-                                       </td>
-                                       <td width="20">&nbsp;</td>
-                                       <td valign="top" width="280">
-                                          <p style="margin-top:0; margin-bottom:10px; font-family:Arial, Helvetica, sans-serif; color:#666666; font-size:12px;line-height:15px;">Este mensaje fue enviado a <span style="color:#009ddc;" title="">&lt;|correo|&gt;</span></p>
-                                          <p style="margin-top:0; margin-bottom:0px; font-family:Arial, Helvetica, sans-serif; color:#666666; font-size:12px;line-height:15px;">Si no eres el usuario o si deseas cancelar tu suscripci&oacute;n a este bolet&iacute;n <a href="|unsuscribe|" style="color:#009ddc; text-decoration:underline" target="_blank">haz clic aqu&iacute;</a>.</p>
-                                       </td>
-                                       <td width="20"><img height="1" src="|pixel|" width="1" /></td>
-                                    </tr>
-                                 </tbody>
-                              </table>
-                           </td>
-                        </tr>
-                     </tbody>
-                  </table>
-               </td>
-            </tr>
-         </tbody>
-      </table>
-      <p>&nbsp;</p>
-   </body>
+<!-- this styles only adds some repairs on idevices  -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Google fonts - witch you want to use - (rest you can just remove) -->
+<link href="http://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic,700,700italic,800,800italic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=Raleway:400,100,200,300,500,600,700,800,900" rel="stylesheet" type="text/css">
+
+<!--[if lt IE 9]>
+<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+<!-- ######### CSS STYLES ######### -->
+
+<link rel="stylesheet" href="http://interpretelsm.com/css/reset-realestate.css" type="text/css" />
+<link rel="stylesheet" href="http://interpretelsm.com/css/style-realestate.css" type="text/css" />
+
+<!-- font awesome icons -->
+<link rel="stylesheet" href="http://interpretelsm.com/css/font-awesome/css/font-awesome.min.css">
+
+<!-- simple line icons -->
+<link rel="stylesheet" type="text/css" href="http://interpretelsm.com/css/simpleline-icons/simple-line-icons.css" media="screen" />
+
+<!-- animations -->
+<link href="http://interpretelsm.com/js/animations/css/animations.min.css" rel="stylesheet" type="text/css" media="all" />
+
+<!-- responsive devices styles -->
+<link rel="stylesheet" media="screen" href="http://interpretelsm.com/css/responsive-leyouts-realestate.css" type="text/css" />
+
+<!-- shortcodes -->
+<link rel="stylesheet" media="screen" href="http://interpretelsm.com/http://interpretelsm.com/css/shortcodes-realestate.css" type="text/css" />
+
+<!-- style switcher -->
+<link rel = "stylesheet" media = "screen" href = "js/style-switcher/color-switcher.css" />
+
+<!-- MasterSlider -->
+<link rel="stylesheet" href="http://interpretelsm.com/http://interpretelsm.com/js/masterslider/style/masterslider.css" />
+<link rel="stylesheet" href="http://interpretelsm.com/js/masterslider/skins/default/style.css" />
+<link href="js/masterslider/style/ms-showcase2.css" rel="stylesheet" type="text/css">
+
+<!-- mega menu -->
+<link href="http://interpretelsm.com/js/mainmenu/bootstrap.min.css" rel="stylesheet">
+<link href="http://interpretelsm.com/js/mainmenu/demo.css" rel="stylesheet">
+<link href="http://interpretelsm.com/js/mainmenu/menu-realestate.css" rel="stylesheet">
+
+<!-- carouselowl -->
+<link href="http://interpretelsm.com/js/carouselowl/owl.transitions.css" rel="stylesheet">
+<link href="http://interpretelsm.com/js/carouselowl/owl.carousel.css" rel="stylesheet">
+<link href="http://interpretelsm.com/js/carouselowl/owl.theme.css" rel="stylesheet">
+
+<!-- tabs -->
+<link rel="stylesheet" type="text/css" href="http://interpretelsm.com/js/tabs/assets/css/responsive-tabs5.css">
+
+
+</head>
+
+<body>
+
+<div class="site_wrapper">
+
+<header class="header">
+
+    <div class="container_full_menu">
+
+    <!-- Logo -->
+    <div class="logo"><a href="http://interpretelsm.com/http://interpretelsm.com/" id="logo"></a></div>
+
+    </div>
+
+</header><!-- end Navigation Menu -->
+
+
+<div class="clearfix"></div>
+<div class="slider"><br><br><br><br></div>
+<div class="clearfix"></div>
+
+
+<div class="content_fullwidth less2">
+<div class="container">
+   miau
+    
+</div><!-- end content area -->
+
+    </div>
+
+<div class="clearfix"></div>
+<div class="copyright_info">
+<div class="container">
+    <div class="clearfix"></div>
+    <div class="one_half">
+
+        Copyright © 2016 TuInterprete.com. All rights reserved.  <a href="http://interpretelsm.com/#">Terminos de uso</a> | <a href="http://interpretelsm.com/#">Politica de privacidad</a>
+
+    </div>
+
+    <div class="one_half last">
+
+
+    </div>
+
+</div>
+</div><!-- end copyright info -->
+
+
+    
+</div>
+
+
+<!-- ######### JS FILES ######### --> 
+<!-- get jQuery used for the theme --> 
+<script type="text/javascript" src="js/universal/jquery.js"></script>
+<script src="js/style-switcher/styleselector.js"></script>
+<script src="js/animations/js/animations.min.js" type="text/javascript"></script>
+<script src="js/mainmenu/bootstrap.min.js"></script> 
+<script src="js/mainmenu/customeUI.js"></script> 
+<script type="text/javascript" src="js/mainmenu/sticky.js"></script>
+<script type="text/javascript" src="js/mainmenu/modernizr.custom.75180.js"></script>
+<script type="text/javascript" src="js/cform/form-validate.js"></script>
+
+</body>
 </html>
+
 ';
-		var_dump($this->email_model->send_email('', 'ntest111@mailinator.com', 'Gracias por registrarte en Interpretes_ beta', $mensaje1));
+		var_dump($this->email_model->send_email('', 'lsm_test@mailinator.com', 'Gracias por registrarte en Interpretes_ beta', $mensaje1));
+      echo $mensaje1;
 
 	}
 
