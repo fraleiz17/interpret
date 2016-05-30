@@ -156,13 +156,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 <!-- slider -->
 <div class="slider">
-
     <div class="fadein">
         <img src="http://www.naveedkashif.com/wp-content/uploads/2015/08/Guide-To-Business-Setup-in-Dubai-Mainland-1920x770.jpg" alt="" />
         <img src="https://img.grouponcdn.com/seocmsimages/beyS9FSjuXqcKDWuM7ee/VX-1920x770" alt="" />
         <img src="http://insightfultax.com/wp-content/uploads/2015/03/paris.jpg" alt="" />
     </div>
-
     <div class="prosearch">
     <div class="container">
         <?php if($this->session->flashdata('error_login')):?>
@@ -174,31 +172,23 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         
         </div>
         <?php endif;?>
-
         <div class="clearfix margin_bottom4"></div>
         <h1>¡Encuentra a tu interprete!</h1>
 		<h2>Fácil y rápido</h2>
-
         <div class="clearfix margin_bottom4"></div>
-
-
-
         <div class="tabs-content5 fullw">
-
-            <div id="example-5-tab-1" class="tabs-panel5">
+          <div id="example-5-tab-1" class="tabs-panel5">
             <form method="post" action="<?=base_url()?>busqueda">
-
-                <select name="estado">
-                <option value="">Estado</option>
-                <?php if($estados != null):
+                <div class="clearfix margin_bottom1"></div>
+                <select name="estado" class="one_fifth">
+                    <option value="">Estado</option>
+                    <?php if($estados != null):
                         foreach ($estados as $c): ?>
-                <option value="<?=$c->estadoID?>"><?=$c->nombreEstado?></option>
-                <?php endforeach;
-                    endif;
-                ?>
+                        <option value="<?=$c->estadoID?>"><?=$c->nombreEstado?></option>
+                        <?php endforeach;
+                    endif;?>
                 </select>
-
-            <select name="categoria">
+            <select name="categoria" class="one_fifth">
                 <option value="">Interés</option>
                 <?php if($categorias != null):
                         foreach ($categorias as $c): ?>
@@ -208,7 +198,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 ?>
             </select>
 
-            <select name="idioma">
+            <select name="idioma" class="one_fifth" >
                 <option value="">Idioma</option>
                 <?php if($idiomas != null):
                         foreach ($idiomas as $c): ?>
@@ -218,13 +208,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 ?>
             </select>
 
-            <select name="sexo">
+            <select name="sexo" class="one_fifth" >
                 <option value="">Género</option>
                 <option value="0">Femenino</option>
                 <option value="1">Masculino</option>
             </select>
 
-            <select name="lenguaje">
+            <select name="lenguaje" class="one_fifth last">
                 <option value="">LS</option>
                 <?php if($lenguaje != null):
                         foreach ($lenguaje as $c): ?>
@@ -232,35 +222,20 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <?php endforeach;
                     endif;
                 ?>
-            </select>
-            <div class="clearfix margin_bottom2"></div>
-            </div><!-- end tab 1 -->
-             </div>
-
-             <div class="tabs-content5 fullw">
-
-            <div id="example-5-tab-1" class="tabs-panel5">
-            <div class="one_third last">
+            </select><div class="clearfix margin_bottom2"></div>
+		  <div class="clearfix margin_bottom2"></div>
+		   <div class="one_third"><h3> </h3></div>
+            <div class="one_third">
                 <button type="submit" class="one_full but1">
                     <i class="fa fa-search"></i> Buscar
                 </button>
-            <div>
-            <div class="clearfix margin_bottom2"></div>
-</div><!-- end tab 1 -->
-             </div></div>
-            <!-- <a href="#" class="but3"><i class="fa fa-caret-right"></i>Busqueda Avanzada</a>-->
-
+            </div>
+              <div class="one_third last"><h3> </h3></div>
+            <div class="clearfix margin_bottom"></div>
+            </div><!-- end tab 1 -->
+             </div>
             </form>
-
-
-
-       
-
-
     </div>
-    </div>
-
-
 </div><!-- end slider -->
 <div class="feature_section2">
 <div class="container">
@@ -288,16 +263,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       <p>Desde tu hogar.<br><br></p>
     </div>
   </div>
-
-<!--
-  <div class="one_fourth last">
-    <div class="box"> <i class="fa fa-paper-plane-o"></i>
-      <h4 class="caps">Expert Guidance</h4>
-      <p>Many as desktop packages ands webpage editor now use search many web sites</p>
-    </div>
-  </div>
-  <!-- end -->
-
 </div>
 </div>
 <div class="clearfix"></div>

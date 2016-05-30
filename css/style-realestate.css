@@ -267,11 +267,11 @@
 	box-shadow: inset 0px 0px 2px 0px rgba(221,221,221,1);
 }
 .slider select {
-	float: left;
+	/*float: left;
 	padding: 3px 0px 4px 16px;
 	height: 52px;
 	width: 16%;
-	margin-left: 20px;
+	margin-left: 20px;*/
 	background: #f7f7f7;
 	border: none;
 	color: #727272;
