@@ -229,6 +229,11 @@
                 <div class="message-box-wrap">
                     Registrando...</div>
                 </div>
+
+                <div id="div1" class="errormes" style="display: none;">
+                <div class="message-box-wrap">
+                    Revisa tus datos</div>
+                </div>
         
         <div class="successmes" style="display: none;">
             <div class="message-box-wrap">
@@ -299,9 +304,17 @@
 
   $('form').submit(function(e){
             e.preventDefault();
+            
+            var pass = revisar_contrasena();
+            var mail = revisar_correo();
+            console.log(pass,mail);
+            if(pass == true && mail == true){
+
             var form = $('form');
+            $(".errormes").fadeOut();
             $(".registrar").hide(); 
             $(".infomes").fadeIn();
+
             $.ajax({
                 url: '<?php echo base_url('registro/registrar')?>',
                 data: form.serialize(),
@@ -317,6 +330,9 @@
                     $('.info').html(data.message);
                 }
             });
+            } else {
+                $(".errormes").fadeIn();
+            }
         });
 </script>
 
@@ -324,6 +340,48 @@
 <script type="text/javascript" src="js/universal/custom.js"></script>
 
 <script type="text/javascript">
+function revisar_contrasena(){
+        console.log('miau');
+        var contrasena = $("#contrasena").val();
+        var contrasena2 = $("#contrasenaConfirm").val();      
+
+        if(contrasena != "" && contrasena == contrasena2) {
+          $("#error_c").fadeOut();
+          $(".errormes").fadeOut();
+          $(".registrar").show(); 
+          return true;
+        } else {
+          $("#error_c").fadeIn();
+          $(".registrar").hide(); 
+          return false;
+        }                          
+  
+}
+
+function revisar_correo(){
+     var form = $('form');
+        $.ajax({
+                url: '<?php echo base_url('registro/isthereemail')?>',
+                data: form.serialize(),
+                dataType: 'json',
+                type: 'post',
+                success: function (data) {
+                    if(data.existe == false){
+                        $("#error_e").fadeIn();
+                        $(".registrar").hide(); 
+                        return v = false; 
+                    } else{
+                        $("#error_e").fadeOut();
+                        $(".errormes").fadeOut();
+                        $(".registrar").show(); 
+                        return v = true;
+                    }
+                },
+                async: false
+        });      
+    return v;                    
+}
+
 $(".contrasena_").blur(
     function(){
         console.log('miau');
@@ -332,9 +390,12 @@ $(".contrasena_").blur(
 
         if(contrasena != "" && contrasena == contrasena2) {
           $("#error_c").fadeOut();
+          $(".errormes").fadeOut();
+          $(".registrar").show(); 
           return true;
         } else {
           $("#error_c").fadeIn();
+          $(".registrar").hide(); 
           return false;
         }                          
     }
@@ -351,9 +412,12 @@ $("#correo").blur(
                 success: function (data) {
                     if(data.existe == false){
                         $("#error_e").fadeIn();
+                        $(".registrar").hide(); 
                         return false; 
                     } else{
                         $("#error_e").fadeOut();
+                        $(".errormes").fadeOut();
+                        $(".registrar").show(); 
                         return true;
                     }
                 }
