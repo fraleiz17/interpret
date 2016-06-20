@@ -169,7 +169,8 @@
     	<form id="contacto">
 	        <label class="label">Nombre <em>*</em></label>
 	        <label class="input">
-	            <input type="text" name="name" id="name" required="required">
+	            <input type="text" name="name" id="name" required="required" pattern="[a-zA-ZÑñáéíóúÁÉÍÓÚ/\s/]{1,120}"
+        title="No se admiten caracteres especiales">
 	        </label>
 	        
 	        <div class="clearfix"></div>
@@ -191,14 +192,16 @@
 	
 	        <label class="label">Asunto <em>*</em></label>
 	        <label class="input">
-	            <input type="text" name="subject" id="subject" required="required">
+	            <input type="text" name="subject" id="subject" required="required" pattern="[a-zA-Z0-9ÑñáéíóúÁÉÍÓÚ/\s/]{1,120}"
+        title="No se admiten caracteres especiales">
 	        </label>
 	
 	        <div class="clearfix"></div>
 	
 	        <label class="label">Mensaje <em>*</em></label>
 	        <label class="textarea">
-	            <textarea rows="5" name="message" id="message" required="required"></textarea>
+	            <textarea rows="5" name="message" id="message" required="required" pattern="[a-zA-Z0-9ÑñáéíóúÁÉÍÓÚ/\s/]{1,500}"
+        title="No se admiten caracteres especiales"></textarea>
 	        </label>
 	
 	        <div class="clearfix"></div>

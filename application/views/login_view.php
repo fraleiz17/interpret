@@ -181,7 +181,7 @@
             <form role="form">
             
                 <label><i class="fa fa-user"></i> Email</label>
-                <input type="text" name="correo">
+                <input type="email" name="correo">
                 
                 <label><i class="fa fa-lock"></i> Contraseña</label>
                 <input type="password" name="contrasena">

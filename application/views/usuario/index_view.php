@@ -194,29 +194,34 @@ margin: 0 auto;}
         </div>
                 <div class = "one_third">
                 <label>Nombre(s) <em>*</em></label>
-                <input type="text" name="nombre" value="<?=$usuario->nombre?>">
+                <input type="text" name="nombre" value="<?=$usuario->nombre?>" pattern="[a-zA-ZÑñáéíóúÁÉÍÓÚ/\s/]{1,30}"
+        title="No se admiten caracteres especiales">
                 </div>
                 <div class = "one_third last">
                 <label>Apellido Paterno<em>*</em></label>
-                <input type="text" name="apellidoPaterno" value="<?=$usuario->apellidoPaterno?>">
+                <input type="text" name="apellidoPaterno" value="<?=$usuario->apellidoPaterno?>" pattern="[a-zA-ZÑñáéíóúÁÉÍÓÚ/\s/]{1,30}"
+        title="No se admiten caracteres especiales">
                 </div>
                 <div class = "two_third last">
                 <label>Apellido Materno <em>*</em></label>
-                <input type="text" name="apellidoMaterno" value="<?=$usuario->apellidoMaterno?>">
+                <input type="text" name="apellidoMaterno" value="<?=$usuario->apellidoMaterno?>" pattern="[a-zA-ZÑñáéíóúÁÉÍÓÚ/\s/]{1,30}"
+        title="No se admiten caracteres especiales">
                 </div>
                 <label>Fotograf&iacute;a </label>
                 <input type="file" name="foto" >
 
                 <label>Email <em>*</em></label>
-                <input type="text" name="correo" value="<?=$usuario->correo?>">
+                <input type="email" name="correo" value="<?=$usuario->correo?>">
                 
                 <div class="one_half">
                     <label>Contraseña <em>*</em></label>
-                    <input type="password" name="contrasena" id="contrasena" minlength="4" maxlength="8" class="contrasena_" placeholder="Solo si requieres cambiarla">
+                    <input type="password" name="contrasena" id="contrasena" minlength="4" maxlength="8" class="contrasena_" placeholder="Solo si requieres cambiarla" pattern="[a-zA-Z0-9ÑñáéíóúÁÉÍÓÚ/\s/]{1,8}"
+        title="No se admiten caracteres especiales">
                 </div>
                 <div class="one_half last">
                     <label>Confirma Contraseña <em>*</em></label>
-                   <input type="password" name="contrasenaConfirm" id="contrasenaConfirm" minlength="4" maxlength="8" class="contrasena_" placeholder="Solo si requieres cambiarla">
+                   <input type="password" name="contrasenaConfirm" id="contrasenaConfirm" minlength="4" maxlength="8" class="contrasena_" placeholder="Solo si requieres cambiarla" pattern="[a-zA-Z0-9ÑñáéíóúÁÉÍÓÚ/\s/]{1,8}"
+        title="No se admiten caracteres especiales">
                 </div>
                 <label id="error_c" style="display: none; color: red;">* Las contraseñas no coinciden</label>
 
@@ -230,18 +235,21 @@ margin: 0 auto;}
                 
                 <div class="one_half last">
                     <label>Tel&eacute;fono</label>
-                    <input type="text" name="telefono" value="<?=$usuario->telefono?>">
+                    <input type="text" name="telefono" value="<?=$usuario->telefono?>" pattern="[a-z0-9/\s/()-]{1,14}"
+        title="No se admiten caracteres especiales">
                 </div>
                 
                 <div class="clearfix"></div>
                 <div class="margin_bottom2"></div>
                 
                 <label>Dirección</label>
-                <input type="text" name="direccion" value="<?=$u_dato->direccion?>">
+                <input type="text" name="direccion" value="<?=$u_dato->direccion?>" pattern="[a-zA-Z0-9ÑñáéíóúÁÉÍÓÚ/\s/-]{1,200}"
+        title="No se admiten caracteres especiales">
 
                 <div class="one_half">
                     <label>Ciudad</label>
-                    <input type="text" name="municipio" value="<?=$u_dato->municipio?>">
+                    <input type="text" name="municipio" value="<?=$u_dato->municipio?>" pattern="[a-zA-ZÑñáéíóúÁÉÍÓÚ/\s/]{1,60}"
+        title="No se admiten caracteres especiales">
                 </div>
 
                 <div class="one_half last">
@@ -256,7 +264,7 @@ margin: 0 auto;}
 
                  <div class="one_half">
                     <label>C.P.</label>
-                    <input type="text" name="cp" value="<?=$u_dato->cp?>">
+                    <input type="number" name="cp" value="<?=$u_dato->cp?>" >
                 </div>
                 
                 <div class="one_half last">
