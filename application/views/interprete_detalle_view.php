@@ -255,7 +255,7 @@ $(function() {
                 <form role="form" action="cuenta/updateMiPerfil" method="post" enctype="multipart/form-data">
 
                   <div class="one_third">
-                      <?php if($foto != null):?>
+                  <?php if($foto != null):?>
                       <img class="efit" src="<?=base_url()?>docs/foto/<?=$foto->foto?>" width="146px" height="146px">
                   <?php endif; ?>
 

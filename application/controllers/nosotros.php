@@ -25,7 +25,12 @@ class Nosotros extends CI_Controller {
 		$data['usuario'] = $this->usuario_model->getRow('usuarioID', $usuarioID,'usuario');
 		$u_dato =  $this->usuario_model->getRow('usuarioID', $usuarioID,'usuariodato');
 		$idEstado = $u_dato->estadoID;
-		$estado = $this->usuario_model->estado($idEstado);
+		if($idEstado != '' && != null){
+			$estado = $this->usuario_model->estado($idEstado);
+		} else {
+			$estado = '';
+		}
+		
         $data['u_dato']  = $this->usuario_model->getRow('usuarioID', $usuarioID,'usuariodato');
         $data['estado']  = $estado;
         $data['foto']    = $this->usuario_model->getRow('usuarioID', $usuarioID,'fotoperfil'); 
